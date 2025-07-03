@@ -7,7 +7,7 @@ export const CONFIG = {
   pkg: {
     devDependencies: [{ packageName: 'npm-check-updates' }],
     scripts: [
-      { key: 'ncu', value: 'npx npm-check-updates --deep' },
+      { key: 'ncu', value: 'npm-check-updates --deep' },
       { key: 'ncu:upgrade', value: 'npm run ncu -- --upgrade' },
     ],
   },
