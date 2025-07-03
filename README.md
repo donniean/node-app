@@ -291,7 +291,7 @@ Setup
 npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
 
 npm pkg set \
-  scripts.ncu='npm-check-updates --deep' \
+  scripts.ncu='npx npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
 ```
 
@@ -623,7 +623,7 @@ curl \
 npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
 
 npm pkg set \
-  scripts.ncu='npm-check-updates --deep' \
+  scripts.ncu='npx npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
 
 # Prettier
