@@ -14,7 +14,7 @@ export const CONFIG = {
     {
       type: 'custom',
       command:
-        'echo "npm run i18n:ci\nnpx lint-staged --concurrent false" > .husky/pre-commit',
+        'echo "npm run i18n:types\nnpx lint-staged --concurrent false" > .husky/pre-commit',
     },
   ],
   clean: [

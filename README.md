@@ -291,7 +291,7 @@ Setup
 npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
 
 npm pkg set \
-  scripts.ncu='npx npm-check-updates --deep' \
+  scripts.ncu='npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
 ```
 
@@ -347,7 +347,7 @@ npm pkg set devDependencies.sort-package-json="^$(npm view sort-package-json ver
 
 npm pkg set \
   scripts.lint:package-json='npm run lint:package-json:fix -- --check' \
-  scripts.lint:package-json:fix='npx sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
+  scripts.lint:package-json:fix='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 ```
 
 Clean
@@ -502,7 +502,7 @@ npm pkg set devDependencies.lint-staged="^$(npm view lint-staged version)"
 
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
-echo "npm run i18n:ci
+echo "npm run i18n:types
 npx lint-staged --concurrent false" > .husky/pre-commit
 ```
 
@@ -622,7 +622,7 @@ curl \
 npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
 
 npm pkg set \
-  scripts.ncu='npx npm-check-updates --deep' \
+  scripts.ncu='npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
 
 # Prettier
@@ -644,7 +644,7 @@ npm pkg set devDependencies.sort-package-json="^$(npm view sort-package-json ver
 
 npm pkg set \
   scripts.lint:package-json='npm run lint:package-json:fix -- --check' \
-  scripts.lint:package-json:fix='npx sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
+  scripts.lint:package-json:fix='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 
 # Stylelint
 
@@ -702,7 +702,7 @@ npm pkg set devDependencies.lint-staged="^$(npm view lint-staged version)"
 
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
-echo "npm run i18n:ci
+echo "npm run i18n:types
 npx lint-staged --concurrent false" > .husky/pre-commit
 ```
 
