@@ -503,6 +503,7 @@ npm pkg set devDependencies.lint-staged="^$(npm view lint-staged version)"
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
 echo "npm run i18n:types
+npm run i18n:check
 npx lint-staged --concurrent false" > .husky/pre-commit
 ```
 
@@ -703,6 +704,7 @@ npm pkg set devDependencies.lint-staged="^$(npm view lint-staged version)"
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
 echo "npm run i18n:types
+npm run i18n:check
 npx lint-staged --concurrent false" > .husky/pre-commit
 ```
 
