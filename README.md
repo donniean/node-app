@@ -288,8 +288,6 @@ rm \
 Setup
 
 ```shell
-npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
-
 npm pkg set \
   scripts.ncu='npx npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
@@ -298,8 +296,6 @@ npm pkg set \
 Clean
 
 ```shell
-npm pkg delete devDependencies.npm-check-updates
-
 npm pkg delete \
   scripts.ncu \
   scripts.ncu:upgrade
@@ -620,8 +616,6 @@ curl \
 
 # npm-check-updates
 
-npm pkg set devDependencies.npm-check-updates="^$(npm view npm-check-updates version)"
-
 npm pkg set \
   scripts.ncu='npx npm-check-updates --deep' \
   scripts.ncu:upgrade='npm run ncu -- --upgrade'
@@ -809,8 +803,6 @@ rm \
   .markdownlintignore
 
 # npm-check-updates
-
-npm pkg delete devDependencies.npm-check-updates
 
 npm pkg delete \
   scripts.ncu \
