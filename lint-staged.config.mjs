@@ -12,7 +12,7 @@ export default {
     'bash -c tsc --noEmit',
     'vitest related --run',
     'pnpm run docs',
-    `git add ${process.env.npm_package_config_docsFilePath}`,
+    `git add README.md`,
   ],
   '*.{js,mjs,cjs,ts}': 'eslint --fix', // --max-warnings 0
   '*.md': 'markdownlint --dot --fix',

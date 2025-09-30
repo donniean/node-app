@@ -38,7 +38,7 @@
     "clean": "rimraf dist/",
     "dev": "pnpm exec tsx src/cli md",
     "docs": "pnpm exec tsx src/scripts",
-    "postdocs": "prettier --write $npm_package_config_docsFilePath",
+    "postdocs": "prettier --write README.md",
     "preinstall": "pnpm dlx only-allow pnpm",
     "knip": "knip",
     "knip:fix": "pnpm run knip --fix",
@@ -64,9 +64,6 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest watch"
-  },
-  "config": {
-    "docsFilePath": "README.md"
   },
   "dependencies": {
     "commander": "14.0.1",

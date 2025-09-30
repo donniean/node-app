@@ -87,8 +87,9 @@ async function getMarkdown(configs: Configs) {
   ];
 
   const markdown = json2md(data);
+  const processed = await remark().use(remarkToc).process(markdown);
 
-  return await remark().use(remarkToc).process(markdown);
+  return String(processed);
 }
 
 interface WriteMarkdownOptions {
@@ -110,7 +111,7 @@ async function writeMarkdownWithDefaults(options?: {
 }) {
   const filePath = options?.filePath ?? resolveCwd(DEFAULT_OUTPUT_FILE_NAME);
   const content = await getMarkdown(CONFIGS);
-  writeMarkdown({ filePath, content: String(content) });
+  writeMarkdown({ filePath, content });
 }
 
 export { getMarkdown, writeMarkdown, writeMarkdownWithDefaults };
