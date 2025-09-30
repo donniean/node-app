@@ -500,11 +500,7 @@ pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
-echo "#!/usr/bin/env sh
-
-pnpm run i18n:types
-pnpm run i18n:check
-pnpm exec lint-staged --concurrent false" > .husky/pre-commit
+echo '#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false' > .husky/pre-commit
 ```
 
 Clean
@@ -702,11 +698,7 @@ pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
 curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 
-echo "#!/usr/bin/env sh
-
-pnpm run i18n:types
-pnpm run i18n:check
-pnpm exec lint-staged --concurrent false" > .husky/pre-commit
+echo '#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false' > .husky/pre-commit
 ```
 
 ### Clean
