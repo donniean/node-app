@@ -14,6 +14,7 @@ export const CONFIG = {
       { packageName: 'eslint' },
       { packageName: 'eslint-config-prettier' },
       { packageName: 'eslint-import-resolver-typescript' },
+      { packageName: 'eslint-plugin-i18next' },
       { packageName: 'eslint-plugin-import-x' },
       { packageName: 'eslint-plugin-jsx-a11y' },
       { packageName: 'eslint-plugin-n' },

@@ -4,6 +4,7 @@ export const CONFIG = {
   key: 'aggregate-lint',
   name: 'Aggregate Lint',
   pkg: {
+    devDependencies: [{ packageName: 'concurrently' }],
     scripts: [
       {
         key: 'lint',

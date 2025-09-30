@@ -127,6 +127,7 @@ pnpm pkg set devDependencies.@vitest/eslint-plugin="$(pnpm view @vitest/eslint-p
 pnpm pkg set devDependencies.eslint="$(pnpm view eslint version)"
 pnpm pkg set devDependencies.eslint-config-prettier="$(pnpm view eslint-config-prettier version)"
 pnpm pkg set devDependencies.eslint-import-resolver-typescript="$(pnpm view eslint-import-resolver-typescript version)"
+pnpm pkg set devDependencies.eslint-plugin-i18next="$(pnpm view eslint-plugin-i18next version)"
 pnpm pkg set devDependencies.eslint-plugin-import-x="$(pnpm view eslint-plugin-import-x version)"
 pnpm pkg set devDependencies.eslint-plugin-jsx-a11y="$(pnpm view eslint-plugin-jsx-a11y version)"
 pnpm pkg set devDependencies.eslint-plugin-n="$(pnpm view eslint-plugin-n version)"
@@ -160,6 +161,7 @@ pnpm pkg delete \
   devDependencies.eslint \
   devDependencies.eslint-config-prettier \
   devDependencies.eslint-import-resolver-typescript \
+  devDependencies.eslint-plugin-i18next \
   devDependencies.eslint-plugin-import-x \
   devDependencies.eslint-plugin-jsx-a11y \
   devDependencies.eslint-plugin-n \
@@ -560,6 +562,7 @@ pnpm pkg set devDependencies.@vitest/eslint-plugin="$(pnpm view @vitest/eslint-p
 pnpm pkg set devDependencies.eslint="$(pnpm view eslint version)"
 pnpm pkg set devDependencies.eslint-config-prettier="$(pnpm view eslint-config-prettier version)"
 pnpm pkg set devDependencies.eslint-import-resolver-typescript="$(pnpm view eslint-import-resolver-typescript version)"
+pnpm pkg set devDependencies.eslint-plugin-i18next="$(pnpm view eslint-plugin-i18next version)"
 pnpm pkg set devDependencies.eslint-plugin-import-x="$(pnpm view eslint-plugin-import-x version)"
 pnpm pkg set devDependencies.eslint-plugin-jsx-a11y="$(pnpm view eslint-plugin-jsx-a11y version)"
 pnpm pkg set devDependencies.eslint-plugin-n="$(pnpm view eslint-plugin-n version)"
@@ -750,6 +753,7 @@ pnpm pkg delete \
   devDependencies.eslint \
   devDependencies.eslint-config-prettier \
   devDependencies.eslint-import-resolver-typescript \
+  devDependencies.eslint-plugin-i18next \
   devDependencies.eslint-plugin-import-x \
   devDependencies.eslint-plugin-jsx-a11y \
   devDependencies.eslint-plugin-n \
