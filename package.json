@@ -36,7 +36,7 @@
     "changeset:publish": "changeset publish",
     "changeset:version": "changeset version",
     "clean": "rimraf dist/",
-    "dev": "pnpm exec tsx src/cli md",
+    "dev": "pnpm exec tsx src/cli",
     "docs": "pnpm exec tsx src/scripts",
     "postdocs": "prettier --write README.md",
     "preinstall": "pnpm dlx only-allow pnpm",

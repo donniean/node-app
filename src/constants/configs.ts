@@ -15,7 +15,7 @@ const CLEAN_COMMAND_TYPE = [
 const CONFIG_BASE_URL =
   'https://raw.githubusercontent.com/donniean/react-app/main/';
 
-const DEFAULT_OUTPUT_FILE_NAME = 'README.md';
+const DEFAULT_OUTPUT_FILE_NAME = 'configs.md';
 
 export {
   CLEAN_COMMAND_TYPE,
