@@ -58,8 +58,9 @@ function buildSetupCommand({
       }
       return buildCommand({
         mainCommand: 'curl',
+        subCommand: '--create-dirs',
         args: filePaths.map(
-          (value) => `--remote-name ${CONFIG_BASE_URL}${value}`,
+          (value) => `--output ${value} ${CONFIG_BASE_URL}${value}`,
         ),
       });
     }
