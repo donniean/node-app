@@ -59,9 +59,9 @@ pnpm pkg set \
   scripts.lint:text='autocorrect --lint' \
   scripts.lint:text:fix='autocorrect --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
+curl --create-dirs \
+  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
+  --output .autocorrectignore https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
 ```
 
 Clean
@@ -87,7 +87,7 @@ pnpm pkg set devDependencies.cspell="$(pnpm view cspell version)"
 
 pnpm pkg set scripts.lint:spell='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
+curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
 ```
 
 Clean
@@ -105,7 +105,7 @@ rm cspell.config.mjs
 Setup
 
 ```shell
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
+curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 ```
 
 Clean
@@ -146,7 +146,7 @@ pnpm pkg set \
   scripts.lint:js='eslint' \
   scripts.lint:js:fix='pnpm run lint:js --fix'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
+curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
 ```
 
 Clean
@@ -188,7 +188,7 @@ rm eslint.config.mjs
 Setup
 
 ```shell
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
+curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
 ```
 
 Clean
@@ -202,7 +202,7 @@ rm .gitattributes
 Setup
 
 ```shell
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
+curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
 ```
 
 Clean
@@ -220,7 +220,7 @@ pnpm pkg set devDependencies.htmlhint="$(pnpm view htmlhint version)"
 
 pnpm pkg set scripts.lint:html='htmlhint --ignore="**/coverage/**" "**/*.html"'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
+curl --create-dirs --output .htmlhintrc https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
 ```
 
 Clean
@@ -266,9 +266,9 @@ pnpm pkg set \
   scripts.lint:md='markdownlint --dot "**/*.md"' \
   scripts.lint:md:fix='pnpm run lint:md --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
+curl --create-dirs \
+  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
+  --output .markdownlintignore https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
 ```
 
 Clean
@@ -315,9 +315,9 @@ pnpm pkg set \
   scripts.lint:format='prettier --check --ignore-unknown .' \
   scripts.lint:format:fix='prettier --write --ignore-unknown .'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
+curl --create-dirs \
+  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
+  --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 ```
 
 Clean
@@ -372,9 +372,9 @@ pnpm pkg set \
   scripts.lint:css='stylelint "**/*.css"' \
   scripts.lint:css:fix='pnpm run lint:css --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
+curl --create-dirs \
+  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
+  --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 ```
 
 Clean
@@ -474,9 +474,9 @@ Setup
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
+curl --create-dirs \
+  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
+  --output commitlint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
 ```
 
 Clean
@@ -498,9 +498,9 @@ Setup
 ```shell
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
+curl --create-dirs \
+  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
+  --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
 Clean
@@ -532,9 +532,9 @@ pnpm pkg set \
   scripts.lint:text='autocorrect --lint' \
   scripts.lint:text:fix='autocorrect --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
+curl --create-dirs \
+  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
+  --output .autocorrectignore https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
 
 # CSpell
 
@@ -542,11 +542,11 @@ pnpm pkg set devDependencies.cspell="$(pnpm view cspell version)"
 
 pnpm pkg set scripts.lint:spell='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
+curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
 
 # EditorConfig
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
+curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 
 # ESLint
 
@@ -577,15 +577,15 @@ pnpm pkg set \
   scripts.lint:js='eslint' \
   scripts.lint:js:fix='pnpm run lint:js --fix'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
+curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
 
 # gitattributes
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
+curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
 
 # gitignore
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
+curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
 
 # HTMLHint
 
@@ -593,7 +593,7 @@ pnpm pkg set devDependencies.htmlhint="$(pnpm view htmlhint version)"
 
 pnpm pkg set scripts.lint:html='htmlhint --ignore="**/coverage/**" "**/*.html"'
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
+curl --create-dirs --output .htmlhintrc https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
 
 # Knip
 
@@ -611,9 +611,9 @@ pnpm pkg set \
   scripts.lint:md='markdownlint --dot "**/*.md"' \
   scripts.lint:md:fix='pnpm run lint:md --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
+curl --create-dirs \
+  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
+  --output .markdownlintignore https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
 
 # npm-check-updates
 
@@ -630,9 +630,9 @@ pnpm pkg set \
   scripts.lint:format='prettier --check --ignore-unknown .' \
   scripts.lint:format:fix='prettier --write --ignore-unknown .'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
+curl --create-dirs \
+  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
+  --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 
 # Sort Package.json
 
@@ -653,9 +653,9 @@ pnpm pkg set \
   scripts.lint:css='stylelint "**/*.css"' \
   scripts.lint:css:fix='pnpm run lint:css --fix'
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
+curl --create-dirs \
+  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
+  --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 
 # tsc
 
@@ -688,17 +688,17 @@ pnpm run prepare
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
+curl --create-dirs \
+  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
+  --output commitlint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
 
 # lint-staged
 
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
-  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
+curl --create-dirs \
+  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
+  --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
 ### Clean
