@@ -474,9 +474,9 @@ Setup
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
-
-echo '#!/usr/bin/env sh\n\npnpm exec commitlint --edit "$1"' > .husky/commit-msg
+curl \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
 ```
 
 Clean
@@ -486,9 +486,9 @@ pnpm pkg delete \
   devDependencies.@commitlint/cli \
   devDependencies.@commitlint/config-conventional
 
-rm commitlint.config.mjs
-
-rm .husky/commit-msg
+rm \
+  .husky/commit-msg \
+  commitlint.config.mjs
 ```
 
 ### [lint-staged](https://github.com/lint-staged/lint-staged)
@@ -498,9 +498,9 @@ Setup
 ```shell
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
-
-echo "#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false" > .husky/pre-commit
+curl \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
 Clean
@@ -508,9 +508,9 @@ Clean
 ```shell
 pnpm pkg delete devDependencies.lint-staged
 
-rm lint-staged.config.mjs
-
-rm .husky/pre-commit
+rm \
+  .husky/pre-commit \
+  lint-staged.config.mjs
 ```
 
 ## All
@@ -688,17 +688,17 @@ pnpm run prepare
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
-
-echo '#!/usr/bin/env sh\n\npnpm exec commitlint --edit "$1"' > .husky/commit-msg
+curl \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
 
 # lint-staged
 
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
-
-echo "#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false" > .husky/pre-commit
+curl \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
+  --remote-name https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
 ### Clean
@@ -879,15 +879,15 @@ pnpm pkg delete \
   devDependencies.@commitlint/cli \
   devDependencies.@commitlint/config-conventional
 
-rm commitlint.config.mjs
-
-rm .husky/commit-msg
+rm \
+  .husky/commit-msg \
+  commitlint.config.mjs
 
 # lint-staged
 
 pnpm pkg delete devDependencies.lint-staged
 
-rm lint-staged.config.mjs
-
-rm .husky/pre-commit
+rm \
+  .husky/pre-commit \
+  lint-staged.config.mjs
 ```
