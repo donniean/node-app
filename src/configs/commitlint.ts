@@ -11,20 +11,6 @@ export const CONFIG = {
     ],
   },
   filePaths: ['.husky/commit-msg', 'commitlint.config.mjs'],
-  setup: [
-    { type: 'pkg.devDependencies.set' },
-    { type: 'files.download' },
-    /* {
-      type: 'custom',
-      command: String.raw`echo '#!/usr/bin/env sh\n\npnpm exec commitlint --edit "$1"' > .husky/commit-msg`,
-    }, */
-  ],
-  clean: [
-    { type: 'pkg.devDependencies.delete' },
-    { type: 'files.delete' },
-    /* {
-      type: 'custom',
-      command: 'rm .husky/commit-msg',
-    }, */
-  ],
+  setup: [{ type: 'pkg.devDependencies.set' }, { type: 'files.download' }],
+  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'files.delete' }],
 } as const satisfies Config;
