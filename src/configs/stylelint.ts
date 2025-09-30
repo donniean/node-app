@@ -13,7 +13,7 @@ export const CONFIG = {
     ],
     scripts: [
       { key: 'lint:css', value: 'stylelint "**/*.css"' },
-      { key: 'lint:css:fix', value: 'npm run lint:css -- --fix' },
+      { key: 'lint:css:fix', value: 'pnpm run lint:css --fix' },
     ],
   },
   filePaths: ['stylelint.config.mjs', '.stylelintignore'],

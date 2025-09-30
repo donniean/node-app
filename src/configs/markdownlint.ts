@@ -8,7 +8,7 @@ export const CONFIG = {
     devDependencies: [{ packageName: 'markdownlint-cli' }],
     scripts: [
       { key: 'lint:md', value: 'markdownlint --dot "**/*.md"' },
-      { key: 'lint:md:fix', value: 'npm run lint:md -- --fix' },
+      { key: 'lint:md:fix', value: 'pnpm run lint:md --fix' },
     ],
   },
   filePaths: ['.markdownlint.json', '.markdownlintignore'],

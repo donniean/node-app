@@ -9,7 +9,7 @@ export const CONFIG = {
     scripts: [
       {
         key: 'lint:package-json',
-        value: 'npm run lint:package-json:fix -- --check',
+        value: 'pnpm run lint:package-json:fix --check',
       },
       {
         key: 'lint:package-json:fix',

@@ -16,7 +16,7 @@ export const CONFIG = {
     { type: 'files.download' },
     {
       type: 'custom',
-      command: String.raw`echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg`,
+      command: String.raw`echo '#!/usr/bin/env sh\n\npnpm exec commitlint --edit "$1"' > .husky/commit-msg`,
     },
   ],
   clean: [

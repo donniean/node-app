@@ -30,7 +30,7 @@ export const CONFIG = {
     ],
     scripts: [
       { key: 'lint:js', value: 'eslint' },
-      { key: 'lint:js:fix', value: 'npm run lint:js -- --fix' },
+      { key: 'lint:js:fix', value: 'pnpm run lint:js --fix' },
     ],
   },
   filePaths: ['eslint.config.mjs'],

@@ -11,7 +11,7 @@ export default {
   '*.ts': [
     'bash -c tsc --noEmit',
     'vitest related --run',
-    'npm run docs',
+    'pnpm run docs',
     `git add ${process.env.npm_package_config_docsFilePath}`,
   ],
   '*.{js,mjs,cjs,ts}': 'eslint --fix', // --max-warnings 0

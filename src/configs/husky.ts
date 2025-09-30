@@ -11,7 +11,7 @@ export const CONFIG = {
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },
-    { type: 'custom', command: 'npm run prepare' },
+    { type: 'custom', command: 'pnpm run prepare' },
   ],
   clean: [
     { type: 'pkg.devDependencies.delete' },

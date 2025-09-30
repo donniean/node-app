@@ -6,8 +6,8 @@ export const CONFIG = {
   url: 'https://github.com/raineorshine/npm-check-updates',
   pkg: {
     scripts: [
-      { key: 'ncu', value: 'npx npm-check-updates --deep' },
-      { key: 'ncu:upgrade', value: 'npm run ncu -- --upgrade' },
+      { key: 'ncu', value: 'pnpm dlx npm-check-updates --deep' },
+      { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
     ],
   },
   setup: [{ type: 'pkg.scripts.set' }],
