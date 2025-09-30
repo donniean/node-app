@@ -7,22 +7,7 @@ export const CONFIG = {
   pkg: {
     devDependencies: [{ packageName: 'lint-staged' }],
   },
-  filePaths: ['lint-staged.config.mjs'],
-  setup: [
-    { type: 'pkg.devDependencies.set' },
-    { type: 'files.download' },
-    {
-      type: 'custom',
-      command:
-        'echo "npm run i18n:types\nnpm run i18n:check\nnpx lint-staged --concurrent false" > .husky/pre-commit',
-    },
-  ],
-  clean: [
-    { type: 'pkg.devDependencies.delete' },
-    { type: 'files.delete' },
-    {
-      type: 'custom',
-      command: 'rm .husky/pre-commit',
-    },
-  ],
+  filePaths: ['.husky/pre-commit', 'lint-staged.config.mjs'],
+  setup: [{ type: 'pkg.devDependencies.set' }, { type: 'files.download' }],
+  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'files.delete' }],
 } as const satisfies Config;

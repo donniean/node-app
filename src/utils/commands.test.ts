@@ -18,10 +18,10 @@ test('with subCommand only', () => {
 
 test('with options only', () => {
   const result = buildCommand({
-    mainCommand: 'npm',
+    mainCommand: 'pnpm',
     options: ['--save-dev', '-E'],
   });
-  expect(result).toBe('npm --save-dev -E');
+  expect(result).toBe('pnpm --save-dev -E');
 });
 
 test('with single arg only', () => {

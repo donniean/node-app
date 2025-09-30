@@ -31,12 +31,12 @@ function buildSetupCommand({
       const commands = devDependencies.map(({ packageName, tag, version }) => {
         const packageTag = tag ? `@${tag}` : '';
         const packageVersion = (
-          version ?? `$(npm view ${packageName}${packageTag} version)`
+          version ?? `$(pnpm view ${packageName}${packageTag} version)`
         ).trim();
         return buildCommand({
-          mainCommand: 'npm',
+          mainCommand: 'pnpm',
           subCommand: 'pkg set',
-          args: [`devDependencies.${packageName}="^${packageVersion}"`],
+          args: [`devDependencies.${packageName}="${packageVersion}"`],
         });
       });
       return commands.join('\n');
@@ -47,7 +47,7 @@ function buildSetupCommand({
         throw new Error(`${errorTitle}: Please set scripts in config.pkg`);
       }
       return buildCommand({
-        mainCommand: 'npm',
+        mainCommand: 'pnpm',
         subCommand: 'pkg set',
         args: scripts.map(({ key, value }) => `scripts.${key}='${value}'`),
       });
@@ -90,7 +90,7 @@ function buildCleanCommand({
         );
       }
       return buildCommand({
-        mainCommand: 'npm',
+        mainCommand: 'pnpm',
         subCommand: 'pkg delete',
         args: devDependencies.map(
           (dependency) => `devDependencies.${dependency.packageName}`,
@@ -103,7 +103,7 @@ function buildCleanCommand({
         throw new Error(`${errorTitle}: please set scripts in config.pkg`);
       }
       return buildCommand({
-        mainCommand: 'npm',
+        mainCommand: 'pnpm',
         subCommand: 'pkg delete',
         args: scripts.map(({ key }) => `scripts.${key}`),
       });

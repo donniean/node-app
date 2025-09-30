@@ -8,7 +8,7 @@ export const CONFIG = {
     devDependencies: [{ packageName: 'knip' }],
     scripts: [
       { key: 'knip', value: 'knip' },
-      { key: 'knip:fix', value: 'npm run knip -- --fix' },
+      { key: 'knip:fix', value: 'pnpm run knip --fix' },
     ],
   },
   filePaths: [],
