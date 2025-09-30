@@ -13,8 +13,7 @@ export const CONFIG = {
     { type: 'files.download' },
     {
       type: 'custom',
-      command:
-        'echo "#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false" > .husky/pre-commit',
+      command: `echo "#!/usr/bin/env sh\n\npnpm run i18n:types\npnpm run i18n:check\npnpm exec lint-staged --concurrent false" > .husky/pre-commit`,
     },
   ],
   clean: [
