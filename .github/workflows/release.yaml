@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -46,8 +47,8 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm run changeset:publish
-          commit: "chore(changesets): version packages"
-          title: "chore(changesets): version packages"
+          commit: 'chore(changesets): version packages'
+          title: 'chore(changesets): version packages'
           setupGitUser: false
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
