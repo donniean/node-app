@@ -212,6 +212,8 @@ export default defineConfig([
       '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/member-ordering': 'error',
+      // temporary solution https://github.com/typescript-eslint/typescript-eslint/issues/11732
+      '@typescript-eslint/unified-signatures': 'off',
     },
   },
   {
