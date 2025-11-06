@@ -473,10 +473,11 @@ Setup
 ```shell
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
+pnpm pkg set devDependencies.@commitlint/types="$(pnpm view @commitlint/types version)"
 
 curl --create-dirs \
   --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
-  --output commitlint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
+  --output commitlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.ts
 ```
 
 Clean
@@ -484,11 +485,12 @@ Clean
 ```shell
 pnpm pkg delete \
   devDependencies.@commitlint/cli \
-  devDependencies.@commitlint/config-conventional
+  devDependencies.@commitlint/config-conventional \
+  devDependencies.@commitlint/types
 
 rm \
   .husky/commit-msg \
-  commitlint.config.mjs
+  commitlint.config.ts
 ```
 
 ### [lint-staged](https://github.com/lint-staged/lint-staged)
@@ -687,10 +689,11 @@ pnpm run prepare
 
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
+pnpm pkg set devDependencies.@commitlint/types="$(pnpm view @commitlint/types version)"
 
 curl --create-dirs \
   --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
-  --output commitlint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.mjs
+  --output commitlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.ts
 
 # lint-staged
 
@@ -877,11 +880,12 @@ rm -rf .husky/
 
 pnpm pkg delete \
   devDependencies.@commitlint/cli \
-  devDependencies.@commitlint/config-conventional
+  devDependencies.@commitlint/config-conventional \
+  devDependencies.@commitlint/types
 
 rm \
   .husky/commit-msg \
-  commitlint.config.mjs
+  commitlint.config.ts
 
 # lint-staged
 

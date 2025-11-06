@@ -8,9 +8,10 @@ export const CONFIG = {
     devDependencies: [
       { packageName: '@commitlint/cli' },
       { packageName: '@commitlint/config-conventional' },
+      { packageName: '@commitlint/types' },
     ],
   },
-  filePaths: ['.husky/commit-msg', 'commitlint.config.mjs'],
+  filePaths: ['.husky/commit-msg', 'commitlint.config.ts'],
   setup: [{ type: 'pkg.devDependencies.set' }, { type: 'files.download' }],
   clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'files.delete' }],
 } as const satisfies Config;
