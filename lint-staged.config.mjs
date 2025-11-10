@@ -10,6 +10,7 @@ export default {
   ],
   '*.ts': [
     'bash -c tsc --noEmit',
+    // 'tsc --noEmit',
     'vitest related --run',
     'pnpm run docs',
     `git add README.md`,
