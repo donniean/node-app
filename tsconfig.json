@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true,
-
     "target": "es2022",
     "useDefineForClassFields": true,
     "skipLibCheck": true,
