@@ -1,45 +1,60 @@
 {
   "compilerOptions": {
-    // https://github.com/tsconfig/bases/blob/main/bases/node-lts.json
-    "lib": ["es2023"],
+    "composite": true,
+
     "target": "es2022",
-    "esModuleInterop": true,
+    "useDefineForClassFields": true,
     "skipLibCheck": true,
+
+    /* Bundler mode */
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
 
     // https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/base.json
     "resolveJsonModule": true,
-    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
-
-    // https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/strict.json
-    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
 
     // https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/strictest.json
-    "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    // https://github.com/tsconfig/bases/blob/main/bases/strictest.json
+    "noPropertyAccessFromIndexSignature": true,
 
     // checkJs
-    "allowJs": true,
     "checkJs": true,
 
-    // custom
+    "lib": [
+      "ES2024",
+      "ESNext.Array",
+      "ESNext.Collection",
+      "ESNext.Iterator",
+      "ESNext.Promise"
+    ],
     "module": "ESNext",
+    "types": ["node"],
+
     "moduleResolution": "bundler",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "dist/",
+
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/"]
+  "include": ["src/", "config/", "scripts/", "*.ts"]
 }
