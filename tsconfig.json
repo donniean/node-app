@@ -61,5 +61,5 @@
     },
     "types": ["node"]
   },
-  "include": ["src/", "config/", "scripts/", "*.ts"]
+  "include": ["src/", "*.ts"]
 }
