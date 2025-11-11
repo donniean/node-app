@@ -9,7 +9,7 @@ export default {
     'cspell lint --no-progress --no-must-find-files --dot --gitignore',
   ],
   '*.ts': [
-    'bash -c tsc --noEmit',
+    () => 'tsc --noEmit',
     'vitest related --run',
     'pnpm run docs',
     `git add README.md`,
