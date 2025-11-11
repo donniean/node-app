@@ -4,7 +4,7 @@ import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
 import eslintPluginEslintCommentsConfigs from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import eslintPluginVitest from '@vitest/eslint-plugin';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import * as eslintPluginImportX from 'eslint-plugin-import-x';
@@ -27,6 +27,7 @@ const nodeGlobs = [
   '**/commitlint.config.{js,mjs,cjs,ts}',
   '**/cspell.config.{js,mjs,cjs,ts}',
   '**/eslint.config.{js,mjs,cjs,ts}',
+  '**/i18next.config.{js,mjs,ts}',
   '**/jest.config.{js,mjs,cjs,ts}',
   '**/lint-staged.config.{js,mjs,cjs,ts}',
   '**/prettier.config.{js,mjs,cjs,ts}',
@@ -35,18 +36,13 @@ const nodeGlobs = [
   '**/tsup.config.{js,mjs,cjs,ts}',
   '**/vite.config.{js,mjs,cjs,ts}',
   '**/vitest.config.{js,mjs,cjs,ts}',
+  'config/**/*.{js,cjs,mjs,ts}',
   'scripts/**/*.{js,cjs,mjs,ts}',
 ];
 
 export default defineConfig([
-  {
-    ...includeIgnoreFile(gitignorePath),
-    name: 'custom/gitignore',
-  },
-  {
-    ignores: ['**/*.min.*'],
-    name: 'custom/ignore',
-  },
+  includeIgnoreFile(gitignorePath, 'custom/gitignore'),
+  globalIgnores(['**/*.min.*'], 'custom/ignore'),
   {
     name: 'custom/javascript/setup',
     languageOptions: {
@@ -212,9 +208,6 @@ export default defineConfig([
       '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/member-ordering': 'error',
-      // TEMP: disable due to rule crash "typeParameters.params is not iterable"
-      // Ref: https://github.com/typescript-eslint/typescript-eslint/issues/11732
-      '@typescript-eslint/unified-signatures': 'off',
     },
   },
   {
@@ -257,7 +250,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/*.test.ts'],
+    files: ['**/tests/**', '**/*.test.ts'],
     ...eslintPluginVitest.configs.recommended,
   },
   eslintConfigPrettier,
