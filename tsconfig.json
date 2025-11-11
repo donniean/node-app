@@ -53,7 +53,7 @@
     ],
 
     /* Modules */
-    "baseUrl": "./",
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
