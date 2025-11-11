@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // base
+    /* base */
 
     /* Language and Environment */
     "target": "es2022",
@@ -41,7 +41,7 @@
     /* Completeness */
     "skipLibCheck": true,
 
-    // node
+    /* node */
 
     /* Language and Environment */
     "lib": [
