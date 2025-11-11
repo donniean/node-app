@@ -1,42 +1,49 @@
 {
   "compilerOptions": {
+    // base
+
+    /* Language and Environment */
     "target": "es2022",
-    "useDefineForClassFields": true,
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "useDefineForClassFields": true,
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
+    /* Modules */
+    "resolveJsonModule": true,
     "noUncheckedSideEffectImports": true,
 
-    // https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/base.json
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
+    /* JavaScript Support */
     "allowJs": true,
-
-    // https://github.com/withastro/astro/blob/main/packages/astro/tsconfigs/strictest.json
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    // https://github.com/tsconfig/bases/blob/main/bases/strictest.json
-    "noPropertyAccessFromIndexSignature": true,
-
-    // checkJs
     "checkJs": true,
 
+    /* Type Checking */
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    /* Emit */
+    "noEmit": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+
+    /* Completeness */
+    "skipLibCheck": true,
+
+    // node
+
+    /* Language and Environment */
     "lib": [
       "ES2024",
       "ESNext.Array",
@@ -44,15 +51,15 @@
       "ESNext.Iterator",
       "ESNext.Promise"
     ],
-    "module": "ESNext",
-    "types": ["node"],
 
-    "moduleResolution": "bundler",
-
+    /* Modules */
     "baseUrl": "./",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["node"]
   },
   "include": ["src/", "config/", "scripts/", "*.ts"]
 }
