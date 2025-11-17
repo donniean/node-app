@@ -88,7 +88,7 @@
     "@types/json2md": "1.5.4",
     "@types/node": "24.10.1",
     "@vitest/coverage-v8": "4.0.9",
-    "@vitest/eslint-plugin": "1.4.2",
+    "@vitest/eslint-plugin": "1.4.3",
     "@vitest/ui": "4.0.9",
     "autocorrect-node": "2.14.0",
     "concurrently": "9.2.1",
