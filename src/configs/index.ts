@@ -6,7 +6,7 @@ import { CONFIG as editorconfig } from './editorconfig';
 import { CONFIG as eslint } from './eslint';
 import { CONFIG as gitattributes } from './gitattributes';
 import { CONFIG as gitignore } from './gitignore';
-import { CONFIG as htmlhint } from './htmlhint';
+import { CONFIG as htmlValidate } from './html-validate';
 import { CONFIG as husky } from './husky';
 import { CONFIG as knip } from './knip';
 import { CONFIG as lintStaged } from './lint-staged';
@@ -26,7 +26,7 @@ export const CONFIGS = [
   eslint,
   gitattributes,
   gitignore,
-  htmlhint,
+  htmlValidate,
   knip,
   markdownlint,
   npmCheckUpdates,

@@ -12,7 +12,7 @@
   - [ESLint](#eslint)
   - [gitattributes](#gitattributes)
   - [gitignore](#gitignore)
-  - [HTMLHint](#htmlhint)
+  - [HTML-validate](#html-validate)
   - [Knip](#knip)
   - [markdownlint](#markdownlint)
   - [npm-check-updates](#npm-check-updates)
@@ -211,26 +211,30 @@ Clean
 rm .gitignore
 ```
 
-### [HTMLHint](https://github.com/htmlhint/HTMLHint)
+### [HTML-validate](https://html-validate.org)
 
 Setup
 
 ```shell
-pnpm pkg set devDependencies.htmlhint="$(pnpm view htmlhint version)"
+pnpm pkg set devDependencies.html-validate="$(pnpm view html-validate version)"
 
-pnpm pkg set scripts.lint:html='htmlhint --ignore="**/coverage/**" "**/*.html"'
+pnpm pkg set scripts.lint:html='html-validate "**/*.html"'
 
-curl --create-dirs --output .htmlhintrc https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
+curl --create-dirs \
+  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
+  --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
 ```
 
 Clean
 
 ```shell
-pnpm pkg delete devDependencies.htmlhint
+pnpm pkg delete devDependencies.html-validate
 
 pnpm pkg delete scripts.lint:html
 
-rm .htmlhintrc
+rm \
+  .htmlvalidate.mjs \
+  .htmlvalidateignore
 ```
 
 ### [Knip](https://github.com/webpro-nl/knip)
@@ -589,13 +593,15 @@ curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/don
 
 curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
 
-# HTMLHint
+# HTML-validate
 
-pnpm pkg set devDependencies.htmlhint="$(pnpm view htmlhint version)"
+pnpm pkg set devDependencies.html-validate="$(pnpm view html-validate version)"
 
-pnpm pkg set scripts.lint:html='htmlhint --ignore="**/coverage/**" "**/*.html"'
+pnpm pkg set scripts.lint:html='html-validate "**/*.html"'
 
-curl --create-dirs --output .htmlhintrc https://raw.githubusercontent.com/donniean/react-app/main/.htmlhintrc
+curl --create-dirs \
+  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
+  --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
 
 # Knip
 
@@ -777,13 +783,15 @@ rm .gitattributes
 
 rm .gitignore
 
-# HTMLHint
+# HTML-validate
 
-pnpm pkg delete devDependencies.htmlhint
+pnpm pkg delete devDependencies.html-validate
 
 pnpm pkg delete scripts.lint:html
 
-rm .htmlhintrc
+rm \
+  .htmlvalidate.mjs \
+  .htmlvalidateignore
 
 # Knip
 
