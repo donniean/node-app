@@ -1,19 +1,20 @@
 import type { Config } from '@/types/configs';
 
 export const CONFIG = {
-  key: 'htmlhint',
-  name: 'HTMLHint',
-  url: 'https://github.com/htmlhint/HTMLHint',
+  key: 'html-validate',
+  name: 'HTML-validate',
+  url: 'https://html-validate.org',
   pkg: {
-    devDependencies: [{ packageName: 'htmlhint' }],
+    devDependencies: [{ packageName: 'html-validate' }],
     scripts: [
       {
         key: 'lint:html',
-        value: 'htmlhint --ignore="**/coverage/**" "**/*.html"',
+        value: 'html-validate "**/*.html"',
       },
     ],
   },
-  filePaths: ['.htmlhintrc'],
+  filePaths: ['.htmlvalidate.mjs', '.htmlvalidateignore'],
+
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },
