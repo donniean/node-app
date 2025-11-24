@@ -73,7 +73,7 @@
     "remark": "15.0.1",
     "remark-toc": "9.0.0",
     "type-fest": "5.2.0",
-    "zod": "4.1.12"
+    "zod": "4.1.13"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.1",
@@ -88,7 +88,7 @@
     "@types/json2md": "1.5.4",
     "@types/node": "24.10.1",
     "@vitest/coverage-v8": "4.0.13",
-    "@vitest/eslint-plugin": "1.4.3",
+    "@vitest/eslint-plugin": "1.4.4",
     "@vitest/ui": "4.0.13",
     "autocorrect-node": "2.14.0",
     "concurrently": "9.2.1",
