@@ -88,7 +88,7 @@
     "@types/json2md": "1.5.4",
     "@types/node": "24.10.1",
     "@vitest/coverage-v8": "4.0.13",
-    "@vitest/eslint-plugin": "1.4.4",
+    "@vitest/eslint-plugin": "1.5.0",
     "@vitest/ui": "4.0.13",
     "autocorrect-node": "2.14.0",
     "concurrently": "9.2.1",
@@ -105,7 +105,7 @@
     "eslint-plugin-unused-imports": "4.3.0",
     "globals": "16.5.0",
     "husky": "9.1.7",
-    "knip": "5.70.1",
+    "knip": "5.70.2",
     "lint-staged": "16.2.7",
     "markdownlint-cli": "0.46.0",
     "prettier": "3.6.2",
@@ -114,7 +114,7 @@
     "tsup": "8.5.1",
     "tsx": "4.20.6",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.47.0",
+    "typescript-eslint": "8.48.0",
     "vitest": "4.0.13"
   },
   "engines": {
