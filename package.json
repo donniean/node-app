@@ -72,7 +72,7 @@
     "prettier": "3.7.4",
     "remark": "15.0.1",
     "remark-toc": "9.0.0",
-    "type-fest": "5.4.0",
+    "type-fest": "5.4.1",
     "zod": "4.3.5"
   },
   "devDependencies": {
