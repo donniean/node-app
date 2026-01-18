@@ -105,7 +105,7 @@
     "eslint-plugin-unused-imports": "4.3.0",
     "globals": "17.0.0",
     "husky": "9.1.7",
-    "knip": "5.81.0",
+    "knip": "5.82.0",
     "lint-staged": "16.2.7",
     "markdownlint-cli": "0.47.0",
     "prettier": "3.8.0",
