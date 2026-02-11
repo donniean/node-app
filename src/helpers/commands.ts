@@ -1,9 +1,9 @@
-import { CONFIG_BASE_URL } from '@/constants/configs';
+import { CONFIG_BASE_URL } from '@/models/configs.constants';
 import type {
   CleanCommandAction,
   Config,
   SetupCommandAction,
-} from '@/types/configs';
+} from '@/models/configs.types';
 import { buildCommand } from '@/utils/commands';
 
 type GetCommandOptions = Pick<Config, 'name' | 'pkg' | 'filePaths'>;

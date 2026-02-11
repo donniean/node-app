@@ -5,7 +5,7 @@ import type {
   ConfigSchema,
   ConfigsSchema,
   SetupCommandActionSchema,
-} from '@/schemas/configs';
+} from '@/models/configs.schemas';
 
 type SetupCommandAction = z.infer<typeof SetupCommandActionSchema>;
 

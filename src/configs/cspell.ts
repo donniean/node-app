@@ -1,4 +1,4 @@
-import type { Config } from '@/types/configs';
+import type { Config } from '@/models/configs.types';
 
 export const CONFIG = {
   key: 'cspell',
