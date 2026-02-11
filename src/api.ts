@@ -6,9 +6,9 @@ import { remark } from 'remark';
 import remarkToc from 'remark-toc';
 
 import { CONFIGS } from '@/configs';
-import { DEFAULT_OUTPUT_FILE_NAME } from '@/constants/configs';
 import { buildCleanCommand, buildSetupCommand } from '@/helpers/commands';
-import type { Configs } from '@/types/configs';
+import { DEFAULT_OUTPUT_FILE_NAME } from '@/models/configs.constants';
+import type { Configs } from '@/models/configs.types';
 import { resolveCwd } from '@/utils/paths';
 
 async function getMarkdown(configs: Configs) {

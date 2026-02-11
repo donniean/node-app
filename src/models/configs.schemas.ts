@@ -1,6 +1,9 @@
 import { z } from 'zod/v4';
 
-import { CLEAN_COMMAND_TYPE, SETUP_COMMAND_TYPES } from '@/constants/configs';
+import {
+  CLEAN_COMMAND_TYPE,
+  SETUP_COMMAND_TYPES,
+} from '@/models/configs.constants';
 
 const SetupCommandTypeSchema = z.enum(SETUP_COMMAND_TYPES);
 
