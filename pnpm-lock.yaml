@@ -121,8 +121,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       knip:
-        specifier: 6.0.2
-        version: 6.0.2
+        specifier: 6.0.4
+        version: 6.0.4
       lint-staged:
         specifier: 16.4.0
         version: 16.4.0
@@ -2580,8 +2580,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  knip@6.0.2:
-    resolution: {integrity: sha512-W17Bo5N9AYn0ZkgWHGBmK/01SrSmr3B6iStr3zudDa2eqi+Kc8VmPjSpTYKDV2Uy/kojrlcH/gS1wypAXfXRRA==}
+  knip@6.0.4:
+    resolution: {integrity: sha512-r/9F7wcxiFM71WgDFQiToE2hQHwZ/UkGmr74o8eiNFPIg80f7rlQHVrZiRX46Tj2yE3s96wUVNGMnsDMylgInw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -3006,8 +3006,8 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@2.3.1:
-    resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
+  picomatch@2.3.2:
+    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
   picomatch@4.0.3:
@@ -3223,6 +3223,10 @@ packages:
 
   smol-toml@1.6.0:
     resolution: {integrity: sha512-4zemZi0HvTnYwLfrpk/CF9LOd9Lt87kAt50GnqhMpyF9U3poDAP2+iukq2bZsO/ufegbYehBkqINbsWxj4l4cw==}
+    engines: {node: '>= 18'}
+
+  smol-toml@1.6.1:
+    resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
     engines: {node: '>= 18'}
 
   sort-object-keys@2.1.0:
@@ -5229,7 +5233,7 @@ snapshots:
     dependencies:
       '@cspell/cspell-types': 9.7.0
       comment-json: 4.6.2
-      smol-toml: 1.6.0
+      smol-toml: 1.6.1
       yaml: 2.8.3
 
   cspell-dictionary@9.7.0:
@@ -5249,7 +5253,7 @@ snapshots:
   cspell-glob@9.7.0:
     dependencies:
       '@cspell/url': 9.7.0
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   cspell-grammar@9.7.0:
     dependencies:
@@ -5649,9 +5653,9 @@ snapshots:
     dependencies:
       walk-up-path: 4.0.0
 
-  fdir@6.5.0(picomatch@4.0.3):
+  fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   fflate@0.8.2: {}
 
@@ -5934,7 +5938,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  knip@6.0.2:
+  knip@6.0.4:
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       fast-glob: 3.3.3
@@ -5945,8 +5949,8 @@ snapshots:
       oxc-parser: 0.120.0
       oxc-resolver: 11.19.1
       picocolors: 1.1.1
-      picomatch: 4.0.3
-      smol-toml: 1.6.0
+      picomatch: 4.0.4
+      smol-toml: 1.6.1
       strip-json-comments: 5.0.3
       unbash: 2.2.0
       yaml: 2.8.3
@@ -6358,7 +6362,7 @@ snapshots:
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.1
+      picomatch: 2.3.2
 
   mimic-function@5.0.1: {}
 
@@ -6538,7 +6542,7 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@2.3.1: {}
+  picomatch@2.3.2: {}
 
   picomatch@4.0.3: {}
 
@@ -6771,6 +6775,8 @@ snapshots:
 
   smol-toml@1.6.0: {}
 
+  smol-toml@1.6.1: {}
+
   sort-object-keys@2.1.0: {}
 
   sort-package-json@3.6.1:
@@ -6880,8 +6886,8 @@ snapshots:
 
   tinyglobby@0.2.15:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
 
   tinyrainbow@3.1.0: {}
 
@@ -6903,7 +6909,7 @@ snapshots:
 
   ts-declaration-location@1.0.7(typescript@5.9.3):
     dependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.4
       typescript: 5.9.3
 
   ts-interface-checker@0.1.13: {}
