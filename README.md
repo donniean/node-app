@@ -34,7 +34,7 @@
 
 Setup
 
-```shell
+```bash
 pnpm pkg set \
   scripts.lint='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
   scripts.lint:fix='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
@@ -42,7 +42,7 @@ pnpm pkg set \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   scripts.lint \
   scripts.lint:fix
@@ -52,7 +52,7 @@ pnpm pkg delete \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.autocorrect-node="$(pnpm view autocorrect-node version)"
 
 pnpm pkg set \
@@ -66,7 +66,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.autocorrect-node
 
 pnpm pkg delete \
@@ -82,7 +82,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.cspell="$(pnpm view cspell version)"
 
 pnpm pkg set scripts.lint:spell='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
@@ -92,7 +92,7 @@ curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.cspell
 
 pnpm pkg delete scripts.lint:spell
@@ -104,13 +104,13 @@ rm cspell.config.mjs
 
 Setup
 
-```shell
+```bash
 curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 ```
 
 Clean
 
-```shell
+```bash
 rm .editorconfig
 ```
 
@@ -118,7 +118,7 @@ rm .editorconfig
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.@eslint-community/eslint-plugin-eslint-comments="$(pnpm view @eslint-community/eslint-plugin-eslint-comments version)"
 pnpm pkg set devDependencies.@eslint/compat="$(pnpm view @eslint/compat version)"
 pnpm pkg set devDependencies.@eslint/js="$(pnpm view @eslint/js version)"
@@ -151,7 +151,7 @@ curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   devDependencies.@eslint-community/eslint-plugin-eslint-comments \
   devDependencies.@eslint/compat \
@@ -187,13 +187,13 @@ rm eslint.config.mjs
 
 Setup
 
-```shell
+```bash
 curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
 ```
 
 Clean
 
-```shell
+```bash
 rm .gitattributes
 ```
 
@@ -201,13 +201,13 @@ rm .gitattributes
 
 Setup
 
-```shell
+```bash
 curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniean/react-app/main/.gitignore
 ```
 
 Clean
 
-```shell
+```bash
 rm .gitignore
 ```
 
@@ -215,7 +215,7 @@ rm .gitignore
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.html-validate="$(pnpm view html-validate version)"
 
 pnpm pkg set scripts.lint:html='html-validate "**/*.html"'
@@ -227,7 +227,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.html-validate
 
 pnpm pkg delete scripts.lint:html
@@ -241,7 +241,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.knip="$(pnpm view knip version)"
 
 pnpm pkg set \
@@ -251,7 +251,7 @@ pnpm pkg set \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.knip
 
 pnpm pkg delete \
@@ -263,7 +263,7 @@ pnpm pkg delete \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.markdownlint-cli="$(pnpm view markdownlint-cli version)"
 
 pnpm pkg set \
@@ -277,7 +277,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.markdownlint-cli
 
 pnpm pkg delete \
@@ -293,7 +293,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set \
   scripts.ncu='pnpm dlx npm-check-updates --deep' \
   scripts.ncu:upgrade='pnpm run ncu --upgrade'
@@ -301,7 +301,7 @@ pnpm pkg set \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   scripts.ncu \
   scripts.ncu:upgrade
@@ -311,7 +311,7 @@ pnpm pkg delete \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.prettier="$(pnpm view prettier version)"
 pnpm pkg set devDependencies.prettier-plugin-tailwindcss="$(pnpm view prettier-plugin-tailwindcss version)"
 
@@ -326,7 +326,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   devDependencies.prettier \
   devDependencies.prettier-plugin-tailwindcss
@@ -344,7 +344,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.sort-package-json="$(pnpm view sort-package-json version)"
 
 pnpm pkg set \
@@ -354,7 +354,7 @@ pnpm pkg set \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.sort-package-json
 
 pnpm pkg delete \
@@ -366,7 +366,7 @@ pnpm pkg delete \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.stylelint="$(pnpm view stylelint version)"
 pnpm pkg set devDependencies.stylelint-config-recess-order="$(pnpm view stylelint-config-recess-order version)"
 pnpm pkg set devDependencies.stylelint-config-standard="$(pnpm view stylelint-config-standard version)"
@@ -383,7 +383,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   devDependencies.stylelint \
   devDependencies.stylelint-config-recess-order \
@@ -403,7 +403,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.typescript="$(pnpm view typescript version)"
 
 pnpm pkg set scripts.lint:types='tsc --noEmit'
@@ -411,7 +411,7 @@ pnpm pkg set scripts.lint:types='tsc --noEmit'
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.typescript
 
 pnpm pkg delete scripts.lint:types
@@ -421,7 +421,7 @@ pnpm pkg delete scripts.lint:types
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.@vitest/coverage-v8="$(pnpm view @vitest/coverage-v8 version)"
 pnpm pkg set devDependencies.@vitest/ui="$(pnpm view @vitest/ui version)"
 pnpm pkg set devDependencies.vitest="$(pnpm view vitest version)"
@@ -435,7 +435,7 @@ pnpm pkg set \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   devDependencies.@vitest/coverage-v8 \
   devDependencies.@vitest/ui \
@@ -452,7 +452,7 @@ pnpm pkg delete \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.husky="$(pnpm view husky version)"
 
 pnpm pkg set scripts.prepare='husky'
@@ -462,7 +462,7 @@ pnpm run prepare
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.husky
 
 pnpm pkg delete scripts.prepare
@@ -474,7 +474,7 @@ rm -rf .husky/
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli version)"
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 pnpm pkg set devDependencies.@commitlint/types="$(pnpm view @commitlint/types version)"
@@ -486,7 +486,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete \
   devDependencies.@commitlint/cli \
   devDependencies.@commitlint/config-conventional \
@@ -501,7 +501,7 @@ rm \
 
 Setup
 
-```shell
+```bash
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
 curl --create-dirs \
@@ -511,7 +511,7 @@ curl --create-dirs \
 
 Clean
 
-```shell
+```bash
 pnpm pkg delete devDependencies.lint-staged
 
 rm \
@@ -523,7 +523,7 @@ rm \
 
 ### Setup
 
-```shell
+```bash
 # Aggregate Lint
 
 pnpm pkg set \
@@ -712,7 +712,7 @@ curl --create-dirs \
 
 ### Clean
 
-```shell
+```bash
 # Aggregate Lint
 
 pnpm pkg delete \
