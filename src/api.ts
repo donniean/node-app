@@ -11,6 +11,8 @@ import { DEFAULT_OUTPUT_FILE_NAME } from '@/models/configs.constants';
 import type { Configs } from '@/models/configs.types';
 import { resolveCwd } from '@/utils/paths';
 
+const CODE_LANGUAGE = 'bash';
+
 async function getMarkdown(configs: Configs) {
   const tools: DataObject[] = [];
   const allSetupCommands: string[] = [];
@@ -39,7 +41,7 @@ async function getMarkdown(configs: Configs) {
       },
       {
         code: {
-          language: 'shell',
+          language: CODE_LANGUAGE,
           content: setupCommands.join('\n\n'),
         },
       },
@@ -48,7 +50,7 @@ async function getMarkdown(configs: Configs) {
       },
       {
         code: {
-          language: 'shell',
+          language: CODE_LANGUAGE,
           content: cleanCommands.join('\n\n'),
         },
       },
@@ -73,14 +75,14 @@ async function getMarkdown(configs: Configs) {
     { h3: 'Setup' },
     {
       code: {
-        language: 'shell',
+        language: CODE_LANGUAGE,
         content: allSetupCommands.join('\n\n'),
       },
     },
     { h3: 'Clean' },
     {
       code: {
-        language: 'shell',
+        language: CODE_LANGUAGE,
         content: allCleanCommands.join('\n\n'),
       },
     },
