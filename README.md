@@ -295,7 +295,7 @@ Setup
 
 ```bash
 pnpm pkg set \
-  scripts.ncu='pnpm dlx npm-check-updates --deep' \
+  scripts.ncu='pnpm dlx npm-check-updates@latest --deep' \
   scripts.ncu:upgrade='pnpm run ncu --upgrade'
 ```
 
@@ -626,7 +626,7 @@ curl --create-dirs \
 # npm-check-updates
 
 pnpm pkg set \
-  scripts.ncu='pnpm dlx npm-check-updates --deep' \
+  scripts.ncu='pnpm dlx npm-check-updates@latest --deep' \
   scripts.ncu:upgrade='pnpm run ncu --upgrade'
 
 # Prettier
