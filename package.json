@@ -87,7 +87,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/json2md": "1.5.4",
     "@types/node": "25.6.2",
-    "@vitest/coverage-v8": "4.1.5",
+    "@vitest/coverage-v8": "4.1.6",
     "@vitest/eslint-plugin": "1.6.17",
     "@vitest/ui": "4.1.6",
     "autocorrect-node": "2.14.0",
