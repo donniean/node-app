@@ -8,8 +8,7 @@ export const CONFIG = {
     scripts: [
       {
         key: 'ncu',
-        value:
-          'pnpm dlx npm-check-updates@latest --cooldown 1d --deep --format cooldown',
+        value: 'pnpm dlx npm-check-updates@latest --deep --format cooldown',
       },
       { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
     ],
