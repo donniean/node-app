@@ -6,7 +6,10 @@ export const CONFIG = {
   url: 'https://github.com/raineorshine/npm-check-updates',
   pkg: {
     scripts: [
-      { key: 'ncu', value: 'pnpm dlx npm-check-updates@latest --deep' },
+      {
+        key: 'ncu',
+        value: 'pnpm dlx npm-check-updates@latest --deep --format cooldown',
+      },
       { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
     ],
   },
