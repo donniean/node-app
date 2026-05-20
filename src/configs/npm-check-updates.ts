@@ -9,7 +9,6 @@ export const CONFIG = {
       {
         key: 'ncu',
         value:
-          // cspell: disable-next-line
           'pnpm dlx npm-check-updates@latest --cooldown 1d --deep --format cooldown',
       },
       { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
