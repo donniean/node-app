@@ -87,9 +87,9 @@
     "@types/fs-extra": "11.0.4",
     "@types/json2md": "1.5.4",
     "@types/node": "25.9.1",
-    "@vitest/coverage-v8": "4.1.7",
+    "@vitest/coverage-v8": "4.1.8",
     "@vitest/eslint-plugin": "1.6.19",
-    "@vitest/ui": "4.1.7",
+    "@vitest/ui": "4.1.8",
     "autocorrect-node": "2.14.0",
     "concurrently": "10.0.1",
     "cspell": "10.0.1",
@@ -114,8 +114,8 @@
     "tsup": "8.5.1",
     "tsx": "4.22.4",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.60.0",
-    "vitest": "4.1.7"
+    "typescript-eslint": "8.60.1",
+    "vitest": "4.1.8"
   },
   "packageManager": "pnpm@11.5.0",
   "engines": {
