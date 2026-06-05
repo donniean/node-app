@@ -3,6 +3,8 @@
 ## 仓库边界
 
 - 以 [README.md](README.md) 作为仓库用途、目录范围和常用命令的 single source of truth；更细的执行约束以本文件和相关源码为准。
+- 本仓库既是 GitHub Template repository，也是当前可构建、可发布的 npm package。修改时同时检查 template 复用场景和现有 `configs-md` package 行为。
+- 由本 template 生成正式项目时，示例 CLI、API、配置生成逻辑和占位结构可以按项目目标替换、裁剪或删除；不要把当前示例当成所有下游项目都必须保留的约定。
 
 ## 实现约定
 
@@ -10,14 +12,16 @@
 
 ## 生成文档
 
-- 除非用户明确要求一次性手改，否则不要只手动修改 `configs.md` 中的生成命令块。
+- [`configs.md`](configs.md) 是由 `pnpm run docs` 生成的文档。除非用户明确要求一次性手改，否则不要只手动修改生成命令块。
+- `lint-staged` 会在 staged TypeScript 改动时运行 `pnpm run docs` 并重新加入 [`configs.md`](configs.md)。如果手动处理相关改动，也应检查生成 diff 是否符合预期。
 
-## CLI 与构建
+## CLI、API 与构建
 
 - CLI 名称是 `configs-md`，源码入口是 [`src/cli.ts`](src/cli.ts)。
 - 发布后的 executable wrapper 是 [`bin/cli.js`](bin/cli.js)，它依赖 `dist/cli.js`。
+- API export 入口是 [`src/index.ts`](src/index.ts)，当前导出 [`src/api.ts`](src/api.ts)。
 - 构建配置位于 [`tsup.config.ts`](tsup.config.ts)，输出 ESM 和 type declarations。
-- 修改 CLI 参数、输出行为或 API exports 时，同步检查 [`src/cli.ts`](src/cli.ts)、[`src/api.ts`](src/api.ts)、[`bin/cli.js`](bin/cli.js)、[`package.json`](package.json) 的 `bin` / `exports` 字段和 [`configs.md`](configs.md)。
+- 修改 CLI 参数、输出行为、API exports 或 package 入口时，同步检查 [`src/cli.ts`](src/cli.ts)、[`src/api.ts`](src/api.ts)、[`src/index.ts`](src/index.ts)、[`bin/cli.js`](bin/cli.js)、[`package.json`](package.json) 的 `bin` / `exports` / `files` 字段和 [`configs.md`](configs.md)。
 
 ## 验证
 
@@ -31,7 +35,7 @@ pnpm run build
 
 如果检查结果可自动修复，优先运行影响范围最小的 `fix` 命令，而不是无差别运行全仓库修复。
 
-涉及 `src/configs/`、`src/api.ts`、`src/scripts.ts` 或生成输出时，额外运行：
+涉及 `src/configs/`、`src/api.ts`、`src/scripts.ts`、`src/helpers/`、`src/models/` 或生成输出时，额外运行：
 
 ```bash
 pnpm run docs
@@ -55,7 +59,7 @@ pnpm run lint:package-json
 - `pnpm run lint:js:fix`
 - `pnpm run lint:format:fix`
 - `pnpm run lint:text:fix`
-- `pnpm run lint:package-json:fix`。
+- `pnpm run lint:package-json:fix`
 
 CI 当前在 pull requests to `main` 上运行 lint、test 和 build。
 
