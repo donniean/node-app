@@ -12,7 +12,7 @@ export default {
     () => 'tsc --noEmit',
     'vitest related --run',
     'pnpm run docs',
-    `git add README.md`,
+    `git add configs.md`,
   ],
   '*.{js,mjs,cjs,ts}': 'eslint --fix', // --max-warnings 0
   '*.md': 'markdownlint --dot --fix',
