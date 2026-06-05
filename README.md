@@ -8,13 +8,13 @@ A personal GitHub Template repository，用于沉淀 Node.js CLI + Node.js API +
 
 ## 内容范围
 
-- `.changeset/`：Changesets release 配置。
-- `bin/cli.js`：发布后使用的 CLI wrapper，指向构建产物 `dist/cli.js`。
-- `src/configs/`：工具配置定义，是生成 `configs.md` 的主要来源。
-- `src/models/`、`src/helpers/`、`src/utils/`：schema、command builder 和通用 utilities。
-- `src/api.ts`：Markdown 生成 API，导出 `getMarkdown`、`writeMarkdown` 和 `writeMarkdownWithDefaults`。
-- `src/cli.ts`：`configs-md` 的 Commander CLI 入口。
-- `configs.md`：由 `pnpm run docs` 生成的配置文档。
+- [`.changeset/`](.changeset/)：Changesets release 配置。
+- [`bin/cli.js`](bin/cli.js)：发布后使用的 CLI wrapper，指向构建产物 `dist/cli.js`。
+- [`src/configs/`](src/configs/)：工具配置定义，是生成 [`configs.md`](configs.md) 的主要来源。
+- [`src/models/`](src/models/)、[`src/helpers/`](src/helpers/)、[`src/utils/`](src/utils/)：schema、command builder 和通用 utilities。
+- [`src/api.ts`](src/api.ts)：Markdown 生成 API，导出 `getMarkdown`、`writeMarkdown` 和 `writeMarkdownWithDefaults`。
+- [`src/cli.ts`](src/cli.ts)：`configs-md` 的 Commander CLI 入口。
+- [`configs.md`](configs.md)：由 `pnpm run docs` 生成的配置文档。
 
 ## 环境要求
 
@@ -41,7 +41,7 @@ pnpm run dev --file configs.md
 
 ## 生成文档
 
-`configs.md` 根据 `src/configs/` 下的配置定义生成的文档，默认输出文件名来自 `src/models/configs.constants.ts`。
+[`configs.md`](configs.md) 是根据 [`src/configs/`](src/configs/) 下的配置定义生成的文档，默认输出文件名来自 [`src/models/configs.constants.ts`](src/models/configs.constants.ts)。
 
 更新配置文档时，优先修改 `src/configs/` 中的配置定义，然后运行：
 
@@ -49,7 +49,7 @@ pnpm run dev --file configs.md
 pnpm run docs
 ```
 
-生成的 `files.download` commands 当前从[`donniean/react-app`](https://github.com/donniean/react-app) 的 `main` 分支读取共享配置文件：
+生成的 `files.download` commands 当前从 [`donniean/react-app`](https://github.com/donniean/react-app) 的 `main` 分支读取共享配置文件：
 
 ```text
 https://raw.githubusercontent.com/donniean/react-app/main/
