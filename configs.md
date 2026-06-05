@@ -2,29 +2,31 @@
 
 ## Table of Contents
 
-* [Tools](#tools)
-  * [Aggregate Lint](#aggregate-lint)
-  * [AutoCorrect](#autocorrect)
-  * [CSpell](#cspell)
-  * [EditorConfig](#editorconfig)
-  * [ESLint](#eslint)
-  * [gitattributes](#gitattributes)
-  * [gitignore](#gitignore)
-  * [HTML-validate](#html-validate)
-  * [Knip](#knip)
-  * [markdownlint](#markdownlint)
-  * [npm-check-updates](#npm-check-updates)
-  * [Prettier](#prettier)
-  * [Sort Package.json](#sort-packagejson)
-  * [Stylelint](#stylelint)
-  * [tsc](#tsc)
-  * [Vitest](#vitest)
-  * [Husky](#husky)
-  * [commitlint](#commitlint)
-  * [lint-staged](#lint-staged)
-* [All](#all)
-  * [Setup](#setup)
-  * [Clean](#clean)
+- [Configs](#configs)
+  - [Table of Contents](#table-of-contents)
+  - [Tools](#tools)
+    - [Aggregate Lint](#aggregate-lint)
+    - [AutoCorrect](#autocorrect)
+    - [CSpell](#cspell)
+    - [EditorConfig](#editorconfig)
+    - [ESLint](#eslint)
+    - [gitattributes](#gitattributes)
+    - [gitignore](#gitignore)
+    - [HTML-validate](#html-validate)
+    - [Knip](#knip)
+    - [markdownlint](#markdownlint)
+    - [npm-check-updates](#npm-check-updates)
+    - [Prettier](#prettier)
+    - [Sort Package.json](#sort-packagejson)
+    - [Stylelint](#stylelint)
+    - [tsc](#tsc)
+    - [Vitest](#vitest)
+    - [Husky](#husky)
+    - [commitlint](#commitlint)
+    - [lint-staged](#lint-staged)
+  - [All](#all)
+    - [Setup](#setup)
+    - [Clean](#clean)
 
 ## Tools
 
@@ -33,16 +35,16 @@
 Setup
 
 ```bash
-pnpm pkg set \ 
-  scripts.lint='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \ 
+pnpm pkg set \
+  scripts.lint='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
   scripts.lint:fix='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  scripts.lint \ 
+pnpm pkg delete \
+  scripts.lint \
   scripts.lint:fix
 ```
 
@@ -53,12 +55,12 @@ Setup
 ```bash
 pnpm pkg set devDependencies.autocorrect-node="$(pnpm view autocorrect-node version)"
 
-pnpm pkg set \ 
-  scripts.lint:text='autocorrect --lint' \ 
+pnpm pkg set \
+  scripts.lint:text='autocorrect --lint' \
   scripts.lint:text:fix='autocorrect --fix'
 
-curl --create-dirs \ 
-  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \ 
+curl --create-dirs \
+  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
   --output .autocorrectignore https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
 ```
 
@@ -67,12 +69,12 @@ Clean
 ```bash
 pnpm pkg delete devDependencies.autocorrect-node
 
-pnpm pkg delete \ 
-  scripts.lint:text \ 
+pnpm pkg delete \
+  scripts.lint:text \
   scripts.lint:text:fix
 
-rm \ 
-  .autocorrectrc \ 
+rm \
+  .autocorrectrc \
   .autocorrectignore
 ```
 
@@ -140,8 +142,8 @@ pnpm pkg set devDependencies.eslint-plugin-unused-imports="$(pnpm view eslint-pl
 pnpm pkg set devDependencies.globals="$(pnpm view globals version)"
 pnpm pkg set devDependencies.typescript-eslint="$(pnpm view typescript-eslint version)"
 
-pnpm pkg set \ 
-  scripts.lint:js='eslint' \ 
+pnpm pkg set \
+  scripts.lint:js='eslint' \
   scripts.lint:js:fix='pnpm run lint:js --fix'
 
 curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
@@ -150,32 +152,32 @@ curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  devDependencies.@eslint-community/eslint-plugin-eslint-comments \ 
-  devDependencies.@eslint/compat \ 
-  devDependencies.@eslint/js \ 
-  devDependencies.@tanstack/eslint-plugin-query \ 
-  devDependencies.@vitest/eslint-plugin \ 
-  devDependencies.eslint \ 
-  devDependencies.eslint-config-prettier \ 
-  devDependencies.eslint-import-resolver-typescript \ 
-  devDependencies.eslint-plugin-i18next \ 
-  devDependencies.eslint-plugin-import-x \ 
-  devDependencies.eslint-plugin-jsx-a11y \ 
-  devDependencies.eslint-plugin-n \ 
-  devDependencies.eslint-plugin-promise \ 
-  devDependencies.eslint-plugin-react \ 
-  devDependencies.eslint-plugin-react-hooks \ 
-  devDependencies.eslint-plugin-react-refresh \ 
-  devDependencies.eslint-plugin-simple-import-sort \ 
-  devDependencies.eslint-plugin-sonarjs \ 
-  devDependencies.eslint-plugin-unicorn \ 
-  devDependencies.eslint-plugin-unused-imports \ 
-  devDependencies.globals \ 
+pnpm pkg delete \
+  devDependencies.@eslint-community/eslint-plugin-eslint-comments \
+  devDependencies.@eslint/compat \
+  devDependencies.@eslint/js \
+  devDependencies.@tanstack/eslint-plugin-query \
+  devDependencies.@vitest/eslint-plugin \
+  devDependencies.eslint \
+  devDependencies.eslint-config-prettier \
+  devDependencies.eslint-import-resolver-typescript \
+  devDependencies.eslint-plugin-i18next \
+  devDependencies.eslint-plugin-import-x \
+  devDependencies.eslint-plugin-jsx-a11y \
+  devDependencies.eslint-plugin-n \
+  devDependencies.eslint-plugin-promise \
+  devDependencies.eslint-plugin-react \
+  devDependencies.eslint-plugin-react-hooks \
+  devDependencies.eslint-plugin-react-refresh \
+  devDependencies.eslint-plugin-simple-import-sort \
+  devDependencies.eslint-plugin-sonarjs \
+  devDependencies.eslint-plugin-unicorn \
+  devDependencies.eslint-plugin-unused-imports \
+  devDependencies.globals \
   devDependencies.typescript-eslint
 
-pnpm pkg delete \ 
-  scripts.lint:js \ 
+pnpm pkg delete \
+  scripts.lint:js \
   scripts.lint:js:fix
 
 rm eslint.config.mjs
@@ -218,8 +220,8 @@ pnpm pkg set devDependencies.html-validate="$(pnpm view html-validate version)"
 
 pnpm pkg set scripts.lint:html='html-validate "**/*.html"'
 
-curl --create-dirs \ 
-  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \ 
+curl --create-dirs \
+  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
   --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
 ```
 
@@ -230,8 +232,8 @@ pnpm pkg delete devDependencies.html-validate
 
 pnpm pkg delete scripts.lint:html
 
-rm \ 
-  .htmlvalidate.mjs \ 
+rm \
+  .htmlvalidate.mjs \
   .htmlvalidateignore
 ```
 
@@ -242,8 +244,8 @@ Setup
 ```bash
 pnpm pkg set devDependencies.knip="$(pnpm view knip version)"
 
-pnpm pkg set \ 
-  scripts.knip='knip' \ 
+pnpm pkg set \
+  scripts.knip='knip' \
   scripts.knip:fix='pnpm run knip --fix'
 ```
 
@@ -252,8 +254,8 @@ Clean
 ```bash
 pnpm pkg delete devDependencies.knip
 
-pnpm pkg delete \ 
-  scripts.knip \ 
+pnpm pkg delete \
+  scripts.knip \
   scripts.knip:fix
 ```
 
@@ -264,12 +266,12 @@ Setup
 ```bash
 pnpm pkg set devDependencies.markdownlint-cli="$(pnpm view markdownlint-cli version)"
 
-pnpm pkg set \ 
-  scripts.lint:md='markdownlint --dot "**/*.md"' \ 
+pnpm pkg set \
+  scripts.lint:md='markdownlint --dot "**/*.md"' \
   scripts.lint:md:fix='pnpm run lint:md --fix'
 
-curl --create-dirs \ 
-  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \ 
+curl --create-dirs \
+  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
   --output .markdownlintignore https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
 ```
 
@@ -278,12 +280,12 @@ Clean
 ```bash
 pnpm pkg delete devDependencies.markdownlint-cli
 
-pnpm pkg delete \ 
-  scripts.lint:md \ 
+pnpm pkg delete \
+  scripts.lint:md \
   scripts.lint:md:fix
 
-rm \ 
-  .markdownlint.json \ 
+rm \
+  .markdownlint.json \
   .markdownlintignore
 ```
 
@@ -292,16 +294,16 @@ rm \
 Setup
 
 ```bash
-pnpm pkg set \ 
-  scripts.ncu='pnpm dlx npm-check-updates@latest --deep --format cooldown' \ 
+pnpm pkg set \
+  scripts.ncu='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
   scripts.ncu:upgrade='pnpm run ncu --upgrade'
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  scripts.ncu \ 
+pnpm pkg delete \
+  scripts.ncu \
   scripts.ncu:upgrade
 ```
 
@@ -313,28 +315,28 @@ Setup
 pnpm pkg set devDependencies.prettier="$(pnpm view prettier version)"
 pnpm pkg set devDependencies.prettier-plugin-tailwindcss="$(pnpm view prettier-plugin-tailwindcss version)"
 
-pnpm pkg set \ 
-  scripts.lint:format='prettier --check --ignore-unknown .' \ 
+pnpm pkg set \
+  scripts.lint:format='prettier --check --ignore-unknown .' \
   scripts.lint:format:fix='prettier --write --ignore-unknown .'
 
-curl --create-dirs \ 
-  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \ 
+curl --create-dirs \
+  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
   --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  devDependencies.prettier \ 
+pnpm pkg delete \
+  devDependencies.prettier \
   devDependencies.prettier-plugin-tailwindcss
 
-pnpm pkg delete \ 
-  scripts.lint:format \ 
+pnpm pkg delete \
+  scripts.lint:format \
   scripts.lint:format:fix
 
-rm \ 
-  prettier.config.mjs \ 
+rm \
+  prettier.config.mjs \
   .prettierignore
 ```
 
@@ -345,8 +347,8 @@ Setup
 ```bash
 pnpm pkg set devDependencies.sort-package-json="$(pnpm view sort-package-json version)"
 
-pnpm pkg set \ 
-  scripts.lint:package-json='pnpm run lint:package-json:fix --check' \ 
+pnpm pkg set \
+  scripts.lint:package-json='pnpm run lint:package-json:fix --check' \
   scripts.lint:package-json:fix='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 ```
 
@@ -355,8 +357,8 @@ Clean
 ```bash
 pnpm pkg delete devDependencies.sort-package-json
 
-pnpm pkg delete \ 
-  scripts.lint:package-json \ 
+pnpm pkg delete \
+  scripts.lint:package-json \
   scripts.lint:package-json:fix
 ```
 
@@ -370,30 +372,30 @@ pnpm pkg set devDependencies.stylelint-config-recess-order="$(pnpm view stylelin
 pnpm pkg set devDependencies.stylelint-config-standard="$(pnpm view stylelint-config-standard version)"
 pnpm pkg set devDependencies.stylelint-config-css-modules="$(pnpm view stylelint-config-css-modules version)"
 
-pnpm pkg set \ 
-  scripts.lint:css='stylelint "**/*.css"' \ 
+pnpm pkg set \
+  scripts.lint:css='stylelint "**/*.css"' \
   scripts.lint:css:fix='pnpm run lint:css --fix'
 
-curl --create-dirs \ 
-  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \ 
+curl --create-dirs \
+  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
   --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  devDependencies.stylelint \ 
-  devDependencies.stylelint-config-recess-order \ 
-  devDependencies.stylelint-config-standard \ 
+pnpm pkg delete \
+  devDependencies.stylelint \
+  devDependencies.stylelint-config-recess-order \
+  devDependencies.stylelint-config-standard \
   devDependencies.stylelint-config-css-modules
 
-pnpm pkg delete \ 
-  scripts.lint:css \ 
+pnpm pkg delete \
+  scripts.lint:css \
   scripts.lint:css:fix
 
-rm \ 
-  stylelint.config.mjs \ 
+rm \
+  stylelint.config.mjs \
   .stylelintignore
 ```
 
@@ -424,25 +426,25 @@ pnpm pkg set devDependencies.@vitest/coverage-v8="$(pnpm view @vitest/coverage-v
 pnpm pkg set devDependencies.@vitest/ui="$(pnpm view @vitest/ui version)"
 pnpm pkg set devDependencies.vitest="$(pnpm view vitest version)"
 
-pnpm pkg set \ 
-  scripts.test='vitest run --passWithNoTests' \ 
-  scripts.test:coverage='vitest run --coverage' \ 
-  scripts.test:watch='vitest watch' \ 
+pnpm pkg set \
+  scripts.test='vitest run --passWithNoTests' \
+  scripts.test:coverage='vitest run --coverage' \
+  scripts.test:watch='vitest watch' \
   scripts.test:ui='vitest --ui'
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  devDependencies.@vitest/coverage-v8 \ 
-  devDependencies.@vitest/ui \ 
+pnpm pkg delete \
+  devDependencies.@vitest/coverage-v8 \
+  devDependencies.@vitest/ui \
   devDependencies.vitest
 
-pnpm pkg delete \ 
-  scripts.test \ 
-  scripts.test:coverage \ 
-  scripts.test:watch \ 
+pnpm pkg delete \
+  scripts.test \
+  scripts.test:coverage \
+  scripts.test:watch \
   scripts.test:ui
 ```
 
@@ -477,21 +479,21 @@ pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli versio
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 pnpm pkg set devDependencies.@commitlint/types="$(pnpm view @commitlint/types version)"
 
-curl --create-dirs \ 
-  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \ 
+curl --create-dirs \
+  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
   --output commitlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.ts
 ```
 
 Clean
 
 ```bash
-pnpm pkg delete \ 
-  devDependencies.@commitlint/cli \ 
-  devDependencies.@commitlint/config-conventional \ 
+pnpm pkg delete \
+  devDependencies.@commitlint/cli \
+  devDependencies.@commitlint/config-conventional \
   devDependencies.@commitlint/types
 
-rm \ 
-  .husky/commit-msg \ 
+rm \
+  .husky/commit-msg \
   commitlint.config.ts
 ```
 
@@ -502,8 +504,8 @@ Setup
 ```bash
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl --create-dirs \ 
-  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \ 
+curl --create-dirs \
+  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
   --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
@@ -512,8 +514,8 @@ Clean
 ```bash
 pnpm pkg delete devDependencies.lint-staged
 
-rm \ 
-  .husky/pre-commit \ 
+rm \
+  .husky/pre-commit \
   lint-staged.config.mjs
 ```
 
@@ -524,20 +526,20 @@ rm \
 ```bash
 # Aggregate Lint
 
-pnpm pkg set \ 
-  scripts.lint='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \ 
+pnpm pkg set \
+  scripts.lint='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
   scripts.lint:fix='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
 
 # AutoCorrect
 
 pnpm pkg set devDependencies.autocorrect-node="$(pnpm view autocorrect-node version)"
 
-pnpm pkg set \ 
-  scripts.lint:text='autocorrect --lint' \ 
+pnpm pkg set \
+  scripts.lint:text='autocorrect --lint' \
   scripts.lint:text:fix='autocorrect --fix'
 
-curl --create-dirs \ 
-  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \ 
+curl --create-dirs \
+  --output .autocorrectrc https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectrc \
   --output .autocorrectignore https://raw.githubusercontent.com/donniean/react-app/main/.autocorrectignore
 
 # CSpell
@@ -577,8 +579,8 @@ pnpm pkg set devDependencies.eslint-plugin-unused-imports="$(pnpm view eslint-pl
 pnpm pkg set devDependencies.globals="$(pnpm view globals version)"
 pnpm pkg set devDependencies.typescript-eslint="$(pnpm view typescript-eslint version)"
 
-pnpm pkg set \ 
-  scripts.lint:js='eslint' \ 
+pnpm pkg set \
+  scripts.lint:js='eslint' \
   scripts.lint:js:fix='pnpm run lint:js --fix'
 
 curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
@@ -597,34 +599,34 @@ pnpm pkg set devDependencies.html-validate="$(pnpm view html-validate version)"
 
 pnpm pkg set scripts.lint:html='html-validate "**/*.html"'
 
-curl --create-dirs \ 
-  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \ 
+curl --create-dirs \
+  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
   --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
 
 # Knip
 
 pnpm pkg set devDependencies.knip="$(pnpm view knip version)"
 
-pnpm pkg set \ 
-  scripts.knip='knip' \ 
+pnpm pkg set \
+  scripts.knip='knip' \
   scripts.knip:fix='pnpm run knip --fix'
 
 # markdownlint
 
 pnpm pkg set devDependencies.markdownlint-cli="$(pnpm view markdownlint-cli version)"
 
-pnpm pkg set \ 
-  scripts.lint:md='markdownlint --dot "**/*.md"' \ 
+pnpm pkg set \
+  scripts.lint:md='markdownlint --dot "**/*.md"' \
   scripts.lint:md:fix='pnpm run lint:md --fix'
 
-curl --create-dirs \ 
-  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \ 
+curl --create-dirs \
+  --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
   --output .markdownlintignore https://raw.githubusercontent.com/donniean/react-app/main/.markdownlintignore
 
 # npm-check-updates
 
-pnpm pkg set \ 
-  scripts.ncu='pnpm dlx npm-check-updates@latest --deep --format cooldown' \ 
+pnpm pkg set \
+  scripts.ncu='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
   scripts.ncu:upgrade='pnpm run ncu --upgrade'
 
 # Prettier
@@ -632,20 +634,20 @@ pnpm pkg set \
 pnpm pkg set devDependencies.prettier="$(pnpm view prettier version)"
 pnpm pkg set devDependencies.prettier-plugin-tailwindcss="$(pnpm view prettier-plugin-tailwindcss version)"
 
-pnpm pkg set \ 
-  scripts.lint:format='prettier --check --ignore-unknown .' \ 
+pnpm pkg set \
+  scripts.lint:format='prettier --check --ignore-unknown .' \
   scripts.lint:format:fix='prettier --write --ignore-unknown .'
 
-curl --create-dirs \ 
-  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \ 
+curl --create-dirs \
+  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
   --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 
 # Sort Package.json
 
 pnpm pkg set devDependencies.sort-package-json="$(pnpm view sort-package-json version)"
 
-pnpm pkg set \ 
-  scripts.lint:package-json='pnpm run lint:package-json:fix --check' \ 
+pnpm pkg set \
+  scripts.lint:package-json='pnpm run lint:package-json:fix --check' \
   scripts.lint:package-json:fix='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 
 # Stylelint
@@ -655,12 +657,12 @@ pnpm pkg set devDependencies.stylelint-config-recess-order="$(pnpm view stylelin
 pnpm pkg set devDependencies.stylelint-config-standard="$(pnpm view stylelint-config-standard version)"
 pnpm pkg set devDependencies.stylelint-config-css-modules="$(pnpm view stylelint-config-css-modules version)"
 
-pnpm pkg set \ 
-  scripts.lint:css='stylelint "**/*.css"' \ 
+pnpm pkg set \
+  scripts.lint:css='stylelint "**/*.css"' \
   scripts.lint:css:fix='pnpm run lint:css --fix'
 
-curl --create-dirs \ 
-  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \ 
+curl --create-dirs \
+  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
   --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 
 # tsc
@@ -675,10 +677,10 @@ pnpm pkg set devDependencies.@vitest/coverage-v8="$(pnpm view @vitest/coverage-v
 pnpm pkg set devDependencies.@vitest/ui="$(pnpm view @vitest/ui version)"
 pnpm pkg set devDependencies.vitest="$(pnpm view vitest version)"
 
-pnpm pkg set \ 
-  scripts.test='vitest run --passWithNoTests' \ 
-  scripts.test:coverage='vitest run --coverage' \ 
-  scripts.test:watch='vitest watch' \ 
+pnpm pkg set \
+  scripts.test='vitest run --passWithNoTests' \
+  scripts.test:coverage='vitest run --coverage' \
+  scripts.test:watch='vitest watch' \
   scripts.test:ui='vitest --ui'
 
 # Husky
@@ -695,16 +697,16 @@ pnpm pkg set devDependencies.@commitlint/cli="$(pnpm view @commitlint/cli versio
 pnpm pkg set devDependencies.@commitlint/config-conventional="$(pnpm view @commitlint/config-conventional version)"
 pnpm pkg set devDependencies.@commitlint/types="$(pnpm view @commitlint/types version)"
 
-curl --create-dirs \ 
-  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \ 
+curl --create-dirs \
+  --output .husky/commit-msg https://raw.githubusercontent.com/donniean/react-app/main/.husky/commit-msg \
   --output commitlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/commitlint.config.ts
 
 # lint-staged
 
 pnpm pkg set devDependencies.lint-staged="$(pnpm view lint-staged version)"
 
-curl --create-dirs \ 
-  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \ 
+curl --create-dirs \
+  --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
   --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
 ```
 
@@ -713,20 +715,20 @@ curl --create-dirs \
 ```bash
 # Aggregate Lint
 
-pnpm pkg delete \ 
-  scripts.lint \ 
+pnpm pkg delete \
+  scripts.lint \
   scripts.lint:fix
 
 # AutoCorrect
 
 pnpm pkg delete devDependencies.autocorrect-node
 
-pnpm pkg delete \ 
-  scripts.lint:text \ 
+pnpm pkg delete \
+  scripts.lint:text \
   scripts.lint:text:fix
 
-rm \ 
-  .autocorrectrc \ 
+rm \
+  .autocorrectrc \
   .autocorrectignore
 
 # CSpell
@@ -743,32 +745,32 @@ rm .editorconfig
 
 # ESLint
 
-pnpm pkg delete \ 
-  devDependencies.@eslint-community/eslint-plugin-eslint-comments \ 
-  devDependencies.@eslint/compat \ 
-  devDependencies.@eslint/js \ 
-  devDependencies.@tanstack/eslint-plugin-query \ 
-  devDependencies.@vitest/eslint-plugin \ 
-  devDependencies.eslint \ 
-  devDependencies.eslint-config-prettier \ 
-  devDependencies.eslint-import-resolver-typescript \ 
-  devDependencies.eslint-plugin-i18next \ 
-  devDependencies.eslint-plugin-import-x \ 
-  devDependencies.eslint-plugin-jsx-a11y \ 
-  devDependencies.eslint-plugin-n \ 
-  devDependencies.eslint-plugin-promise \ 
-  devDependencies.eslint-plugin-react \ 
-  devDependencies.eslint-plugin-react-hooks \ 
-  devDependencies.eslint-plugin-react-refresh \ 
-  devDependencies.eslint-plugin-simple-import-sort \ 
-  devDependencies.eslint-plugin-sonarjs \ 
-  devDependencies.eslint-plugin-unicorn \ 
-  devDependencies.eslint-plugin-unused-imports \ 
-  devDependencies.globals \ 
+pnpm pkg delete \
+  devDependencies.@eslint-community/eslint-plugin-eslint-comments \
+  devDependencies.@eslint/compat \
+  devDependencies.@eslint/js \
+  devDependencies.@tanstack/eslint-plugin-query \
+  devDependencies.@vitest/eslint-plugin \
+  devDependencies.eslint \
+  devDependencies.eslint-config-prettier \
+  devDependencies.eslint-import-resolver-typescript \
+  devDependencies.eslint-plugin-i18next \
+  devDependencies.eslint-plugin-import-x \
+  devDependencies.eslint-plugin-jsx-a11y \
+  devDependencies.eslint-plugin-n \
+  devDependencies.eslint-plugin-promise \
+  devDependencies.eslint-plugin-react \
+  devDependencies.eslint-plugin-react-hooks \
+  devDependencies.eslint-plugin-react-refresh \
+  devDependencies.eslint-plugin-simple-import-sort \
+  devDependencies.eslint-plugin-sonarjs \
+  devDependencies.eslint-plugin-unicorn \
+  devDependencies.eslint-plugin-unused-imports \
+  devDependencies.globals \
   devDependencies.typescript-eslint
 
-pnpm pkg delete \ 
-  scripts.lint:js \ 
+pnpm pkg delete \
+  scripts.lint:js \
   scripts.lint:js:fix
 
 rm eslint.config.mjs
@@ -787,72 +789,72 @@ pnpm pkg delete devDependencies.html-validate
 
 pnpm pkg delete scripts.lint:html
 
-rm \ 
-  .htmlvalidate.mjs \ 
+rm \
+  .htmlvalidate.mjs \
   .htmlvalidateignore
 
 # Knip
 
 pnpm pkg delete devDependencies.knip
 
-pnpm pkg delete \ 
-  scripts.knip \ 
+pnpm pkg delete \
+  scripts.knip \
   scripts.knip:fix
 
 # markdownlint
 
 pnpm pkg delete devDependencies.markdownlint-cli
 
-pnpm pkg delete \ 
-  scripts.lint:md \ 
+pnpm pkg delete \
+  scripts.lint:md \
   scripts.lint:md:fix
 
-rm \ 
-  .markdownlint.json \ 
+rm \
+  .markdownlint.json \
   .markdownlintignore
 
 # npm-check-updates
 
-pnpm pkg delete \ 
-  scripts.ncu \ 
+pnpm pkg delete \
+  scripts.ncu \
   scripts.ncu:upgrade
 
 # Prettier
 
-pnpm pkg delete \ 
-  devDependencies.prettier \ 
+pnpm pkg delete \
+  devDependencies.prettier \
   devDependencies.prettier-plugin-tailwindcss
 
-pnpm pkg delete \ 
-  scripts.lint:format \ 
+pnpm pkg delete \
+  scripts.lint:format \
   scripts.lint:format:fix
 
-rm \ 
-  prettier.config.mjs \ 
+rm \
+  prettier.config.mjs \
   .prettierignore
 
 # Sort Package.json
 
 pnpm pkg delete devDependencies.sort-package-json
 
-pnpm pkg delete \ 
-  scripts.lint:package-json \ 
+pnpm pkg delete \
+  scripts.lint:package-json \
   scripts.lint:package-json:fix
 
 # Stylelint
 
-pnpm pkg delete \ 
-  devDependencies.stylelint \ 
-  devDependencies.stylelint-config-recess-order \ 
-  devDependencies.stylelint-config-standard \ 
+pnpm pkg delete \
+  devDependencies.stylelint \
+  devDependencies.stylelint-config-recess-order \
+  devDependencies.stylelint-config-standard \
   devDependencies.stylelint-config-css-modules
 
-pnpm pkg delete \ 
-  scripts.lint:css \ 
+pnpm pkg delete \
+  scripts.lint:css \
   scripts.lint:css:fix
 
-rm \ 
-  stylelint.config.mjs \ 
+rm \
+  stylelint.config.mjs \
   .stylelintignore
 
 # tsc
@@ -863,15 +865,15 @@ pnpm pkg delete scripts.lint:types
 
 # Vitest
 
-pnpm pkg delete \ 
-  devDependencies.@vitest/coverage-v8 \ 
-  devDependencies.@vitest/ui \ 
+pnpm pkg delete \
+  devDependencies.@vitest/coverage-v8 \
+  devDependencies.@vitest/ui \
   devDependencies.vitest
 
-pnpm pkg delete \ 
-  scripts.test \ 
-  scripts.test:coverage \ 
-  scripts.test:watch \ 
+pnpm pkg delete \
+  scripts.test \
+  scripts.test:coverage \
+  scripts.test:watch \
   scripts.test:ui
 
 # Husky
@@ -884,20 +886,20 @@ rm -rf .husky/
 
 # commitlint
 
-pnpm pkg delete \ 
-  devDependencies.@commitlint/cli \ 
-  devDependencies.@commitlint/config-conventional \ 
+pnpm pkg delete \
+  devDependencies.@commitlint/cli \
+  devDependencies.@commitlint/config-conventional \
   devDependencies.@commitlint/types
 
-rm \ 
-  .husky/commit-msg \ 
+rm \
+  .husky/commit-msg \
   commitlint.config.ts
 
 # lint-staged
 
 pnpm pkg delete devDependencies.lint-staged
 
-rm \ 
-  .husky/pre-commit \ 
+rm \
+  .husky/pre-commit \
   lint-staged.config.mjs
 ```
