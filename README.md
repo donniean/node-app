@@ -38,4 +38,4 @@ pnpm run docs
 
 ## License
 
-MIT
+[MIT](./LICENSE)
