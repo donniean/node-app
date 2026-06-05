@@ -15,10 +15,6 @@
 - 构建配置位于 `tsup.config.ts`，输出 ESM 和 type declarations。
 - 修改 CLI 参数、输出行为或 API exports 时，同步检查 `src/cli.ts`、`src/api.ts`、`bin/cli.js`、`package.json` 的 `bin` / `exports` 字段和 `configs.md`。
 
-## 工具链
-
-- 源码使用 ESM、TypeScript 和 `@/*` import alias；不要改成 CommonJS 风格入口，除非用户明确要求。
-
 ## 验证
 
 根据改动范围运行相关检查：

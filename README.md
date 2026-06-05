@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/@donniean/node-app.svg)](https://www.npmjs.com/package/@donniean/node-app) [![License: MIT](https://img.shields.io/github/license/donniean/node-app)](https://github.com/donniean/node-app/blob/main/LICENSE) [![CI](https://github.com/donniean/node-app/actions/workflows/ci.yaml/badge.svg)](https://github.com/donniean/node-app/actions/workflows/ci.yaml) [![Release](https://github.com/donniean/node-app/actions/workflows/release.yaml/badge.svg)](https://github.com/donniean/node-app/actions/workflows/release.yaml)
 
-一个公开的 GitHub Template repository，用于沉淀 Node.js CLI / Node.js API / npm package starter / template / example / demo / scaffold。
+A personal GitHub Template repository，用于沉淀 Node.js CLI + Node.js API + npm package starter / template / example / demo / scaffold。
 
 当前保留的实际示例是 `configs-md`：它根据 `src/configs/` 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
