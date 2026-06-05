@@ -1,30 +1,41 @@
 # AGENTS.md
 
+## 仓库边界
+
+- 以 [README.md](README.md) 作为仓库用途、目录范围和常用命令的 single source of truth。
+
 ## 生成文档
 
-- `README.md` 是手写项目概览。
-- `configs.md` 是生成文档。
-- 应先修改配置定义，再运行 `pnpm run docs`。
 - 除非用户明确要求一次性手改，否则不要只手动修改 `configs.md` 中的生成命令块。
 
-生成的 download commands 当前使用以下来源：
+## CLI 与构建
 
-```text
-https://raw.githubusercontent.com/donniean/react-app/main/
-```
+- CLI 名称是 `configs-md`，源码入口是 `src/cli.ts`。
+- 发布后的 executable wrapper 是 `bin/cli.js`，它依赖 `dist/cli.js`。
+- 构建配置位于 `tsup.config.ts`，输出 ESM 和 type declarations。
+- 修改 CLI 参数、输出行为或 API exports 时，同步检查 `src/cli.ts`、`src/api.ts`、`bin/cli.js`、`package.json` 的 `bin` / `exports` 字段和 `configs.md`。
 
-如果该来源变化，应修改 generator 并重新生成 `configs.md`。
+## 工具链
+
+- 源码使用 ESM、TypeScript 和 `@/*` import alias；不要改成 CommonJS 风格入口，除非用户明确要求。
 
 ## 验证
 
-根据改动文件运行相关检查。常用命令：
+根据改动范围运行相关检查：
 
 ```bash
 pnpm run lint
 pnpm run test
 pnpm run build
+```
+
+涉及 `src/configs/`、`src/api.ts`、`src/scripts.ts` 或生成输出时，额外运行：
+
+```bash
 pnpm run docs
 ```
+
+CI 当前在 pull requests to `main` 上运行 lint、test 和 build。
 
 ## Release
 
