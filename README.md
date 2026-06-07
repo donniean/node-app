@@ -4,7 +4,7 @@
 
 一个个人自用的 template repository，用于沉淀可复用的 Node.js CLI、Node.js API 和 npm package starter / template / example / demo / scaffold。
 
-当前保留的实际示例是可构建、可发布的 package [`@donniean/node-app`](package.json)，并提供 `configs-md` CLI。该 CLI 根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
+当前仓库同时保留一个可构建、可发布的示例 package [`@donniean/node-app`](package.json)，并提供 `configs-md` CLI。该 CLI 根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
 由此生成的新项目不限定为个人自用，可按个人、团队或公司场景继续调整。
 
@@ -16,7 +16,7 @@
 - [`src/api.ts`](src/api.ts)：Markdown 生成 API，导出 `getMarkdown`、`writeMarkdown` 和 `writeMarkdownWithDefaults`。
 - [`src/index.ts`](src/index.ts)：package export 入口，当前导出 [`src/api.ts`](src/api.ts)。
 - [`src/configs/`](src/configs/)：工具配置定义，是生成 [`configs.md`](configs.md) 的主要来源。
-- [`src/models/`](src/models/)、[`src/helpers/`](src/helpers/)、[`src/utils/`](src/utils/)：schema、command builder、路径解析和通用 utilities。
+- [`src/models/`](src/models/)、[`src/helpers/`](src/helpers/)、[`src/utils/`](src/utils/)：schema、command builder、路径解析、package metadata 读取和通用 utilities。
 - [`configs.md`](configs.md)：由 `pnpm run docs` 生成的配置文档。
 
 由本 template 生成正式项目时，应按实际项目目标替换、裁剪或删除示例 CLI、API、配置生成逻辑和占位结构。不要把当前 `configs-md` 示例当成所有下游项目都必须保留的约定。
@@ -38,14 +38,14 @@ pnpm run lint:fix
 pnpm run test
 ```
 
-开发 CLI：
+本地调试 CLI：
 
 ```bash
 pnpm run dev --help
 pnpm run dev --file configs.md
 ```
 
-构建后的 package 入口：
+构建后暴露的入口：
 
 - CLI：`configs-md`
 - API：`@donniean/node-app`
@@ -58,7 +58,7 @@ pnpm run dev --file configs.md
 pnpm run docs
 ```
 
-默认输出文件名来自 [`src/models/configs.constants.ts`](src/models/configs.constants.ts)。生成的 `files.download` commands 当前从 [`donniean/react-app`](https://github.com/donniean/react-app) 的 `main` 分支读取共享配置文件：
+默认输出文件名来自 [`src/models/configs.constants.ts`](src/models/configs.constants.ts)。生成的 `files.download` commands 当前从 [`donniean/react-app`](https://github.com/donniean/react-app) 的 `main` 分支读取共享配置文件，而不是从本仓库读取：
 
 ```text
 https://raw.githubusercontent.com/donniean/react-app/main/
