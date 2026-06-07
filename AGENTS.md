@@ -5,6 +5,7 @@
 - 以 [README.md](README.md) 作为仓库用途、目录范围和常用命令的 single source of truth；更细的执行约束以本文件和相关源码为准。
 - 本仓库既是 GitHub Template repository，也是当前可构建、可发布的 npm package。修改时同时检查 template 复用场景和现有 `configs-md` package 行为。
 - 由本 template 生成正式项目时，示例 CLI、API、配置生成逻辑和占位结构可以按项目目标替换、裁剪或删除；不要把当前示例当成所有下游项目都必须保留的约定。
+- 当前 [`README.md`](README.md) 是手写项目说明；[`configs.md`](configs.md) 是生成产物。
 
 ## 实现约定
 
@@ -14,6 +15,7 @@
 
 - [`configs.md`](configs.md) 是由 `pnpm run docs` 生成的文档。除非用户明确要求一次性手改，否则不要只手动修改生成命令块。
 - `lint-staged` 会在 staged TypeScript 改动时运行 `pnpm run docs` 并重新加入 [`configs.md`](configs.md)。如果手动处理相关改动，也应检查生成 diff 是否符合预期。
+- 生成的 `files.download` commands 使用 [`src/models/configs.constants.ts`](src/models/configs.constants.ts) 中的 `CONFIG_BASE_URL`，当前指向 `https://raw.githubusercontent.com/donniean/react-app/main/`。修改下载来源时，同步检查生成结果和 README 说明。
 
 ## CLI、API 与构建
 

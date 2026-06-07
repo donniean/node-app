@@ -4,7 +4,7 @@
 
 一个公开的 GitHub Template repository，主要服务于我个人的复用需求，用于沉淀可复用的 Node.js CLI、Node.js API 和 npm package starter / template / example / demo / scaffold。
 
-当前保留的实际示例是 `configs-md`：它根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
+当前可构建、可发布的示例 package 是 `configs-md`。它根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
 ## 内容范围
 
@@ -50,7 +50,7 @@ pnpm run dev --file configs.md
 
 ## 生成文档
 
-[`configs.md`](configs.md) 是生成产物。更新配置文档时，优先修改 [`src/configs/`](src/configs/) 中的配置定义，然后运行：
+[`configs.md`](configs.md) 是生成产物，当前 [`README.md`](README.md) 是手写项目说明。更新配置文档时，优先修改 [`src/configs/`](src/configs/) 中的配置定义，然后运行：
 
 ```bash
 pnpm run docs
