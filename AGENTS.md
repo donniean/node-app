@@ -3,7 +3,7 @@
 ## 仓库边界
 
 - 以 [README.md](README.md) 作为仓库用途、目录范围和常用命令的 single source of truth；更细的执行约束以本文件和相关源码为准。
-- 本仓库既是 GitHub Template repository，也是当前可构建、可发布的 npm package。修改时同时检查 template 复用场景和现有 `@donniean/node-app` package / `configs-md` CLI 行为。
+- 本仓库既是 template repository，也是当前可构建、可发布的 npm package。修改时同时检查 template 复用场景和现有 `@donniean/node-app` package / `configs-md` CLI 行为。
 - 由本 template 生成正式项目时，示例 CLI、API、配置生成逻辑和占位结构可以按项目目标替换、裁剪或删除；不要把当前示例当成所有下游项目都必须保留的约定。
 - 当前 [`README.md`](README.md) 是手写项目说明；[`configs.md`](configs.md) 是生成产物。
 
