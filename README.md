@@ -6,6 +6,8 @@
 
 当前保留的实际示例是可构建、可发布的 package [`@donniean/node-app`](package.json)，并提供 `configs-md` CLI。该 CLI 根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
+由此生成的新项目不限定为个人自用，可按个人、团队或公司场景继续调整。
+
 ## 内容范围
 
 - [`.changeset/`](.changeset/)：Changesets release 配置。
