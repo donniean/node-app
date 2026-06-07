@@ -4,7 +4,7 @@
 
 一个个人自用的 GitHub Template repository，用于沉淀可复用的 Node.js CLI、Node.js API 和 npm package starter / template / example / demo / scaffold。
 
-当前可构建、可发布的示例 package 是 `configs-md`。它根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
+当前保留的实际示例是可构建、可发布的 package [`@donniean/node-app`](package.json)，并提供 `configs-md` CLI。该 CLI 根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
 ## 内容范围
 
@@ -17,7 +17,7 @@
 - [`src/models/`](src/models/)、[`src/helpers/`](src/helpers/)、[`src/utils/`](src/utils/)：schema、command builder、路径解析和通用 utilities。
 - [`configs.md`](configs.md)：由 `pnpm run docs` 生成的配置文档。
 
-由本 template 生成正式项目时，应按实际项目目标替换、裁剪或删除示例 CLI、API、配置生成逻辑和占位结构。
+由本 template 生成正式项目时，应按实际项目目标替换、裁剪或删除示例 CLI、API、配置生成逻辑和占位结构。不要把当前 `configs-md` 示例当成所有下游项目都必须保留的约定。
 
 ## 环境要求
 
@@ -61,6 +61,8 @@ pnpm run docs
 ```text
 https://raw.githubusercontent.com/donniean/react-app/main/
 ```
+
+涉及 [`src/configs/`](src/configs/)、[`src/helpers/`](src/helpers/)、[`src/models/`](src/models/) 或 [`src/api.ts`](src/api.ts) 的改动时，应检查 [`configs.md`](configs.md) 是否需要重新生成。
 
 ## Release
 
