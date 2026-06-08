@@ -3,6 +3,8 @@ import { expect, test } from 'vitest';
 
 import { buildCommand } from './commands';
 
+const lineContinuation = ' \\' + '\n';
+
 test('no subCommand, no options, no args', () => {
   const result = buildCommand({ mainCommand: 'git' });
   expect(result).toBe('git');
@@ -37,7 +39,7 @@ test('with multiple args only', () => {
     mainCommand: 'echo',
     args: ['hello', 'world'],
   });
-  const expected = ['echo', '  hello', '  world'].join(' \\ \n');
+  const expected = ['echo', '  hello', '  world'].join(lineContinuation);
   expect(result).toBe(expected);
 });
 
@@ -63,7 +65,7 @@ test('with full command: subCommand, options, multiple args', () => {
     'docker run -d --name my-container',
     '  ubuntu:latest',
     '  -p 8080:80',
-  ].join(' \\ \n');
+  ].join(lineContinuation);
   expect(result).toBe(expected);
 });
 

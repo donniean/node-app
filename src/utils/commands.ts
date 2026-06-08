@@ -5,6 +5,8 @@ interface BuildCommandOptions {
   args?: string[];
 }
 
+const LINE_CONTINUATION = ' \\' + '\n';
+
 function buildCommand({
   mainCommand,
   subCommand = '',
@@ -18,7 +20,7 @@ function buildCommand({
   if (argLines.length > 1) {
     const finalArgLines = argLines.map((token) => `  ${token}`);
     const lines = [firstLine, ...finalArgLines];
-    return lines.join(' \\ \n').trim();
+    return lines.join(LINE_CONTINUATION).trim();
   }
 
   const lines = [firstLine, ...argLines];

@@ -8,6 +8,16 @@ import { buildCommand } from '@/utils/commands';
 
 type GetCommandOptions = Pick<Config, 'name' | 'pkg' | 'filePaths'>;
 
+const SHELL_SINGLE_QUOTE = String.raw`'\''`;
+
+function quoteShellValue(value: string) {
+  return `'${value.replaceAll("'", SHELL_SINGLE_QUOTE)}'`;
+}
+
+function formatPackageJsonPropertyPath(parent: string, key: string) {
+  return quoteShellValue(`${parent}[${JSON.stringify(key)}]`);
+}
+
 function buildSetupCommand({
   name,
   pkg,
@@ -36,7 +46,9 @@ function buildSetupCommand({
         return buildCommand({
           mainCommand: 'pnpm',
           subCommand: 'pkg set',
-          args: [`devDependencies.${packageName}="${packageVersion}"`],
+          args: [
+            `${formatPackageJsonPropertyPath('devDependencies', packageName)}="${packageVersion}"`,
+          ],
         });
       });
       return commands.join('\n');
@@ -49,7 +61,10 @@ function buildSetupCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg set',
-        args: scripts.map(({ key, value }) => `scripts.${key}='${value}'`),
+        args: scripts.map(
+          ({ key, value }) =>
+            `${formatPackageJsonPropertyPath('scripts', key)}=${quoteShellValue(value)}`,
+        ),
       });
     }
     case 'files.download': {
@@ -93,8 +108,11 @@ function buildCleanCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
-        args: devDependencies.map(
-          (dependency) => `devDependencies.${dependency.packageName}`,
+        args: devDependencies.map((dependency) =>
+          formatPackageJsonPropertyPath(
+            'devDependencies',
+            dependency.packageName,
+          ),
         ),
       });
     }
@@ -106,7 +124,9 @@ function buildCleanCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
-        args: scripts.map(({ key }) => `scripts.${key}`),
+        args: scripts.map(({ key }) =>
+          formatPackageJsonPropertyPath('scripts', key),
+        ),
       });
     }
     case 'files.delete': {

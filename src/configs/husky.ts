@@ -11,7 +11,7 @@ export const CONFIG = {
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },
-    { type: 'custom', command: 'pnpm run prepare' },
+    { type: 'custom', command: 'pnpm dlx husky@$(pnpm view husky version)' },
   ],
   clean: [
     { type: 'pkg.devDependencies.delete' },
