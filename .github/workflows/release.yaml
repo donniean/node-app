@@ -7,6 +7,11 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -21,24 +26,14 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-          cache: pnpm
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - name: Install Dependencies
         run: pnpm install
 
       - name: Build
         run: pnpm run build
-
-      - name: Import GPG Key
-        # cspell: disable-next-line
-        uses: crazy-max/ghaction-import-gpg@v7
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          # cspell: disable-next-line
-          git_user_signingkey: true
-          # cspell: disable-next-line
-          git_commit_gpgsign: true
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -47,7 +42,4 @@ jobs:
           publish: pnpm run changeset:publish
           commit: 'chore(changesets): version packages'
           title: 'chore(changesets): version packages'
-          setupGitUser: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          commitMode: github-api
