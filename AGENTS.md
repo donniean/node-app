@@ -76,7 +76,7 @@ CI 当前在 pull requests to `main` 上运行 lint、test 和 build。
 
 ## Release
 
-未经用户明确确认，不要运行 release 或 publish 命令。
+未经用户明确确认，不要运行 release 或 publish 命令，也不要改动 npm publishing 目标、Changesets release 行为或 release workflow secrets 假设。
 
 涉及 release 时，使用既有 Changesets scripts：
 
