@@ -6,7 +6,7 @@
 
 当前仓库同时保留一个可构建、可发布的示例 package [`@donniean/node-app`](package.json)，并提供 `configs-md` CLI。该 CLI 根据 [`src/configs/`](src/configs/) 中的配置定义生成 Markdown 文档，用于维护常见项目工具的 setup 和 clean commands。
 
-由本 template 生成的新项目不限定为个人自用，可按个人、团队或公司场景继续调整。
+由本 template 生成的新项目不限定为个人自用，可以按个人、团队或公司等场景继续调整。
 
 ## 当前内容
 
@@ -23,8 +23,8 @@
 
 ## 环境要求
 
-- Node.js 版本以 [`.nvmrc`](.nvmrc) 和 [`package.json`](package.json) 的 `engines.node` 字段为准。
-- pnpm 版本以 [`package.json`](package.json) 的 `packageManager` 和 `engines.pnpm` 字段为准。
+- Node.js 版本以 [`.nvmrc`](.nvmrc) 和 [`package.json`](package.json) 的 `engines.node` 为准。
+- pnpm 版本以 [`package.json`](package.json) 的 `packageManager` 和 `engines.pnpm` 为准。
 - 使用 `pnpm`。`preinstall` 会通过 `only-allow` 阻止其他 package manager。
 
 ## 常用命令
@@ -52,7 +52,7 @@ pnpm run dev --file configs.md
 
 ## 生成文档
 
-[`configs.md`](configs.md) 是生成产物，当前 [`README.md`](README.md) 是手写项目说明。更新配置文档时，优先修改 [`src/configs/`](src/configs/) 中的配置定义，然后运行：
+[`configs.md`](configs.md) 是由 `pnpm run docs` 生成的配置文档。更新配置文档时，优先修改 [`src/configs/`](src/configs/) 中的配置定义，然后运行：
 
 ```bash
 pnpm run docs
@@ -64,13 +64,16 @@ pnpm run docs
 https://raw.githubusercontent.com/donniean/react-app/main/
 ```
 
-涉及 [`src/configs/`](src/configs/)、[`src/helpers/`](src/helpers/)、[`src/models/`](src/models/) 或 [`src/api.ts`](src/api.ts) 的改动时，应检查 [`configs.md`](configs.md) 是否需要重新生成。
+涉及 [`src/configs/`](src/configs/)、[`src/helpers/`](src/helpers/)、[`src/models/`](src/models/)、[`src/scripts.ts`](src/scripts.ts) 或 [`src/api.ts`](src/api.ts) 的改动时，应检查 [`configs.md`](configs.md) 是否需要重新生成。
 
 ## Release
 
-本仓库使用 Changesets 管理版本和发布。[`release.yaml`](.github/workflows/release.yaml) 在 push to `main` 后运行 build，并通过 `changesets/action` 创建 release pull request 或发布到 npm。
+- [`ci.yaml`](.github/workflows/ci.yaml) 在 pull requests to `main` 和 manual dispatch 上运行 lint、test 和 build。
+- [`release.yaml`](.github/workflows/release.yaml) 在 push to `main` 后运行 build，并通过 `changesets/action` 创建 release pull request 或发布到 npm。
+- [`dependencies.bump.yaml`](.github/workflows/dependencies.bump.yaml)、[`pull-requests.auto-merge.yaml`](.github/workflows/pull-requests.auto-merge.yaml) 和 [`pull-requests.auto-update.yaml`](.github/workflows/pull-requests.auto-update.yaml) 复用 [`donniean/hub`](https://github.com/donniean/hub) 中的 workflows。
+- [`.github/dependabot.yaml`](.github/dependabot.yaml) 为 npm 和 GitHub Actions 依赖启用 daily updates。
 
-手动维护 release 时使用既有 scripts：
+本仓库使用 Changesets 管理版本和发布。手动维护 release 时使用既有 scripts：
 
 ```bash
 pnpm run changeset:add
