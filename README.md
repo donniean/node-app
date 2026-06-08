@@ -2,11 +2,11 @@
 
 [![Version](https://img.shields.io/npm/v/@donniean/node-app.svg)](https://www.npmjs.com/package/@donniean/node-app) [![License: MIT](https://img.shields.io/github/license/donniean/node-app)](https://github.com/donniean/node-app/blob/main/LICENSE) [![CI](https://github.com/donniean/node-app/actions/workflows/ci.yaml/badge.svg)](https://github.com/donniean/node-app/actions/workflows/ci.yaml) [![Release](https://github.com/donniean/node-app/actions/workflows/release.yaml/badge.svg)](https://github.com/donniean/node-app/actions/workflows/release.yaml)
 
-A public template repository maintained for personal use. It provides reusable Node.js CLI, Node.js API, and npm package starters, templates, examples, demos, and scaffolds. Projects created from this template are not limited to personal use and may be adapted for individual, team, or company use.
+A public template repository for personal use. It provides reusable Node.js CLI, Node.js API, and npm package starters, templates, examples, demos, and scaffolds. Projects created from this template are not limited to personal use and may be adapted for individual, team, or company use.
 
 The repository also contains a buildable and publishable example npm package, [`@donniean/node-app`](package.json), and provides the `configs-md` CLI. The CLI generates Markdown documentation from configuration definitions in [`src/configs/`](src/configs/) for documenting setup and cleanup commands for common project tools.
 
-## Current Contents
+## Contents
 
 - [`.changeset/`](.changeset/): Changesets release configuration.
 - [`bin/cli.js`](bin/cli.js): Executable wrapper included in the published package; it points to the build output `dist/cli.js`.
@@ -19,13 +19,13 @@ The repository also contains a buildable and publishable example npm package, [`
 
 When this template is used to create an actual project, replace, trim, or delete the sample CLI, API, configuration generation logic, and placeholder structure according to the project goal. The current directories and the `configs-md` example describe this template's current implementation, not conventions that every downstream project must keep.
 
-## Environment Requirements
+## Requirements
 
 - The Node.js version is defined by [`.nvmrc`](.nvmrc) and `engines.node` in [`package.json`](package.json).
 - The pnpm version is defined by `packageManager` and `engines.pnpm` in [`package.json`](package.json).
 - Use `pnpm`. `preinstall` enforces this with `only-allow`.
 
-## Common Commands
+## Commands
 
 ```bash
 pnpm install

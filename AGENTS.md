@@ -1,6 +1,6 @@
 # AGENTS.md
 
-## Repository Scope
+## Scope
 
 - Repository purpose, current directories, and common commands are documented in [README.md](README.md) as the single source of truth; this file contains only repository constraints for coding agents.
 - When modifying this repository, check both the current `@donniean/node-app` package / `configs-md` CLI behavior and the template reuse scenario.
