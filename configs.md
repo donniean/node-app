@@ -7,6 +7,7 @@
   - [AutoCorrect](#autocorrect)
   - [CSpell](#cspell)
   - [EditorConfig](#editorconfig)
+  - [pnpm workspace](#pnpm-workspace)
   - [ESLint](#eslint)
   - [gitattributes](#gitattributes)
   - [gitignore](#gitignore)
@@ -110,6 +111,20 @@ Clean
 
 ```bash
 rm .editorconfig
+```
+
+### [pnpm workspace](https://pnpm.io/settings)
+
+Setup
+
+```bash
+curl --create-dirs --output pnpm-workspace.yaml https://raw.githubusercontent.com/donniean/react-app/main/pnpm-workspace.yaml
+```
+
+Clean
+
+```bash
+rm pnpm-workspace.yaml
 ```
 
 ### [ESLint](https://github.com/eslint/eslint)
@@ -552,6 +567,10 @@ curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/
 
 curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 
+# pnpm workspace
+
+curl --create-dirs --output pnpm-workspace.yaml https://raw.githubusercontent.com/donniean/react-app/main/pnpm-workspace.yaml
+
 # ESLint
 
 pnpm pkg set 'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]'="$(pnpm view @eslint-community/eslint-plugin-eslint-comments version)"
@@ -740,6 +759,10 @@ rm cspell.config.mjs
 # EditorConfig
 
 rm .editorconfig
+
+# pnpm workspace
+
+rm pnpm-workspace.yaml
 
 # ESLint
 

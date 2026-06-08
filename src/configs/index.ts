@@ -12,6 +12,7 @@ import { CONFIG as knip } from './knip';
 import { CONFIG as lintStaged } from './lint-staged';
 import { CONFIG as markdownlint } from './markdownlint';
 import { CONFIG as npmCheckUpdates } from './npm-check-updates';
+import { CONFIG as pnpmWorkspace } from './pnpm-workspace';
 import { CONFIG as prettier } from './prettier';
 import { CONFIG as sortPackageJson } from './sort-package-json';
 import { CONFIG as stylelint } from './stylelint';
@@ -23,6 +24,7 @@ export const CONFIGS = [
   autocorrect,
   cspell,
   editorconfig,
+  pnpmWorkspace,
   eslint,
   gitattributes,
   gitignore,
