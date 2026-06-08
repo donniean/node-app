@@ -8,8 +8,14 @@ import { buildCommand } from '@/utils/commands';
 
 type GetCommandOptions = Pick<Config, 'name' | 'pkg' | 'filePaths'>;
 
+const SHELL_SINGLE_QUOTE = String.raw`'\''`;
+
+function quoteShellValue(value: string) {
+  return `'${value.replaceAll("'", SHELL_SINGLE_QUOTE)}'`;
+}
+
 function formatPackageJsonPropertyPath(parent: string, key: string) {
-  return `'${parent}[${JSON.stringify(key)}]'`;
+  return quoteShellValue(`${parent}[${JSON.stringify(key)}]`);
 }
 
 function buildSetupCommand({
@@ -57,7 +63,7 @@ function buildSetupCommand({
         subCommand: 'pkg set',
         args: scripts.map(
           ({ key, value }) =>
-            `${formatPackageJsonPropertyPath('scripts', key)}='${value}'`,
+            `${formatPackageJsonPropertyPath('scripts', key)}=${quoteShellValue(value)}`,
         ),
       });
     }
