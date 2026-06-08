@@ -8,6 +8,10 @@ import { buildCommand } from '@/utils/commands';
 
 type GetCommandOptions = Pick<Config, 'name' | 'pkg' | 'filePaths'>;
 
+function formatPackageJsonPropertyPath(parent: string, key: string) {
+  return `'${parent}[${JSON.stringify(key)}]'`;
+}
+
 function buildSetupCommand({
   name,
   pkg,
@@ -36,7 +40,9 @@ function buildSetupCommand({
         return buildCommand({
           mainCommand: 'pnpm',
           subCommand: 'pkg set',
-          args: [`devDependencies.${packageName}="${packageVersion}"`],
+          args: [
+            `${formatPackageJsonPropertyPath('devDependencies', packageName)}="${packageVersion}"`,
+          ],
         });
       });
       return commands.join('\n');
@@ -49,7 +55,10 @@ function buildSetupCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg set',
-        args: scripts.map(({ key, value }) => `scripts.${key}='${value}'`),
+        args: scripts.map(
+          ({ key, value }) =>
+            `${formatPackageJsonPropertyPath('scripts', key)}='${value}'`,
+        ),
       });
     }
     case 'files.download': {
@@ -93,8 +102,11 @@ function buildCleanCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
-        args: devDependencies.map(
-          (dependency) => `devDependencies.${dependency.packageName}`,
+        args: devDependencies.map((dependency) =>
+          formatPackageJsonPropertyPath(
+            'devDependencies',
+            dependency.packageName,
+          ),
         ),
       });
     }
@@ -106,7 +118,9 @@ function buildCleanCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
-        args: scripts.map(({ key }) => `scripts.${key}`),
+        args: scripts.map(({ key }) =>
+          formatPackageJsonPropertyPath('scripts', key),
+        ),
       });
     }
     case 'files.delete': {
