@@ -56,11 +56,7 @@ pnpm run dev --file configs.md
 pnpm run docs
 ```
 
-默认输出文件名来自 [`src/models/configs.constants.ts`](src/models/configs.constants.ts)。生成的 `files.download` commands 当前从 [`donniean/react-app`](https://github.com/donniean/react-app) 的 `main` 分支读取共享配置文件，而不是从本仓库读取：
-
-```text
-https://raw.githubusercontent.com/donniean/react-app/main/
-```
+默认输出文件名和 `files.download` base URL 以 [`src/models/configs.constants.ts`](src/models/configs.constants.ts) 为准。
 
 涉及 [`src/configs/`](src/configs/)、[`src/helpers/`](src/helpers/)、[`src/models/`](src/models/)、[`src/scripts.ts`](src/scripts.ts) 或 [`src/api.ts`](src/api.ts) 的改动时，应检查 [`configs.md`](configs.md) 是否需要重新生成。
 
