@@ -7,7 +7,7 @@
 - Projects created from this template are not limited to personal use; do not treat this repository's personal-use context as a fixed downstream project constraint.
 - When this template is used to create an actual project, the sample CLI, API, configuration generation logic, and placeholder structure may be replaced, trimmed, or deleted according to the project goal. Do not treat the current example as a convention that every downstream project must keep.
 
-## Implementation Conventions
+## Conventions
 
 - Before changing TypeScript / JavaScript imports, read `compilerOptions.paths` in `tsconfig.json` / `jsconfig.json`. Prefer configured path aliases, and avoid deep relative paths.
 
