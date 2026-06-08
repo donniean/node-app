@@ -3,7 +3,7 @@
 ## 仓库边界
 
 - 本仓库是个人自用的 public GitHub template repository，也是当前可构建、可发布的 npm package。
-- 仓库用途、当前目录和常用命令以 [README.md](README.md) 为 single source of truth；更细的执行约束以本文件和相关源码为准。
+- 仓库用途、当前目录和常用命令以 [README.md](README.md) 为 single source of truth；本文件只维护 coding agent 需要执行的仓库约束。
 - 修改时同时检查当前 `@donniean/node-app` package / `configs-md` CLI 行为和 template 复用场景。
 - 由本 template 生成的新项目不限定为个人自用；不要把当前仓库的「个人自用」边界写成下游项目的固定约束。
 - 由本 template 生成正式项目时，示例 CLI、API、配置生成逻辑和占位结构可以按项目目标替换、裁剪或删除。不要把当前示例当成所有下游项目都必须保留的约定。
