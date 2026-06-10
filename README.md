@@ -31,8 +31,8 @@ When this template is used to create an actual project, replace, trim, or delete
 pnpm install
 pnpm run build
 pnpm run docs
-pnpm run lint
-pnpm run lint:fix
+pnpm run quality:check
+pnpm run quality:fix
 pnpm run test
 ```
 
@@ -62,7 +62,7 @@ When changing [`src/configs/`](src/configs/), [`src/helpers/`](src/helpers/), [`
 
 ## Release
 
-- [`ci.yaml`](.github/workflows/ci.yaml) runs lint, test, and build on pull requests to `main` and manual workflow dispatch.
+- [`ci.yaml`](.github/workflows/ci.yaml) runs quality checks, test, and build on pull requests to `main` and manual workflow dispatch.
 - [`release.yaml`](.github/workflows/release.yaml) runs build after pushes to `main`, then uses `changesets/action` to create a release pull request or publish to npm.
 - [`dependencies.bump.yaml`](.github/workflows/dependencies.bump.yaml), [`pull-requests.auto-merge.yaml`](.github/workflows/pull-requests.auto-merge.yaml), and [`pull-requests.auto-update.yaml`](.github/workflows/pull-requests.auto-update.yaml) reuse workflows from [`donniean/hub`](https://github.com/donniean/hub).
 - [`.github/dependabot.yaml`](.github/dependabot.yaml) enables daily updates for npm and GitHub Actions dependencies.

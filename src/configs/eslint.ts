@@ -30,8 +30,8 @@ export const CONFIG = {
       { packageName: 'typescript-eslint' },
     ],
     scripts: [
-      { key: 'lint:js', value: 'eslint' },
-      { key: 'lint:js:fix', value: 'pnpm run lint:js --fix' },
+      { key: 'lint:js:check', value: 'eslint' },
+      { key: 'lint:js:fix', value: 'pnpm run lint:js:check --fix' },
     ],
   },
   filePaths: ['eslint.config.mjs'],

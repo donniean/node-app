@@ -7,7 +7,7 @@ export const CONFIG = {
   pkg: {
     devDependencies: [{ packageName: 'autocorrect-node' }],
     scripts: [
-      { key: 'lint:text', value: 'autocorrect --lint' },
+      { key: 'lint:text:check', value: 'autocorrect --lint' },
       { key: 'lint:text:fix', value: 'autocorrect --fix' },
     ],
   },

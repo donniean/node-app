@@ -8,11 +8,11 @@ export const CONFIG = {
     devDependencies: [{ packageName: 'sort-package-json' }],
     scripts: [
       {
-        key: 'lint:package-json',
-        value: 'pnpm run lint:package-json:fix --check',
+        key: 'format:package-json:check',
+        value: 'pnpm run format:package-json:fix --check',
       },
       {
-        key: 'lint:package-json:fix',
+        key: 'format:package-json:fix',
         value:
           'sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"',
       },

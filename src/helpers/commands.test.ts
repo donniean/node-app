@@ -16,8 +16,8 @@ const pkg = {
     { packageName: 'eslint-config-prettier', version: '10.0.0' },
   ],
   scripts: [
-    { key: 'lint:js', value: 'eslint' },
-    { key: 'lint:js:fix', value: 'pnpm run lint:js --fix' },
+    { key: 'lint:js:check', value: 'eslint' },
+    { key: 'lint:js:fix', value: 'pnpm run lint:js:check --fix' },
   ],
 };
 
@@ -78,8 +78,8 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg set',
-      "  'scripts[\"lint:js\"]'='eslint'",
-      "  'scripts[\"lint:js:fix\"]'='pnpm run lint:js --fix'",
+      "  'scripts[\"lint:js:check\"]'='eslint'",
+      "  'scripts[\"lint:js:fix\"]'='pnpm run lint:js:check --fix'",
     ].join(lineContinuation),
   );
 });
@@ -112,8 +112,8 @@ test('generated pnpm pkg commands can update package.json', () => {
         'eslint-config-prettier': '10.0.0',
       },
       scripts: {
-        'lint:js': 'eslint',
-        'lint:js:fix': 'pnpm run lint:js --fix',
+        'lint:js:check': 'eslint',
+        'lint:js:fix': 'pnpm run lint:js:check --fix',
       },
     });
 
@@ -169,7 +169,7 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg delete',
-      '  \'scripts["lint:js"]\'',
+      '  \'scripts["lint:js:check"]\'',
       '  \'scripts["lint:js:fix"]\'',
     ].join(lineContinuation),
   );

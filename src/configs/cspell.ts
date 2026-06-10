@@ -8,7 +8,7 @@ export const CONFIG = {
     devDependencies: [{ packageName: 'cspell' }],
     scripts: [
       {
-        key: 'lint:spell',
+        key: 'lint:spelling:check',
         value:
           'cspell lint --no-progress --no-must-find-files --dot --gitignore .',
       },

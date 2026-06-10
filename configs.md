@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Tools](#tools)
-  - [Aggregate Lint](#aggregate-lint)
+  - [Aggregate Quality](#aggregate-quality)
   - [AutoCorrect](#autocorrect)
   - [CSpell](#cspell)
   - [EditorConfig](#editorconfig)
@@ -28,22 +28,26 @@
 
 ## Tools
 
-### Aggregate Lint
+### Aggregate Quality
 
 Setup
 
 ```bash
+pnpm pkg set 'devDependencies["concurrently"]'="$(pnpm view concurrently version)"
+
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
+  'scripts["quality:check"]'='concurrently --group --timings "pnpm:format:*:check" "pnpm:lint:*:check"' \
+  'scripts["quality:fix"]'='concurrently --group --timings --max-processes=1 "pnpm:format:*:fix" "pnpm:lint:*:fix"'
 ```
 
 Clean
 
 ```bash
+pnpm pkg delete 'devDependencies["concurrently"]'
+
 pnpm pkg delete \
-  'scripts["lint"]' \
-  'scripts["lint:fix"]'
+  'scripts["quality:check"]' \
+  'scripts["quality:fix"]'
 ```
 
 ### [AutoCorrect](https://github.com/huacnlee/autocorrect)
@@ -54,7 +58,7 @@ Setup
 pnpm pkg set 'devDependencies["autocorrect-node"]'="$(pnpm view autocorrect-node version)"
 
 pnpm pkg set \
-  'scripts["lint:text"]'='autocorrect --lint' \
+  'scripts["lint:text:check"]'='autocorrect --lint' \
   'scripts["lint:text:fix"]'='autocorrect --fix'
 
 curl --create-dirs \
@@ -68,7 +72,7 @@ Clean
 pnpm pkg delete 'devDependencies["autocorrect-node"]'
 
 pnpm pkg delete \
-  'scripts["lint:text"]' \
+  'scripts["lint:text:check"]' \
   'scripts["lint:text:fix"]'
 
 rm \
@@ -83,7 +87,7 @@ Setup
 ```bash
 pnpm pkg set 'devDependencies["cspell"]'="$(pnpm view cspell version)"
 
-pnpm pkg set 'scripts["lint:spell"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
+pnpm pkg set 'scripts["lint:spelling:check"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
 
 curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
 ```
@@ -93,7 +97,7 @@ Clean
 ```bash
 pnpm pkg delete 'devDependencies["cspell"]'
 
-pnpm pkg delete 'scripts["lint:spell"]'
+pnpm pkg delete 'scripts["lint:spelling:check"]'
 
 rm cspell.config.mjs
 ```
@@ -141,8 +145,8 @@ pnpm pkg set 'devDependencies["globals"]'="$(pnpm view globals version)"
 pnpm pkg set 'devDependencies["typescript-eslint"]'="$(pnpm view typescript-eslint version)"
 
 pnpm pkg set \
-  'scripts["lint:js"]'='eslint' \
-  'scripts["lint:js:fix"]'='pnpm run lint:js --fix'
+  'scripts["lint:js:check"]'='eslint' \
+  'scripts["lint:js:fix"]'='pnpm run lint:js:check --fix'
 
 curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
 ```
@@ -175,7 +179,7 @@ pnpm pkg delete \
   'devDependencies["typescript-eslint"]'
 
 pnpm pkg delete \
-  'scripts["lint:js"]' \
+  'scripts["lint:js:check"]' \
   'scripts["lint:js:fix"]'
 
 rm eslint.config.mjs
@@ -216,7 +220,7 @@ Setup
 ```bash
 pnpm pkg set 'devDependencies["html-validate"]'="$(pnpm view html-validate version)"
 
-pnpm pkg set 'scripts["lint:html"]'='html-validate "**/*.html"'
+pnpm pkg set 'scripts["lint:html:check"]'='html-validate "**/*.html"'
 
 curl --create-dirs \
   --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
@@ -228,7 +232,7 @@ Clean
 ```bash
 pnpm pkg delete 'devDependencies["html-validate"]'
 
-pnpm pkg delete 'scripts["lint:html"]'
+pnpm pkg delete 'scripts["lint:html:check"]'
 
 rm \
   .htmlvalidate.mjs \
@@ -243,8 +247,8 @@ Setup
 pnpm pkg set 'devDependencies["knip"]'="$(pnpm view knip version)"
 
 pnpm pkg set \
-  'scripts["knip"]'='knip' \
-  'scripts["knip:fix"]'='pnpm run knip --fix'
+  'scripts["knip:check"]'='knip' \
+  'scripts["knip:fix"]'='pnpm run knip:check --fix'
 ```
 
 Clean
@@ -253,7 +257,7 @@ Clean
 pnpm pkg delete 'devDependencies["knip"]'
 
 pnpm pkg delete \
-  'scripts["knip"]' \
+  'scripts["knip:check"]' \
   'scripts["knip:fix"]'
 ```
 
@@ -265,8 +269,8 @@ Setup
 pnpm pkg set 'devDependencies["markdownlint-cli"]'="$(pnpm view markdownlint-cli version)"
 
 pnpm pkg set \
-  'scripts["lint:md"]'='markdownlint --dot "**/*.md"' \
-  'scripts["lint:md:fix"]'='pnpm run lint:md --fix'
+  'scripts["lint:markdown:check"]'='markdownlint --dot "**/*.md"' \
+  'scripts["lint:markdown:fix"]'='pnpm run lint:markdown:check --fix'
 
 curl --create-dirs \
   --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
@@ -279,8 +283,8 @@ Clean
 pnpm pkg delete 'devDependencies["markdownlint-cli"]'
 
 pnpm pkg delete \
-  'scripts["lint:md"]' \
-  'scripts["lint:md:fix"]'
+  'scripts["lint:markdown:check"]' \
+  'scripts["lint:markdown:fix"]'
 
 rm \
   .markdownlint.json \
@@ -293,16 +297,16 @@ Setup
 
 ```bash
 pnpm pkg set \
-  'scripts["ncu"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
-  'scripts["ncu:upgrade"]'='pnpm run ncu --upgrade'
+  'scripts["deps:check"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
+  'scripts["deps:upgrade"]'='pnpm run deps:check --upgrade'
 ```
 
 Clean
 
 ```bash
 pnpm pkg delete \
-  'scripts["ncu"]' \
-  'scripts["ncu:upgrade"]'
+  'scripts["deps:check"]' \
+  'scripts["deps:upgrade"]'
 ```
 
 ### [Prettier](https://github.com/prettier/prettier)
@@ -314,8 +318,8 @@ pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
 pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
 
 pnpm pkg set \
-  'scripts["lint:format"]'='prettier --check --ignore-unknown .' \
-  'scripts["lint:format:fix"]'='prettier --write --ignore-unknown .'
+  'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .' \
+  'scripts["format:prettier:fix"]'='prettier --write --ignore-unknown .'
 
 curl --create-dirs \
   --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
@@ -330,8 +334,8 @@ pnpm pkg delete \
   'devDependencies["prettier-plugin-tailwindcss"]'
 
 pnpm pkg delete \
-  'scripts["lint:format"]' \
-  'scripts["lint:format:fix"]'
+  'scripts["format:prettier:check"]' \
+  'scripts["format:prettier:fix"]'
 
 rm \
   prettier.config.mjs \
@@ -346,8 +350,8 @@ Setup
 pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
 
 pnpm pkg set \
-  'scripts["lint:package-json"]'='pnpm run lint:package-json:fix --check' \
-  'scripts["lint:package-json:fix"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
+  'scripts["format:package-json:check"]'='pnpm run format:package-json:fix --check' \
+  'scripts["format:package-json:fix"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 ```
 
 Clean
@@ -356,8 +360,8 @@ Clean
 pnpm pkg delete 'devDependencies["sort-package-json"]'
 
 pnpm pkg delete \
-  'scripts["lint:package-json"]' \
-  'scripts["lint:package-json:fix"]'
+  'scripts["format:package-json:check"]' \
+  'scripts["format:package-json:fix"]'
 ```
 
 ### [Stylelint](https://github.com/stylelint/stylelint)
@@ -371,8 +375,8 @@ pnpm pkg set 'devDependencies["stylelint-config-standard"]'="$(pnpm view styleli
 pnpm pkg set 'devDependencies["stylelint-config-css-modules"]'="$(pnpm view stylelint-config-css-modules version)"
 
 pnpm pkg set \
-  'scripts["lint:css"]'='stylelint "**/*.css"' \
-  'scripts["lint:css:fix"]'='pnpm run lint:css --fix'
+  'scripts["lint:styles:check"]'='stylelint "**/*.css"' \
+  'scripts["lint:styles:fix"]'='pnpm run lint:styles:check --fix'
 
 curl --create-dirs \
   --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
@@ -389,8 +393,8 @@ pnpm pkg delete \
   'devDependencies["stylelint-config-css-modules"]'
 
 pnpm pkg delete \
-  'scripts["lint:css"]' \
-  'scripts["lint:css:fix"]'
+  'scripts["lint:styles:check"]' \
+  'scripts["lint:styles:fix"]'
 
 rm \
   stylelint.config.mjs \
@@ -404,7 +408,7 @@ Setup
 ```bash
 pnpm pkg set 'devDependencies["typescript"]'="$(pnpm view typescript version)"
 
-pnpm pkg set 'scripts["lint:types"]'='tsc --noEmit'
+pnpm pkg set 'scripts["lint:types:check"]'='tsc --noEmit'
 ```
 
 Clean
@@ -412,7 +416,7 @@ Clean
 ```bash
 pnpm pkg delete 'devDependencies["typescript"]'
 
-pnpm pkg delete 'scripts["lint:types"]'
+pnpm pkg delete 'scripts["lint:types:check"]'
 ```
 
 ### [Vitest](https://github.com/vitest-dev/vitest)
@@ -425,10 +429,11 @@ pnpm pkg set 'devDependencies["@vitest/ui"]'="$(pnpm view @vitest/ui version)"
 pnpm pkg set 'devDependencies["vitest"]'="$(pnpm view vitest version)"
 
 pnpm pkg set \
-  'scripts["test"]'='vitest run --passWithNoTests' \
-  'scripts["test:coverage"]'='vitest run --coverage' \
-  'scripts["test:watch"]'='vitest watch' \
-  'scripts["test:ui"]'='vitest --ui'
+  'scripts["test"]'='pnpm run test:unit' \
+  'scripts["test:unit"]'='vitest run --passWithNoTests' \
+  'scripts["test:unit:coverage"]'='vitest run --coverage' \
+  'scripts["test:unit:watch"]'='vitest watch' \
+  'scripts["test:unit:ui"]'='vitest --ui'
 ```
 
 Clean
@@ -441,9 +446,10 @@ pnpm pkg delete \
 
 pnpm pkg delete \
   'scripts["test"]' \
-  'scripts["test:coverage"]' \
-  'scripts["test:watch"]' \
-  'scripts["test:ui"]'
+  'scripts["test:unit"]' \
+  'scripts["test:unit:coverage"]' \
+  'scripts["test:unit:watch"]' \
+  'scripts["test:unit:ui"]'
 ```
 
 ### [Husky](https://github.com/typicode/husky)
@@ -522,18 +528,20 @@ rm \
 ### Setup
 
 ```bash
-# Aggregate Lint
+# Aggregate Quality
+
+pnpm pkg set 'devDependencies["concurrently"]'="$(pnpm view concurrently version)"
 
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
+  'scripts["quality:check"]'='concurrently --group --timings "pnpm:format:*:check" "pnpm:lint:*:check"' \
+  'scripts["quality:fix"]'='concurrently --group --timings --max-processes=1 "pnpm:format:*:fix" "pnpm:lint:*:fix"'
 
 # AutoCorrect
 
 pnpm pkg set 'devDependencies["autocorrect-node"]'="$(pnpm view autocorrect-node version)"
 
 pnpm pkg set \
-  'scripts["lint:text"]'='autocorrect --lint' \
+  'scripts["lint:text:check"]'='autocorrect --lint' \
   'scripts["lint:text:fix"]'='autocorrect --fix'
 
 curl --create-dirs \
@@ -544,7 +552,7 @@ curl --create-dirs \
 
 pnpm pkg set 'devDependencies["cspell"]'="$(pnpm view cspell version)"
 
-pnpm pkg set 'scripts["lint:spell"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
+pnpm pkg set 'scripts["lint:spelling:check"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
 
 curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
 
@@ -578,8 +586,8 @@ pnpm pkg set 'devDependencies["globals"]'="$(pnpm view globals version)"
 pnpm pkg set 'devDependencies["typescript-eslint"]'="$(pnpm view typescript-eslint version)"
 
 pnpm pkg set \
-  'scripts["lint:js"]'='eslint' \
-  'scripts["lint:js:fix"]'='pnpm run lint:js --fix'
+  'scripts["lint:js:check"]'='eslint' \
+  'scripts["lint:js:fix"]'='pnpm run lint:js:check --fix'
 
 curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
 
@@ -595,7 +603,7 @@ curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniea
 
 pnpm pkg set 'devDependencies["html-validate"]'="$(pnpm view html-validate version)"
 
-pnpm pkg set 'scripts["lint:html"]'='html-validate "**/*.html"'
+pnpm pkg set 'scripts["lint:html:check"]'='html-validate "**/*.html"'
 
 curl --create-dirs \
   --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
@@ -606,16 +614,16 @@ curl --create-dirs \
 pnpm pkg set 'devDependencies["knip"]'="$(pnpm view knip version)"
 
 pnpm pkg set \
-  'scripts["knip"]'='knip' \
-  'scripts["knip:fix"]'='pnpm run knip --fix'
+  'scripts["knip:check"]'='knip' \
+  'scripts["knip:fix"]'='pnpm run knip:check --fix'
 
 # markdownlint
 
 pnpm pkg set 'devDependencies["markdownlint-cli"]'="$(pnpm view markdownlint-cli version)"
 
 pnpm pkg set \
-  'scripts["lint:md"]'='markdownlint --dot "**/*.md"' \
-  'scripts["lint:md:fix"]'='pnpm run lint:md --fix'
+  'scripts["lint:markdown:check"]'='markdownlint --dot "**/*.md"' \
+  'scripts["lint:markdown:fix"]'='pnpm run lint:markdown:check --fix'
 
 curl --create-dirs \
   --output .markdownlint.json https://raw.githubusercontent.com/donniean/react-app/main/.markdownlint.json \
@@ -624,8 +632,8 @@ curl --create-dirs \
 # npm-check-updates
 
 pnpm pkg set \
-  'scripts["ncu"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
-  'scripts["ncu:upgrade"]'='pnpm run ncu --upgrade'
+  'scripts["deps:check"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
+  'scripts["deps:upgrade"]'='pnpm run deps:check --upgrade'
 
 # Prettier
 
@@ -633,8 +641,8 @@ pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
 pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
 
 pnpm pkg set \
-  'scripts["lint:format"]'='prettier --check --ignore-unknown .' \
-  'scripts["lint:format:fix"]'='prettier --write --ignore-unknown .'
+  'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .' \
+  'scripts["format:prettier:fix"]'='prettier --write --ignore-unknown .'
 
 curl --create-dirs \
   --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
@@ -645,8 +653,8 @@ curl --create-dirs \
 pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
 
 pnpm pkg set \
-  'scripts["lint:package-json"]'='pnpm run lint:package-json:fix --check' \
-  'scripts["lint:package-json:fix"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
+  'scripts["format:package-json:check"]'='pnpm run format:package-json:fix --check' \
+  'scripts["format:package-json:fix"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"'
 
 # Stylelint
 
@@ -656,8 +664,8 @@ pnpm pkg set 'devDependencies["stylelint-config-standard"]'="$(pnpm view styleli
 pnpm pkg set 'devDependencies["stylelint-config-css-modules"]'="$(pnpm view stylelint-config-css-modules version)"
 
 pnpm pkg set \
-  'scripts["lint:css"]'='stylelint "**/*.css"' \
-  'scripts["lint:css:fix"]'='pnpm run lint:css --fix'
+  'scripts["lint:styles:check"]'='stylelint "**/*.css"' \
+  'scripts["lint:styles:fix"]'='pnpm run lint:styles:check --fix'
 
 curl --create-dirs \
   --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
@@ -667,7 +675,7 @@ curl --create-dirs \
 
 pnpm pkg set 'devDependencies["typescript"]'="$(pnpm view typescript version)"
 
-pnpm pkg set 'scripts["lint:types"]'='tsc --noEmit'
+pnpm pkg set 'scripts["lint:types:check"]'='tsc --noEmit'
 
 # Vitest
 
@@ -676,10 +684,11 @@ pnpm pkg set 'devDependencies["@vitest/ui"]'="$(pnpm view @vitest/ui version)"
 pnpm pkg set 'devDependencies["vitest"]'="$(pnpm view vitest version)"
 
 pnpm pkg set \
-  'scripts["test"]'='vitest run --passWithNoTests' \
-  'scripts["test:coverage"]'='vitest run --coverage' \
-  'scripts["test:watch"]'='vitest watch' \
-  'scripts["test:ui"]'='vitest --ui'
+  'scripts["test"]'='pnpm run test:unit' \
+  'scripts["test:unit"]'='vitest run --passWithNoTests' \
+  'scripts["test:unit:coverage"]'='vitest run --coverage' \
+  'scripts["test:unit:watch"]'='vitest watch' \
+  'scripts["test:unit:ui"]'='vitest --ui'
 
 # Husky
 
@@ -711,18 +720,20 @@ curl --create-dirs \
 ### Clean
 
 ```bash
-# Aggregate Lint
+# Aggregate Quality
+
+pnpm pkg delete 'devDependencies["concurrently"]'
 
 pnpm pkg delete \
-  'scripts["lint"]' \
-  'scripts["lint:fix"]'
+  'scripts["quality:check"]' \
+  'scripts["quality:fix"]'
 
 # AutoCorrect
 
 pnpm pkg delete 'devDependencies["autocorrect-node"]'
 
 pnpm pkg delete \
-  'scripts["lint:text"]' \
+  'scripts["lint:text:check"]' \
   'scripts["lint:text:fix"]'
 
 rm \
@@ -733,7 +744,7 @@ rm \
 
 pnpm pkg delete 'devDependencies["cspell"]'
 
-pnpm pkg delete 'scripts["lint:spell"]'
+pnpm pkg delete 'scripts["lint:spelling:check"]'
 
 rm cspell.config.mjs
 
@@ -768,7 +779,7 @@ pnpm pkg delete \
   'devDependencies["typescript-eslint"]'
 
 pnpm pkg delete \
-  'scripts["lint:js"]' \
+  'scripts["lint:js:check"]' \
   'scripts["lint:js:fix"]'
 
 rm eslint.config.mjs
@@ -785,7 +796,7 @@ rm .gitignore
 
 pnpm pkg delete 'devDependencies["html-validate"]'
 
-pnpm pkg delete 'scripts["lint:html"]'
+pnpm pkg delete 'scripts["lint:html:check"]'
 
 rm \
   .htmlvalidate.mjs \
@@ -796,7 +807,7 @@ rm \
 pnpm pkg delete 'devDependencies["knip"]'
 
 pnpm pkg delete \
-  'scripts["knip"]' \
+  'scripts["knip:check"]' \
   'scripts["knip:fix"]'
 
 # markdownlint
@@ -804,8 +815,8 @@ pnpm pkg delete \
 pnpm pkg delete 'devDependencies["markdownlint-cli"]'
 
 pnpm pkg delete \
-  'scripts["lint:md"]' \
-  'scripts["lint:md:fix"]'
+  'scripts["lint:markdown:check"]' \
+  'scripts["lint:markdown:fix"]'
 
 rm \
   .markdownlint.json \
@@ -814,8 +825,8 @@ rm \
 # npm-check-updates
 
 pnpm pkg delete \
-  'scripts["ncu"]' \
-  'scripts["ncu:upgrade"]'
+  'scripts["deps:check"]' \
+  'scripts["deps:upgrade"]'
 
 # Prettier
 
@@ -824,8 +835,8 @@ pnpm pkg delete \
   'devDependencies["prettier-plugin-tailwindcss"]'
 
 pnpm pkg delete \
-  'scripts["lint:format"]' \
-  'scripts["lint:format:fix"]'
+  'scripts["format:prettier:check"]' \
+  'scripts["format:prettier:fix"]'
 
 rm \
   prettier.config.mjs \
@@ -836,8 +847,8 @@ rm \
 pnpm pkg delete 'devDependencies["sort-package-json"]'
 
 pnpm pkg delete \
-  'scripts["lint:package-json"]' \
-  'scripts["lint:package-json:fix"]'
+  'scripts["format:package-json:check"]' \
+  'scripts["format:package-json:fix"]'
 
 # Stylelint
 
@@ -848,8 +859,8 @@ pnpm pkg delete \
   'devDependencies["stylelint-config-css-modules"]'
 
 pnpm pkg delete \
-  'scripts["lint:css"]' \
-  'scripts["lint:css:fix"]'
+  'scripts["lint:styles:check"]' \
+  'scripts["lint:styles:fix"]'
 
 rm \
   stylelint.config.mjs \
@@ -859,7 +870,7 @@ rm \
 
 pnpm pkg delete 'devDependencies["typescript"]'
 
-pnpm pkg delete 'scripts["lint:types"]'
+pnpm pkg delete 'scripts["lint:types:check"]'
 
 # Vitest
 
@@ -870,9 +881,10 @@ pnpm pkg delete \
 
 pnpm pkg delete \
   'scripts["test"]' \
-  'scripts["test:coverage"]' \
-  'scripts["test:watch"]' \
-  'scripts["test:ui"]'
+  'scripts["test:unit"]' \
+  'scripts["test:unit:coverage"]' \
+  'scripts["test:unit:watch"]' \
+  'scripts["test:unit:ui"]'
 
 # Husky
 

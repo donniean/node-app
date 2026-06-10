@@ -23,7 +23,7 @@
 Run checks relevant to the change scope:
 
 ```bash
-pnpm run lint
+pnpm run quality:check
 pnpm run test
 pnpm run build
 ```
@@ -39,24 +39,24 @@ pnpm run docs
 Use smaller checks by file type when possible:
 
 ```bash
-pnpm run lint:md
-pnpm run lint:js
-pnpm run lint:types
-pnpm run lint:format
-pnpm run lint:spell
-pnpm run lint:text
-pnpm run lint:package-json
+pnpm run format:package-json:check
+pnpm run format:prettier:check
+pnpm run lint:js:check
+pnpm run lint:markdown:check
+pnpm run lint:spelling:check
+pnpm run lint:text:check
+pnpm run lint:types:check
 ```
 
 Matching `fix` commands include:
 
-- `pnpm run lint:md:fix`
+- `pnpm run format:package-json:fix`
+- `pnpm run format:prettier:fix`
 - `pnpm run lint:js:fix`
-- `pnpm run lint:format:fix`
+- `pnpm run lint:markdown:fix`
 - `pnpm run lint:text:fix`
-- `pnpm run lint:package-json:fix`
 
-CI currently runs lint, test, and build on pull requests to `main`.
+CI currently runs quality checks, test, and build on pull requests to `main`.
 
 ## Release
 

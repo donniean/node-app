@@ -7,10 +7,10 @@ export const CONFIG = {
   pkg: {
     scripts: [
       {
-        key: 'ncu',
+        key: 'deps:check',
         value: 'pnpm dlx npm-check-updates@latest --deep --format cooldown',
       },
-      { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
+      { key: 'deps:upgrade', value: 'pnpm run deps:check --upgrade' },
     ],
   },
   setup: [{ type: 'pkg.scripts.set' }],

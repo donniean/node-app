@@ -12,8 +12,8 @@ export const CONFIG = {
       { packageName: 'stylelint-config-css-modules' },
     ],
     scripts: [
-      { key: 'lint:css', value: 'stylelint "**/*.css"' },
-      { key: 'lint:css:fix', value: 'pnpm run lint:css --fix' },
+      { key: 'lint:styles:check', value: 'stylelint "**/*.css"' },
+      { key: 'lint:styles:fix', value: 'pnpm run lint:styles:check --fix' },
     ],
   },
   filePaths: ['stylelint.config.mjs', '.stylelintignore'],

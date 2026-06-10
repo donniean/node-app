@@ -8,7 +8,7 @@ export const CONFIG = {
     devDependencies: [{ packageName: 'html-validate' }],
     scripts: [
       {
-        key: 'lint:html',
+        key: 'lint:html:check',
         value: 'html-validate "**/*.html"',
       },
     ],
