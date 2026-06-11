@@ -34,8 +34,8 @@ Setup
 
 ```bash
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix"'
 ```
 
 Clean
@@ -292,17 +292,25 @@ rm \
 Setup
 
 ```bash
+pnpm pkg set 'devDependencies["npm-check-updates"]'="$(pnpm view npm-check-updates version)"
+
 pnpm pkg set \
-  'scripts["ncu"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
+  'scripts["ncu"]'='ncu --deep --format cooldown' \
   'scripts["ncu:upgrade"]'='pnpm run ncu --upgrade'
+
+curl --create-dirs --output .ncurc.mjs https://raw.githubusercontent.com/donniean/react-app/main/.ncurc.mjs
 ```
 
 Clean
 
 ```bash
+pnpm pkg delete 'devDependencies["npm-check-updates"]'
+
 pnpm pkg delete \
   'scripts["ncu"]' \
   'scripts["ncu:upgrade"]'
+
+rm .ncurc.mjs
 ```
 
 ### [Prettier](https://github.com/prettier/prettier)
@@ -425,10 +433,11 @@ pnpm pkg set 'devDependencies["@vitest/ui"]'="$(pnpm view @vitest/ui version)"
 pnpm pkg set 'devDependencies["vitest"]'="$(pnpm view vitest version)"
 
 pnpm pkg set \
-  'scripts["test"]'='vitest run --passWithNoTests' \
-  'scripts["test:coverage"]'='vitest run --coverage' \
-  'scripts["test:watch"]'='vitest watch' \
-  'scripts["test:ui"]'='vitest --ui'
+  'scripts["test"]'='pnpm run test:unit' \
+  'scripts["test:unit"]'='vitest run --pass-with-no-tests' \
+  'scripts["test:unit:coverage"]'='vitest run --coverage' \
+  'scripts["test:unit:watch"]'='vitest watch' \
+  'scripts["test:unit:ui"]'='vitest --ui'
 ```
 
 Clean
@@ -441,9 +450,10 @@ pnpm pkg delete \
 
 pnpm pkg delete \
   'scripts["test"]' \
-  'scripts["test:coverage"]' \
-  'scripts["test:watch"]' \
-  'scripts["test:ui"]'
+  'scripts["test:unit"]' \
+  'scripts["test:unit:coverage"]' \
+  'scripts["test:unit:watch"]' \
+  'scripts["test:unit:ui"]'
 ```
 
 ### [Husky](https://github.com/typicode/husky)
@@ -525,8 +535,8 @@ rm \
 # Aggregate Lint
 
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix"'
 
 # AutoCorrect
 
@@ -623,9 +633,13 @@ curl --create-dirs \
 
 # npm-check-updates
 
+pnpm pkg set 'devDependencies["npm-check-updates"]'="$(pnpm view npm-check-updates version)"
+
 pnpm pkg set \
-  'scripts["ncu"]'='pnpm dlx npm-check-updates@latest --deep --format cooldown' \
+  'scripts["ncu"]'='ncu --deep --format cooldown' \
   'scripts["ncu:upgrade"]'='pnpm run ncu --upgrade'
+
+curl --create-dirs --output .ncurc.mjs https://raw.githubusercontent.com/donniean/react-app/main/.ncurc.mjs
 
 # Prettier
 
@@ -676,10 +690,11 @@ pnpm pkg set 'devDependencies["@vitest/ui"]'="$(pnpm view @vitest/ui version)"
 pnpm pkg set 'devDependencies["vitest"]'="$(pnpm view vitest version)"
 
 pnpm pkg set \
-  'scripts["test"]'='vitest run --passWithNoTests' \
-  'scripts["test:coverage"]'='vitest run --coverage' \
-  'scripts["test:watch"]'='vitest watch' \
-  'scripts["test:ui"]'='vitest --ui'
+  'scripts["test"]'='pnpm run test:unit' \
+  'scripts["test:unit"]'='vitest run --pass-with-no-tests' \
+  'scripts["test:unit:coverage"]'='vitest run --coverage' \
+  'scripts["test:unit:watch"]'='vitest watch' \
+  'scripts["test:unit:ui"]'='vitest --ui'
 
 # Husky
 
@@ -813,9 +828,13 @@ rm \
 
 # npm-check-updates
 
+pnpm pkg delete 'devDependencies["npm-check-updates"]'
+
 pnpm pkg delete \
   'scripts["ncu"]' \
   'scripts["ncu:upgrade"]'
+
+rm .ncurc.mjs
 
 # Prettier
 
@@ -870,9 +889,10 @@ pnpm pkg delete \
 
 pnpm pkg delete \
   'scripts["test"]' \
-  'scripts["test:coverage"]' \
-  'scripts["test:watch"]' \
-  'scripts["test:ui"]'
+  'scripts["test:unit"]' \
+  'scripts["test:unit:coverage"]' \
+  'scripts["test:unit:watch"]' \
+  'scripts["test:unit:ui"]'
 
 # Husky
 

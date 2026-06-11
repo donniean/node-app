@@ -5,14 +5,24 @@ export const CONFIG = {
   name: 'npm-check-updates',
   url: 'https://github.com/raineorshine/npm-check-updates',
   pkg: {
+    devDependencies: [{ packageName: 'npm-check-updates' }],
     scripts: [
       {
         key: 'ncu',
-        value: 'pnpm dlx npm-check-updates@latest --deep --format cooldown',
+        value: 'ncu --deep --format cooldown',
       },
       { key: 'ncu:upgrade', value: 'pnpm run ncu --upgrade' },
     ],
   },
-  setup: [{ type: 'pkg.scripts.set' }],
-  clean: [{ type: 'pkg.scripts.delete' }],
+  filePaths: ['.ncurc.mjs'],
+  setup: [
+    { type: 'pkg.devDependencies.set' },
+    { type: 'pkg.scripts.set' },
+    { type: 'files.download' },
+  ],
+  clean: [
+    { type: 'pkg.devDependencies.delete' },
+    { type: 'pkg.scripts.delete' },
+    { type: 'files.delete' },
+  ],
 } as const satisfies Config;

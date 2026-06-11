@@ -42,8 +42,8 @@
     "knip": "knip",
     "knip:fix": "pnpm run knip --fix",
     "link": "pnpm run build && pnpm link",
-    "lint": "concurrently --group --timings --prefix-colors=auto \"pnpm:lint:*(!:fix)\"",
-    "lint:fix": "concurrently --max-processes=1 --group --timings --prefix-colors=auto \"pnpm:lint:*:fix\"",
+    "lint": "concurrently --group --timings \"pnpm:lint:*(!:fix)\"",
+    "lint:fix": "concurrently --max-processes=1 --group --timings \"pnpm:lint:*:fix\"",
     "lint:format": "prettier --check --ignore-unknown .",
     "lint:format:fix": "prettier --write --ignore-unknown .",
     "lint:js": "eslint",
@@ -56,13 +56,14 @@
     "lint:text": "autocorrect --lint",
     "lint:text:fix": "autocorrect --fix",
     "lint:types": "tsc --noEmit",
-    "ncu": "pnpm dlx npm-check-updates@latest --deep --format cooldown",
+    "ncu": "ncu --deep --format cooldown",
     "ncu:upgrade": "pnpm run ncu --upgrade",
     "prepare": "husky",
-    "test": "vitest run --passWithNoTests",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest watch"
+    "test": "pnpm run test:unit",
+    "test:unit": "vitest run --pass-with-no-tests",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:unit:ui": "vitest --ui",
+    "test:unit:watch": "vitest watch"
   },
   "dependencies": {
     "commander": "15.0.0",
@@ -85,7 +86,7 @@
     "@eslint/js": "10.0.1",
     "@types/fs-extra": "11.0.4",
     "@types/json2md": "1.5.4",
-    "@types/node": "25.9.2",
+    "@types/node": "24.13.1",
     "@vitest/coverage-v8": "4.1.8",
     "@vitest/eslint-plugin": "1.6.19",
     "@vitest/ui": "4.1.8",
@@ -107,6 +108,7 @@
     "knip": "6.16.1",
     "lint-staged": "17.0.7",
     "markdownlint-cli": "0.48.0",
+    "npm-check-updates": "22.2.3",
     "prettier": "3.8.4",
     "rimraf": "6.1.3",
     "sort-package-json": "4.0.0",
@@ -118,7 +120,7 @@
   },
   "packageManager": "pnpm@11.5.2",
   "engines": {
-    "node": ">=24.0.0",
+    "node": ">=24.0.0 <25.0.0",
     "pnpm": ">=11.0.0"
   }
 }

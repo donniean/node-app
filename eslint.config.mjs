@@ -21,14 +21,13 @@ const { dirname } = import.meta;
 const gitignorePath = path.resolve(dirname, '.gitignore');
 
 const nodeGlobs = [
-  '**/*.stories.{js,jsx,ts,tsx}',
-  '**/*.story.{js,jsx,ts,tsx}',
-  '**/*.test.{js,jsx,ts,tsx}',
+  '**/.htmlvalidate.{js,mjs,cjs}',
+  '**/.ncurc.{js,mjs,cjs}',
   '**/commitlint.config.{js,mjs,cjs,ts}',
   '**/cspell.config.{js,mjs,cjs,ts}',
   '**/eslint.config.{js,mjs,cjs,ts}',
-  '**/.htmlvalidate.{js,mjs,cjs,ts}',
-  '**/i18next.config.{js,mjs,ts}',
+  '**/html-validate.config.{js,mjs,cjs,ts}',
+  '**/i18next.config.{js,mjs,cjs,ts}',
   '**/jest.config.{js,mjs,cjs,ts}',
   '**/lint-staged.config.{js,mjs,cjs,ts}',
   '**/prettier.config.{js,mjs,cjs,ts}',
@@ -40,6 +39,12 @@ const nodeGlobs = [
   'config/**/*.{js,cjs,mjs,ts}',
   'scripts/**/*.{js,cjs,mjs,ts}',
 ];
+const testGlobs = ['**/tests/**', '**/*.test.{js,jsx,ts,tsx}'];
+const storyGlobs = [
+  '**/*.stories.{js,jsx,ts,tsx}',
+  '**/*.story.{js,jsx,ts,tsx}',
+];
+const devDependencyGlobs = [...nodeGlobs, ...testGlobs, ...storyGlobs];
 
 export default defineConfig([
   includeIgnoreFile(gitignorePath, 'custom/gitignore'),
@@ -122,7 +127,7 @@ export default defineConfig([
       'import-x/no-extraneous-dependencies': [
         'error',
         {
-          devDependencies: nodeGlobs,
+          devDependencies: devDependencyGlobs,
           optionalDependencies: false,
           peerDependencies: true,
         },
@@ -251,7 +256,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/tests/**', '**/*.test.ts'],
+    files: testGlobs,
     ...eslintPluginVitest.configs.recommended,
   },
   eslintConfigPrettier,
