@@ -3,3 +3,7 @@ allowBuilds:
   unrs-resolver: true
 engineStrict: true
 minimumReleaseAge: 1440
+overrides:
+  '@types/fs-extra>@types/node': 24.13.1
+  '@types/jsonfile>@types/node': 24.13.1
+saveExact: true

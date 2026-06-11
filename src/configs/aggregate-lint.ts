@@ -8,13 +8,12 @@ export const CONFIG = {
     scripts: [
       {
         key: 'lint',
-        value:
-          'concurrently --group --timings --prefix-colors=auto "pnpm:lint:*(!:fix)"',
+        value: 'concurrently --group --timings "pnpm:lint:*(!:fix)"',
       },
       {
         key: 'lint:fix',
         value:
-          'concurrently --max-processes=1 --group --timings --prefix-colors=auto "pnpm:lint:*:fix"',
+          'concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix"',
       },
     ],
   },
