@@ -10,8 +10,11 @@ export const CONFIG = {
       { packageName: 'prettier-plugin-tailwindcss' },
     ],
     scripts: [
-      { key: 'lint:format', value: 'prettier --check --ignore-unknown .' },
-      { key: 'lint:format:fix', value: 'prettier --write --ignore-unknown .' },
+      { key: 'format:prettier', value: 'prettier --write --ignore-unknown .' },
+      {
+        key: 'format:prettier:check',
+        value: 'prettier --check --ignore-unknown .',
+      },
     ],
   },
   filePaths: ['prettier.config.mjs', '.prettierignore'],
