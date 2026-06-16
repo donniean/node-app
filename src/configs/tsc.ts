@@ -6,7 +6,7 @@ export const CONFIG = {
   url: 'https://github.com/microsoft/TypeScript',
   pkg: {
     devDependencies: [{ packageName: 'typescript' }],
-    scripts: [{ key: 'lint:types', value: 'tsc --noEmit' }],
+    scripts: [{ key: 'typecheck', value: 'tsc --noEmit' }],
   },
   setup: [{ type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }],
   clean: [

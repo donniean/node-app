@@ -39,22 +39,22 @@ pnpm run docs
 Use smaller checks by file type when possible:
 
 ```bash
-pnpm run lint:md
-pnpm run lint:js
-pnpm run lint:types
-pnpm run lint:format
-pnpm run lint:spell
-pnpm run lint:text
-pnpm run lint:package-json
+pnpm run format:package-json:check
+pnpm run format:prettier:check
+pnpm run lint:autocorrect
+pnpm run lint:eslint
+pnpm run lint:markdown
+pnpm run lint:spellcheck
+pnpm run typecheck
 ```
 
 Matching `fix` commands include:
 
-- `pnpm run lint:md:fix`
-- `pnpm run lint:js:fix`
-- `pnpm run lint:format:fix`
-- `pnpm run lint:text:fix`
-- `pnpm run lint:package-json:fix`
+- `pnpm run format:package-json`
+- `pnpm run format:prettier`
+- `pnpm run lint:autocorrect:fix`
+- `pnpm run lint:eslint:fix`
+- `pnpm run lint:markdown:fix`
 
 CI currently runs lint, test, and build on pull requests to `main`.
 
