@@ -88,7 +88,7 @@
     "@types/node": "24.13.2",
     "@vitest/coverage-v8": "4.1.8",
     "@vitest/eslint-plugin": "1.6.20",
-    "@vitest/ui": "4.1.8",
+    "@vitest/ui": "4.1.9",
     "autocorrect-node": "2.14.0",
     "concurrently": "10.0.3",
     "cspell": "10.0.1",
