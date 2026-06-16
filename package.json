@@ -42,7 +42,6 @@
     "format:package-json:check": "pnpm run format:package-json --check",
     "format:prettier": "prettier --write --ignore-unknown .",
     "format:prettier:check": "prettier --check --ignore-unknown .",
-    "preinstall": "npx only-allow@latest pnpm",
     "link": "pnpm run build && pnpm link",
     "lint": "concurrently --group --timings \"pnpm:lint:*(!:fix|^lint:knip$)\" \"pnpm:format:*:check\" \"pnpm:typecheck\"",
     "lint:autocorrect": "autocorrect --lint",
