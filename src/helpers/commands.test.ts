@@ -12,7 +12,10 @@ const lineContinuation = ` \\
 `;
 
 const pkg = {
-  devDependencies: [{ packageName: 'oxlint' }],
+  devDependencies: [
+    { packageName: 'oxlint' },
+    { packageName: 'oxlint-tsgolint' },
+  ],
   scripts: [
     { key: 'lint:oxlint', value: 'oxlint' },
     { key: 'lint:oxlint:fix', value: 'oxlint --fix' },
@@ -21,7 +24,10 @@ const pkg = {
 
 const executablePkg = {
   ...pkg,
-  devDependencies: [{ packageName: 'oxlint', version: '1.70.0' }],
+  devDependencies: [
+    { packageName: 'oxlint', version: '1.70.0' },
+    { packageName: 'oxlint-tsgolint', version: '0.23.0' },
+  ],
 };
 
 interface TestPackageJson {
@@ -59,6 +65,7 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg set \'devDependencies["oxlint"]\'="$(pnpm view oxlint version)"',
+      'pnpm pkg set \'devDependencies["oxlint-tsgolint"]\'="$(pnpm view oxlint-tsgolint version)"',
     ].join('\n'),
   );
 
@@ -103,6 +110,7 @@ test('generated pnpm pkg commands can update package.json', () => {
     expect(readPackageJson(directory)).toMatchObject({
       devDependencies: {
         oxlint: '1.70.0',
+        'oxlint-tsgolint': '0.23.0',
       },
       scripts: {
         'lint:oxlint': 'oxlint',
@@ -144,7 +152,13 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
       filePaths: [],
       cleanCommandAction: { type: 'pkg.devDependencies.delete' },
     }),
-  ).toBe('pnpm pkg delete \'devDependencies["oxlint"]\'');
+  ).toBe(
+    [
+      'pnpm pkg delete',
+      '  \'devDependencies["oxlint"]\'',
+      '  \'devDependencies["oxlint-tsgolint"]\'',
+    ].join(lineContinuation),
+  );
 
   expect(
     buildCleanCommand({

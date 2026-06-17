@@ -44,6 +44,7 @@ export default defineConfig({
     'npmjs',
     'numbro',
     'oxlint',
+    'tsgolint',
     'rimraf',
     'sonarjs',
     'stylelint',
