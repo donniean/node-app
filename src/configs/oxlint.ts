@@ -7,7 +7,7 @@ export const CONFIG = {
   pkg: {
     devDependencies: [
       { packageName: 'oxlint' },
-      // cspell: ignore oxlint-tsgolint
+      // cSpell: ignore oxlint-tsgolint
       { packageName: 'oxlint-tsgolint' },
     ],
     scripts: [
