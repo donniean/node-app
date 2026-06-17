@@ -36,9 +36,9 @@ export const CONFIG = {
   },
   filePaths: ['eslint.config.mjs'],
   setup: [
-    { type: 'pkg.devDependencies.set' },
-    { type: 'pkg.scripts.set' },
-    { type: 'files.download' },
+    // { type: 'pkg.devDependencies.set' },
+    // { type: 'pkg.scripts.set' },
+    // { type: 'files.download' },
   ],
   clean: [
     { type: 'pkg.devDependencies.delete' },

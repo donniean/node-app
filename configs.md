@@ -7,6 +7,7 @@
   - [AutoCorrect](#autocorrect)
   - [CSpell](#cspell)
   - [EditorConfig](#editorconfig)
+  - [ESLint](#eslint)
   - [gitattributes](#gitattributes)
   - [gitignore](#gitignore)
   - [HTML-validate](#html-validate)
@@ -110,6 +111,48 @@ Clean
 
 ```bash
 rm .editorconfig
+```
+
+### [ESLint](https://github.com/eslint/eslint)
+
+Setup
+
+```bash
+
+```
+
+Clean
+
+```bash
+pnpm pkg delete \
+  'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]' \
+  'devDependencies["@eslint/compat"]' \
+  'devDependencies["@eslint/js"]' \
+  'devDependencies["@tanstack/eslint-plugin-query"]' \
+  'devDependencies["@vitest/eslint-plugin"]' \
+  'devDependencies["eslint"]' \
+  'devDependencies["eslint-config-prettier"]' \
+  'devDependencies["eslint-import-resolver-typescript"]' \
+  'devDependencies["eslint-plugin-i18next"]' \
+  'devDependencies["eslint-plugin-import-x"]' \
+  'devDependencies["eslint-plugin-jsx-a11y"]' \
+  'devDependencies["eslint-plugin-n"]' \
+  'devDependencies["eslint-plugin-promise"]' \
+  'devDependencies["eslint-plugin-react"]' \
+  'devDependencies["eslint-plugin-react-hooks"]' \
+  'devDependencies["eslint-plugin-react-refresh"]' \
+  'devDependencies["eslint-plugin-simple-import-sort"]' \
+  'devDependencies["eslint-plugin-sonarjs"]' \
+  'devDependencies["eslint-plugin-unicorn"]' \
+  'devDependencies["eslint-plugin-unused-imports"]' \
+  'devDependencies["globals"]' \
+  'devDependencies["typescript-eslint"]'
+
+pnpm pkg delete \
+  'scripts["lint:eslint"]' \
+  'scripts["lint:eslint:fix"]'
+
+rm eslint.config.mjs
 ```
 
 ### [gitattributes](https://git-scm.com/docs/gitattributes)
@@ -522,6 +565,8 @@ curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/
 
 curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 
+# ESLint
+
 # gitattributes
 
 curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
@@ -695,6 +740,38 @@ rm cspell.config.mjs
 # EditorConfig
 
 rm .editorconfig
+
+# ESLint
+
+pnpm pkg delete \
+  'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]' \
+  'devDependencies["@eslint/compat"]' \
+  'devDependencies["@eslint/js"]' \
+  'devDependencies["@tanstack/eslint-plugin-query"]' \
+  'devDependencies["@vitest/eslint-plugin"]' \
+  'devDependencies["eslint"]' \
+  'devDependencies["eslint-config-prettier"]' \
+  'devDependencies["eslint-import-resolver-typescript"]' \
+  'devDependencies["eslint-plugin-i18next"]' \
+  'devDependencies["eslint-plugin-import-x"]' \
+  'devDependencies["eslint-plugin-jsx-a11y"]' \
+  'devDependencies["eslint-plugin-n"]' \
+  'devDependencies["eslint-plugin-promise"]' \
+  'devDependencies["eslint-plugin-react"]' \
+  'devDependencies["eslint-plugin-react-hooks"]' \
+  'devDependencies["eslint-plugin-react-refresh"]' \
+  'devDependencies["eslint-plugin-simple-import-sort"]' \
+  'devDependencies["eslint-plugin-sonarjs"]' \
+  'devDependencies["eslint-plugin-unicorn"]' \
+  'devDependencies["eslint-plugin-unused-imports"]' \
+  'devDependencies["globals"]' \
+  'devDependencies["typescript-eslint"]'
+
+pnpm pkg delete \
+  'scripts["lint:eslint"]' \
+  'scripts["lint:eslint:fix"]'
+
+rm eslint.config.mjs
 
 # gitattributes
 
