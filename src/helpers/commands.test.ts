@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { expect, test } from 'vitest';
+import * as z from 'zod';
 
 import { buildCleanCommand, buildSetupCommand } from './commands';
 
@@ -30,10 +31,10 @@ const executablePkg = {
   ],
 };
 
-interface TestPackageJson {
-  devDependencies?: Record<string, string>;
-  scripts?: Record<string, string>;
-}
+const TestPackageJsonSchema = z.object({
+  devDependencies: z.record(z.string(), z.string()).optional(),
+  scripts: z.record(z.string(), z.string()).optional(),
+});
 
 function createTemporaryPackage() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'node-app-'));
@@ -45,9 +46,10 @@ function createTemporaryPackage() {
 }
 
 function readPackageJson(directory: string) {
-  return JSON.parse(
+  const packageJson: unknown = JSON.parse(
     fs.readFileSync(path.join(directory, 'package.json'), 'utf8'),
-  ) as TestPackageJson;
+  );
+  return TestPackageJsonSchema.parse(packageJson);
 }
 
 function runShellCommand(command: string, cwd: string) {

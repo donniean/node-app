@@ -18,6 +18,10 @@ function formatPackageJsonPropertyPath(parent: string, key: string) {
   return quoteShellValue(`${parent}[${JSON.stringify(key)}]`);
 }
 
+function throwUnsupportedCommandType(_type: never): never {
+  throw new Error('Unsupported command type');
+}
+
 function buildSetupCommand({
   name,
   pkg,
@@ -79,8 +83,14 @@ function buildSetupCommand({
         ),
       });
     }
-    default: {
+    case 'custom': {
+      if (command === undefined) {
+        throw new Error(`${errorTitle}: please set command in config.setup`);
+      }
       return command;
+    }
+    default: {
+      return throwUnsupportedCommandType(type);
     }
   }
 }
@@ -138,8 +148,14 @@ function buildCleanCommand({
         args: filePaths,
       });
     }
-    default: {
+    case 'custom': {
+      if (command === undefined) {
+        throw new Error(`${errorTitle}: please set command in config.clean`);
+      }
       return command;
+    }
+    default: {
+      return throwUnsupportedCommandType(type);
     }
   }
 }
