@@ -4,35 +4,37 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { expect, test } from 'vitest';
+import * as z from 'zod';
 
 import { buildCleanCommand, buildSetupCommand } from './commands';
 
 const name = 'Test Config';
-const lineContinuation = ' \\' + '\n';
+const lineContinuation = ` \\
+`;
 
 const pkg = {
   devDependencies: [
-    { packageName: '@eslint/js' },
-    { packageName: 'eslint-config-prettier', version: '10.0.0' },
+    { packageName: 'oxlint' },
+    { packageName: 'oxlint-tsgolint' },
   ],
   scripts: [
-    { key: 'lint:eslint', value: 'eslint' },
-    { key: 'lint:eslint:fix', value: 'eslint --fix' },
+    { key: 'lint:oxlint', value: 'oxlint' },
+    { key: 'lint:oxlint:fix', value: 'oxlint --fix' },
   ],
 };
 
 const executablePkg = {
   ...pkg,
   devDependencies: [
-    { packageName: '@eslint/js', version: '1.0.0' },
-    { packageName: 'eslint-config-prettier', version: '10.0.0' },
+    { packageName: 'oxlint', version: '1.70.0' },
+    { packageName: 'oxlint-tsgolint', version: '0.23.0' },
   ],
 };
 
-interface TestPackageJson {
-  devDependencies?: Record<string, string>;
-  scripts?: Record<string, string>;
-}
+const TestPackageJsonSchema = z.object({
+  devDependencies: z.record(z.string(), z.string()).optional(),
+  scripts: z.record(z.string(), z.string()).optional(),
+});
 
 function createTemporaryPackage() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'node-app-'));
@@ -44,9 +46,10 @@ function createTemporaryPackage() {
 }
 
 function readPackageJson(directory: string) {
-  return JSON.parse(
+  const packageJson: unknown = JSON.parse(
     fs.readFileSync(path.join(directory, 'package.json'), 'utf8'),
-  ) as TestPackageJson;
+  );
+  return TestPackageJsonSchema.parse(packageJson);
 }
 
 function runShellCommand(command: string, cwd: string) {
@@ -63,8 +66,8 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
     }),
   ).toBe(
     [
-      'pnpm pkg set \'devDependencies["@eslint/js"]\'="$(pnpm view @eslint/js version)"',
-      'pnpm pkg set \'devDependencies["eslint-config-prettier"]\'="10.0.0"',
+      'pnpm pkg set \'devDependencies["oxlint"]\'="$(pnpm view oxlint version)"',
+      'pnpm pkg set \'devDependencies["oxlint-tsgolint"]\'="$(pnpm view oxlint-tsgolint version)"',
     ].join('\n'),
   );
 
@@ -78,8 +81,8 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg set',
-      "  'scripts[\"lint:eslint\"]'='eslint'",
-      "  'scripts[\"lint:eslint:fix\"]'='eslint --fix'",
+      "  'scripts[\"lint:oxlint\"]'='oxlint'",
+      "  'scripts[\"lint:oxlint:fix\"]'='oxlint --fix'",
     ].join(lineContinuation),
   );
 });
@@ -108,12 +111,12 @@ test('generated pnpm pkg commands can update package.json', () => {
 
     expect(readPackageJson(directory)).toMatchObject({
       devDependencies: {
-        '@eslint/js': '1.0.0',
-        'eslint-config-prettier': '10.0.0',
+        oxlint: '1.70.0',
+        'oxlint-tsgolint': '0.23.0',
       },
       scripts: {
-        'lint:eslint': 'eslint',
-        'lint:eslint:fix': 'eslint --fix',
+        'lint:oxlint': 'oxlint',
+        'lint:oxlint:fix': 'oxlint --fix',
       },
     });
 
@@ -154,8 +157,8 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg delete',
-      '  \'devDependencies["@eslint/js"]\'',
-      '  \'devDependencies["eslint-config-prettier"]\'',
+      '  \'devDependencies["oxlint"]\'',
+      '  \'devDependencies["oxlint-tsgolint"]\'',
     ].join(lineContinuation),
   );
 
@@ -169,8 +172,8 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg delete',
-      '  \'scripts["lint:eslint"]\'',
-      '  \'scripts["lint:eslint:fix"]\'',
+      '  \'scripts["lint:oxlint"]\'',
+      '  \'scripts["lint:oxlint:fix"]\'',
     ].join(lineContinuation),
   );
 });

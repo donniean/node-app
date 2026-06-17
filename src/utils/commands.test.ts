@@ -3,7 +3,8 @@ import { expect, test } from 'vitest';
 
 import { buildCommand } from './commands';
 
-const lineContinuation = ' \\' + '\n';
+const lineContinuation = ` \\
+`;
 
 test('no subCommand, no options, no args', () => {
   const result = buildCommand({ mainCommand: 'git' });

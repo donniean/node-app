@@ -22,7 +22,7 @@ async function getMarkdown(configs: Configs) {
     const { name, url, pkg = {}, filePaths = [], setup, clean } = config;
     const setupCommands = setup.map((item) =>
       buildSetupCommand({ name, pkg, filePaths, setupCommandAction: item }),
-    ) as string[];
+    );
     const cleanCommands = clean.map((item) =>
       buildCleanCommand({
         name,
@@ -30,7 +30,7 @@ async function getMarkdown(configs: Configs) {
         filePaths,
         cleanCommandAction: item,
       }),
-    ) as string[];
+    );
 
     const section: DataObject[] = [
       {

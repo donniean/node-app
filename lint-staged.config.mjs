@@ -14,6 +14,6 @@ export default {
     'pnpm run docs',
     `git add configs.md`,
   ],
-  '*.{js,mjs,cjs,ts}': 'eslint --fix', // --max-warnings 0
+  '*.{js,mjs,cjs,ts}': 'oxlint --fix',
   '*.md': 'markdownlint --dot --fix',
 };
