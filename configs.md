@@ -7,13 +7,13 @@
   - [AutoCorrect](#autocorrect)
   - [CSpell](#cspell)
   - [EditorConfig](#editorconfig)
-  - [ESLint](#eslint)
   - [gitattributes](#gitattributes)
   - [gitignore](#gitignore)
   - [HTML-validate](#html-validate)
   - [Knip](#knip)
   - [markdownlint](#markdownlint)
   - [npm-check-updates](#npm-check-updates)
+  - [Oxlint](#oxlint)
   - [Prettier](#prettier)
   - [Sort Package.json](#sort-packagejson)
   - [Stylelint](#stylelint)
@@ -110,75 +110,6 @@ Clean
 
 ```bash
 rm .editorconfig
-```
-
-### [ESLint](https://github.com/eslint/eslint)
-
-Setup
-
-```bash
-pnpm pkg set 'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]'="$(pnpm view @eslint-community/eslint-plugin-eslint-comments version)"
-pnpm pkg set 'devDependencies["@eslint/compat"]'="$(pnpm view @eslint/compat version)"
-pnpm pkg set 'devDependencies["@eslint/js"]'="$(pnpm view @eslint/js version)"
-pnpm pkg set 'devDependencies["@tanstack/eslint-plugin-query"]'="$(pnpm view @tanstack/eslint-plugin-query version)"
-pnpm pkg set 'devDependencies["@vitest/eslint-plugin"]'="$(pnpm view @vitest/eslint-plugin version)"
-pnpm pkg set 'devDependencies["eslint"]'="$(pnpm view eslint version)"
-pnpm pkg set 'devDependencies["eslint-config-prettier"]'="$(pnpm view eslint-config-prettier version)"
-pnpm pkg set 'devDependencies["eslint-import-resolver-typescript"]'="$(pnpm view eslint-import-resolver-typescript version)"
-pnpm pkg set 'devDependencies["eslint-plugin-i18next"]'="$(pnpm view eslint-plugin-i18next version)"
-pnpm pkg set 'devDependencies["eslint-plugin-import-x"]'="$(pnpm view eslint-plugin-import-x version)"
-pnpm pkg set 'devDependencies["eslint-plugin-jsx-a11y"]'="$(pnpm view eslint-plugin-jsx-a11y version)"
-pnpm pkg set 'devDependencies["eslint-plugin-n"]'="$(pnpm view eslint-plugin-n version)"
-pnpm pkg set 'devDependencies["eslint-plugin-promise"]'="$(pnpm view eslint-plugin-promise version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react"]'="$(pnpm view eslint-plugin-react version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react-hooks"]'="$(pnpm view eslint-plugin-react-hooks version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react-refresh"]'="$(pnpm view eslint-plugin-react-refresh version)"
-pnpm pkg set 'devDependencies["eslint-plugin-simple-import-sort"]'="$(pnpm view eslint-plugin-simple-import-sort version)"
-pnpm pkg set 'devDependencies["eslint-plugin-sonarjs"]'="$(pnpm view eslint-plugin-sonarjs version)"
-pnpm pkg set 'devDependencies["eslint-plugin-unicorn"]'="$(pnpm view eslint-plugin-unicorn version)"
-pnpm pkg set 'devDependencies["eslint-plugin-unused-imports"]'="$(pnpm view eslint-plugin-unused-imports version)"
-pnpm pkg set 'devDependencies["globals"]'="$(pnpm view globals version)"
-pnpm pkg set 'devDependencies["typescript-eslint"]'="$(pnpm view typescript-eslint version)"
-
-pnpm pkg set \
-  'scripts["lint:eslint"]'='eslint' \
-  'scripts["lint:eslint:fix"]'='eslint --fix'
-
-curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
-```
-
-Clean
-
-```bash
-pnpm pkg delete \
-  'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]' \
-  'devDependencies["@eslint/compat"]' \
-  'devDependencies["@eslint/js"]' \
-  'devDependencies["@tanstack/eslint-plugin-query"]' \
-  'devDependencies["@vitest/eslint-plugin"]' \
-  'devDependencies["eslint"]' \
-  'devDependencies["eslint-config-prettier"]' \
-  'devDependencies["eslint-import-resolver-typescript"]' \
-  'devDependencies["eslint-plugin-i18next"]' \
-  'devDependencies["eslint-plugin-import-x"]' \
-  'devDependencies["eslint-plugin-jsx-a11y"]' \
-  'devDependencies["eslint-plugin-n"]' \
-  'devDependencies["eslint-plugin-promise"]' \
-  'devDependencies["eslint-plugin-react"]' \
-  'devDependencies["eslint-plugin-react-hooks"]' \
-  'devDependencies["eslint-plugin-react-refresh"]' \
-  'devDependencies["eslint-plugin-simple-import-sort"]' \
-  'devDependencies["eslint-plugin-sonarjs"]' \
-  'devDependencies["eslint-plugin-unicorn"]' \
-  'devDependencies["eslint-plugin-unused-imports"]' \
-  'devDependencies["globals"]' \
-  'devDependencies["typescript-eslint"]'
-
-pnpm pkg delete \
-  'scripts["lint:eslint"]' \
-  'scripts["lint:eslint:fix"]'
-
-rm eslint.config.mjs
 ```
 
 ### [gitattributes](https://git-scm.com/docs/gitattributes)
@@ -311,6 +242,32 @@ pnpm pkg delete \
   'scripts["ncu:upgrade"]'
 
 rm .ncurc.mjs
+```
+
+### [Oxlint](https://github.com/oxc-project/oxc)
+
+Setup
+
+```bash
+pnpm pkg set 'devDependencies["oxlint"]'="$(pnpm view oxlint version)"
+
+pnpm pkg set \
+  'scripts["lint:oxlint"]'='oxlint' \
+  'scripts["lint:oxlint:fix"]'='oxlint --fix'
+
+curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/oxlint.config.ts
+```
+
+Clean
+
+```bash
+pnpm pkg delete 'devDependencies["oxlint"]'
+
+pnpm pkg delete \
+  'scripts["lint:oxlint"]' \
+  'scripts["lint:oxlint:fix"]'
+
+rm oxlint.config.ts
 ```
 
 ### [Prettier](https://github.com/prettier/prettier)
@@ -562,37 +519,6 @@ curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/
 
 curl --create-dirs --output .editorconfig https://raw.githubusercontent.com/donniean/react-app/main/.editorconfig
 
-# ESLint
-
-pnpm pkg set 'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]'="$(pnpm view @eslint-community/eslint-plugin-eslint-comments version)"
-pnpm pkg set 'devDependencies["@eslint/compat"]'="$(pnpm view @eslint/compat version)"
-pnpm pkg set 'devDependencies["@eslint/js"]'="$(pnpm view @eslint/js version)"
-pnpm pkg set 'devDependencies["@tanstack/eslint-plugin-query"]'="$(pnpm view @tanstack/eslint-plugin-query version)"
-pnpm pkg set 'devDependencies["@vitest/eslint-plugin"]'="$(pnpm view @vitest/eslint-plugin version)"
-pnpm pkg set 'devDependencies["eslint"]'="$(pnpm view eslint version)"
-pnpm pkg set 'devDependencies["eslint-config-prettier"]'="$(pnpm view eslint-config-prettier version)"
-pnpm pkg set 'devDependencies["eslint-import-resolver-typescript"]'="$(pnpm view eslint-import-resolver-typescript version)"
-pnpm pkg set 'devDependencies["eslint-plugin-i18next"]'="$(pnpm view eslint-plugin-i18next version)"
-pnpm pkg set 'devDependencies["eslint-plugin-import-x"]'="$(pnpm view eslint-plugin-import-x version)"
-pnpm pkg set 'devDependencies["eslint-plugin-jsx-a11y"]'="$(pnpm view eslint-plugin-jsx-a11y version)"
-pnpm pkg set 'devDependencies["eslint-plugin-n"]'="$(pnpm view eslint-plugin-n version)"
-pnpm pkg set 'devDependencies["eslint-plugin-promise"]'="$(pnpm view eslint-plugin-promise version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react"]'="$(pnpm view eslint-plugin-react version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react-hooks"]'="$(pnpm view eslint-plugin-react-hooks version)"
-pnpm pkg set 'devDependencies["eslint-plugin-react-refresh"]'="$(pnpm view eslint-plugin-react-refresh version)"
-pnpm pkg set 'devDependencies["eslint-plugin-simple-import-sort"]'="$(pnpm view eslint-plugin-simple-import-sort version)"
-pnpm pkg set 'devDependencies["eslint-plugin-sonarjs"]'="$(pnpm view eslint-plugin-sonarjs version)"
-pnpm pkg set 'devDependencies["eslint-plugin-unicorn"]'="$(pnpm view eslint-plugin-unicorn version)"
-pnpm pkg set 'devDependencies["eslint-plugin-unused-imports"]'="$(pnpm view eslint-plugin-unused-imports version)"
-pnpm pkg set 'devDependencies["globals"]'="$(pnpm view globals version)"
-pnpm pkg set 'devDependencies["typescript-eslint"]'="$(pnpm view typescript-eslint version)"
-
-pnpm pkg set \
-  'scripts["lint:eslint"]'='eslint' \
-  'scripts["lint:eslint:fix"]'='eslint --fix'
-
-curl --create-dirs --output eslint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/eslint.config.mjs
-
 # gitattributes
 
 curl --create-dirs --output .gitattributes https://raw.githubusercontent.com/donniean/react-app/main/.gitattributes
@@ -640,6 +566,16 @@ pnpm pkg set \
   'scripts["ncu:upgrade"]'='pnpm run ncu --upgrade'
 
 curl --create-dirs --output .ncurc.mjs https://raw.githubusercontent.com/donniean/react-app/main/.ncurc.mjs
+
+# Oxlint
+
+pnpm pkg set 'devDependencies["oxlint"]'="$(pnpm view oxlint version)"
+
+pnpm pkg set \
+  'scripts["lint:oxlint"]'='oxlint' \
+  'scripts["lint:oxlint:fix"]'='oxlint --fix'
+
+curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/oxlint.config.ts
 
 # Prettier
 
@@ -756,38 +692,6 @@ rm cspell.config.mjs
 
 rm .editorconfig
 
-# ESLint
-
-pnpm pkg delete \
-  'devDependencies["@eslint-community/eslint-plugin-eslint-comments"]' \
-  'devDependencies["@eslint/compat"]' \
-  'devDependencies["@eslint/js"]' \
-  'devDependencies["@tanstack/eslint-plugin-query"]' \
-  'devDependencies["@vitest/eslint-plugin"]' \
-  'devDependencies["eslint"]' \
-  'devDependencies["eslint-config-prettier"]' \
-  'devDependencies["eslint-import-resolver-typescript"]' \
-  'devDependencies["eslint-plugin-i18next"]' \
-  'devDependencies["eslint-plugin-import-x"]' \
-  'devDependencies["eslint-plugin-jsx-a11y"]' \
-  'devDependencies["eslint-plugin-n"]' \
-  'devDependencies["eslint-plugin-promise"]' \
-  'devDependencies["eslint-plugin-react"]' \
-  'devDependencies["eslint-plugin-react-hooks"]' \
-  'devDependencies["eslint-plugin-react-refresh"]' \
-  'devDependencies["eslint-plugin-simple-import-sort"]' \
-  'devDependencies["eslint-plugin-sonarjs"]' \
-  'devDependencies["eslint-plugin-unicorn"]' \
-  'devDependencies["eslint-plugin-unused-imports"]' \
-  'devDependencies["globals"]' \
-  'devDependencies["typescript-eslint"]'
-
-pnpm pkg delete \
-  'scripts["lint:eslint"]' \
-  'scripts["lint:eslint:fix"]'
-
-rm eslint.config.mjs
-
 # gitattributes
 
 rm .gitattributes
@@ -835,6 +739,16 @@ pnpm pkg delete \
   'scripts["ncu:upgrade"]'
 
 rm .ncurc.mjs
+
+# Oxlint
+
+pnpm pkg delete 'devDependencies["oxlint"]'
+
+pnpm pkg delete \
+  'scripts["lint:oxlint"]' \
+  'scripts["lint:oxlint:fix"]'
+
+rm oxlint.config.ts
 
 # Prettier
 

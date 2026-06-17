@@ -8,25 +8,20 @@ import { expect, test } from 'vitest';
 import { buildCleanCommand, buildSetupCommand } from './commands';
 
 const name = 'Test Config';
-const lineContinuation = ' \\' + '\n';
+const lineContinuation = ` \\
+`;
 
 const pkg = {
-  devDependencies: [
-    { packageName: '@eslint/js' },
-    { packageName: 'eslint-config-prettier', version: '10.0.0' },
-  ],
+  devDependencies: [{ packageName: 'oxlint' }],
   scripts: [
-    { key: 'lint:eslint', value: 'eslint' },
-    { key: 'lint:eslint:fix', value: 'eslint --fix' },
+    { key: 'lint:oxlint', value: 'oxlint' },
+    { key: 'lint:oxlint:fix', value: 'oxlint --fix' },
   ],
 };
 
 const executablePkg = {
   ...pkg,
-  devDependencies: [
-    { packageName: '@eslint/js', version: '1.0.0' },
-    { packageName: 'eslint-config-prettier', version: '10.0.0' },
-  ],
+  devDependencies: [{ packageName: 'oxlint', version: '1.70.0' }],
 };
 
 interface TestPackageJson {
@@ -63,8 +58,7 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
     }),
   ).toBe(
     [
-      'pnpm pkg set \'devDependencies["@eslint/js"]\'="$(pnpm view @eslint/js version)"',
-      'pnpm pkg set \'devDependencies["eslint-config-prettier"]\'="10.0.0"',
+      'pnpm pkg set \'devDependencies["oxlint"]\'="$(pnpm view oxlint version)"',
     ].join('\n'),
   );
 
@@ -78,8 +72,8 @@ test('builds safe pnpm pkg set commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg set',
-      "  'scripts[\"lint:eslint\"]'='eslint'",
-      "  'scripts[\"lint:eslint:fix\"]'='eslint --fix'",
+      "  'scripts[\"lint:oxlint\"]'='oxlint'",
+      "  'scripts[\"lint:oxlint:fix\"]'='oxlint --fix'",
     ].join(lineContinuation),
   );
 });
@@ -108,12 +102,11 @@ test('generated pnpm pkg commands can update package.json', () => {
 
     expect(readPackageJson(directory)).toMatchObject({
       devDependencies: {
-        '@eslint/js': '1.0.0',
-        'eslint-config-prettier': '10.0.0',
+        oxlint: '1.70.0',
       },
       scripts: {
-        'lint:eslint': 'eslint',
-        'lint:eslint:fix': 'eslint --fix',
+        'lint:oxlint': 'oxlint',
+        'lint:oxlint:fix': 'oxlint --fix',
       },
     });
 
@@ -151,13 +144,7 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
       filePaths: [],
       cleanCommandAction: { type: 'pkg.devDependencies.delete' },
     }),
-  ).toBe(
-    [
-      'pnpm pkg delete',
-      '  \'devDependencies["@eslint/js"]\'',
-      '  \'devDependencies["eslint-config-prettier"]\'',
-    ].join(lineContinuation),
-  );
+  ).toBe('pnpm pkg delete \'devDependencies["oxlint"]\'');
 
   expect(
     buildCleanCommand({
@@ -169,8 +156,8 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
   ).toBe(
     [
       'pnpm pkg delete',
-      '  \'scripts["lint:eslint"]\'',
-      '  \'scripts["lint:eslint:fix"]\'',
+      '  \'scripts["lint:oxlint"]\'',
+      '  \'scripts["lint:oxlint:fix"]\'',
     ].join(lineContinuation),
   );
 });

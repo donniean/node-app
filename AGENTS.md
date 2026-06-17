@@ -42,7 +42,7 @@ Use smaller checks by file type when possible:
 pnpm run format:package-json:check
 pnpm run format:prettier:check
 pnpm run lint:autocorrect
-pnpm run lint:eslint
+pnpm run lint:oxlint
 pnpm run lint:markdown
 pnpm run lint:spellcheck
 pnpm run typecheck
@@ -53,7 +53,7 @@ Matching `fix` commands include:
 - `pnpm run format:package-json`
 - `pnpm run format:prettier`
 - `pnpm run lint:autocorrect:fix`
-- `pnpm run lint:eslint:fix`
+- `pnpm run lint:oxlint:fix`
 - `pnpm run lint:markdown:fix`
 
 CI currently runs lint, test, and build on pull requests to `main`.

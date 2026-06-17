@@ -5,7 +5,8 @@ interface BuildCommandOptions {
   args?: string[];
 }
 
-const LINE_CONTINUATION = ' \\' + '\n';
+const LINE_CONTINUATION = ` \\
+`;
 
 function buildCommand({
   mainCommand,
