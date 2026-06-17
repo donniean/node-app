@@ -44,7 +44,6 @@ export default defineConfig({
     'npmjs',
     'numbro',
     'oxlint',
-    'tsgolint',
     'rimraf',
     'sonarjs',
     'stylelint',
@@ -61,6 +60,7 @@ export default defineConfig({
     'vite',
     // custom
     'donniean',
+    'oxlint-tsgolint',
   ],
   ignorePaths: [
     '.*ignore',
