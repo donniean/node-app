@@ -9,9 +9,9 @@ export default defineConfig({
     'webstorm',
     'wechat',
     // brands
-    'Vercel',
+    'vercel',
     // Docker
-    'Buildx',
+    'buildx',
     // files
     '.autocorrectignore',
     '.autocorrectrc',
@@ -56,7 +56,7 @@ export default defineConfig({
     'nodenext',
     'classname',
     // Vite
-    'VITE',
+    'vite',
     // custom
     'donniean',
   ],
