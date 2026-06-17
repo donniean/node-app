@@ -5,7 +5,10 @@ export const CONFIG = {
   name: 'Oxlint',
   url: 'https://github.com/oxc-project/oxc',
   pkg: {
-    devDependencies: [{ packageName: 'oxlint' }],
+    devDependencies: [
+      { packageName: 'oxlint' },
+      { packageName: 'oxlint-tsgolint' },
+    ],
     scripts: [
       { key: 'lint:oxlint', value: 'oxlint' },
       { key: 'lint:oxlint:fix', value: 'oxlint --fix' },

@@ -250,6 +250,7 @@ Setup
 
 ```bash
 pnpm pkg set 'devDependencies["oxlint"]'="$(pnpm view oxlint version)"
+pnpm pkg set 'devDependencies["oxlint-tsgolint"]'="$(pnpm view oxlint-tsgolint version)"
 
 pnpm pkg set \
   'scripts["lint:oxlint"]'='oxlint' \
@@ -261,7 +262,9 @@ curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/d
 Clean
 
 ```bash
-pnpm pkg delete 'devDependencies["oxlint"]'
+pnpm pkg delete \
+  'devDependencies["oxlint"]' \
+  'devDependencies["oxlint-tsgolint"]'
 
 pnpm pkg delete \
   'scripts["lint:oxlint"]' \
@@ -570,6 +573,7 @@ curl --create-dirs --output .ncurc.mjs https://raw.githubusercontent.com/donniea
 # Oxlint
 
 pnpm pkg set 'devDependencies["oxlint"]'="$(pnpm view oxlint version)"
+pnpm pkg set 'devDependencies["oxlint-tsgolint"]'="$(pnpm view oxlint-tsgolint version)"
 
 pnpm pkg set \
   'scripts["lint:oxlint"]'='oxlint' \
@@ -742,7 +746,9 @@ rm .ncurc.mjs
 
 # Oxlint
 
-pnpm pkg delete 'devDependencies["oxlint"]'
+pnpm pkg delete \
+  'devDependencies["oxlint"]' \
+  'devDependencies["oxlint-tsgolint"]'
 
 pnpm pkg delete \
   'scripts["lint:oxlint"]' \
