@@ -372,11 +372,7 @@ rm \
 Setup
 
 ```bash
-# pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
-#
-# pnpm pkg set \
-#   'scripts["format:package-json"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"' \
-#   'scripts["format:package-json:check"]'='pnpm run format:package-json --check'
+
 ```
 
 Clean
@@ -657,12 +653,6 @@ curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/d
 # Prettier
 
 # Sort Package.json
-
-# pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
-#
-# pnpm pkg set \
-#   'scripts["format:package-json"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"' \
-#   'scripts["format:package-json:check"]'='pnpm run format:package-json --check'
 
 # Stylelint
 

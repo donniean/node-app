@@ -19,19 +19,7 @@ export const CONFIG = {
     ],
   },
   setup: [
-    {
-      type: 'custom',
-      command: [
-        '# pnpm pkg set \'devDependencies["sort-package-json"]\'="$(pnpm view sort-package-json version)"',
-        '#',
-        '# pnpm pkg set \\',
-        '#   \'scripts["format:package-json"]\'=\'sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"\' \\',
-        '#   \'scripts["format:package-json:check"]\'=\'pnpm run format:package-json --check\'',
-      ].join('\n'),
-    },
+    // { type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }
   ],
-  clean: [
-    { type: 'pkg.devDependencies.delete' },
-    { type: 'pkg.scripts.delete' },
-  ],
+  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'pkg.scripts.delete' }],
 } as const satisfies Config;
