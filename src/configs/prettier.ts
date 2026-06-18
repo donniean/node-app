@@ -5,10 +5,7 @@ export const CONFIG = {
   name: 'Prettier',
   url: 'https://github.com/prettier/prettier',
   pkg: {
-    devDependencies: [
-      { packageName: 'prettier' },
-      { packageName: 'prettier-plugin-tailwindcss' },
-    ],
+    devDependencies: [{ packageName: 'prettier' }, { packageName: 'prettier-plugin-tailwindcss' }],
     scripts: [
       { key: 'format:prettier', value: 'prettier --write --ignore-unknown .' },
       {
@@ -19,21 +16,9 @@ export const CONFIG = {
   },
   filePaths: ['prettier.config.mjs', '.prettierignore'],
   setup: [
-    {
-      type: 'custom',
-      command: [
-        '# pnpm pkg set \'devDependencies["prettier"]\'="$(pnpm view prettier version)"',
-        '# pnpm pkg set \'devDependencies["prettier-plugin-tailwindcss"]\'="$(pnpm view prettier-plugin-tailwindcss version)"',
-        '#',
-        '# pnpm pkg set \\',
-        "#   'scripts[\"format:prettier\"]'='prettier --write --ignore-unknown .' \\",
-        "#   'scripts[\"format:prettier:check\"]'='prettier --check --ignore-unknown .'",
-        '#',
-        '# curl --create-dirs \\',
-        '#   --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \\',
-        '#   --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore',
-      ].join('\n'),
-    },
+    // { type: 'pkg.devDependencies.set' },
+    // { type: 'pkg.scripts.set' },
+    // { type: 'files.download' },
   ],
   clean: [
     { type: 'pkg.devDependencies.delete' },

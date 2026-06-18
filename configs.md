@@ -348,16 +348,7 @@ rm oxlint.config.ts
 Setup
 
 ```bash
-# pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
-# pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
-#
-# pnpm pkg set \
-#   'scripts["format:prettier"]'='prettier --write --ignore-unknown .' \
-#   'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .'
-#
-# curl --create-dirs \
-#   --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-#   --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
+
 ```
 
 Clean
@@ -664,17 +655,6 @@ pnpm pkg set \
 curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/oxlint.config.ts
 
 # Prettier
-
-# pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
-# pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
-#
-# pnpm pkg set \
-#   'scripts["format:prettier"]'='prettier --write --ignore-unknown .' \
-#   'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .'
-#
-# curl --create-dirs \
-#   --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-#   --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 
 # Sort Package.json
 
