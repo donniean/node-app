@@ -18,7 +18,18 @@ export const CONFIG = {
       },
     ],
   },
-  setup: [{ type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }],
+  setup: [
+    {
+      type: 'custom',
+      command: [
+        '# pnpm pkg set \'devDependencies["sort-package-json"]\'="$(pnpm view sort-package-json version)"',
+        '#',
+        '# pnpm pkg set \\',
+        '#   \'scripts["format:package-json"]\'=\'sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"\' \\',
+        '#   \'scripts["format:package-json:check"]\'=\'pnpm run format:package-json --check\'',
+      ].join('\n'),
+    },
+  ],
   clean: [
     { type: 'pkg.devDependencies.delete' },
     { type: 'pkg.scripts.delete' },
