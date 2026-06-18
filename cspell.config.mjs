@@ -22,7 +22,6 @@ export default defineConfig({
     '.markdownlintignore',
     '.ncurc',
     '.nvmrc',
-    '.oxfmtrc',
     '.stylelintignore',
     // Git
     'signoff',

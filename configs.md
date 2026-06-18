@@ -288,7 +288,7 @@ pnpm pkg delete \
 rm .ncurc.mjs
 ```
 
-### [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
+### [Oxfmt](https://github.com/oxc-project/oxc)
 
 Setup
 

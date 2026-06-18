@@ -3,7 +3,7 @@ import type { Config } from '@/models/configs.types';
 export const CONFIG = {
   key: 'oxfmt',
   name: 'Oxfmt',
-  url: 'https://oxc.rs/docs/guide/usage/formatter',
+  url: 'https://github.com/oxc-project/oxc',
   pkg: {
     devDependencies: [{ packageName: 'oxfmt' }],
     scripts: [
