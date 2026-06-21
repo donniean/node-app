@@ -13,10 +13,7 @@ const lineContinuation = ` \\
 `;
 
 const pkg = {
-  devDependencies: [
-    { packageName: 'oxlint' },
-    { packageName: 'oxlint-tsgolint' },
-  ],
+  devDependencies: [{ packageName: 'oxlint' }, { packageName: 'oxlint-tsgolint' }],
   scripts: [
     { key: 'lint:oxlint', value: 'oxlint' },
     { key: 'lint:oxlint:fix', value: 'oxlint --fix' },
@@ -38,10 +35,7 @@ const TestPackageJsonSchema = z.object({
 
 function createTemporaryPackage() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'node-app-'));
-  fs.writeFileSync(
-    path.join(directory, 'package.json'),
-    `${JSON.stringify({ name: 'demo' })}\n`,
-  );
+  fs.writeFileSync(path.join(directory, 'package.json'), `${JSON.stringify({ name: 'demo' })}\n`);
   return directory;
 }
 
@@ -170,10 +164,8 @@ test('builds safe pnpm pkg delete commands for package.json keys', () => {
       cleanCommandAction: { type: 'pkg.scripts.delete' },
     }),
   ).toBe(
-    [
-      'pnpm pkg delete',
-      '  \'scripts["lint:oxlint"]\'',
-      '  \'scripts["lint:oxlint:fix"]\'',
-    ].join(lineContinuation),
+    ['pnpm pkg delete', '  \'scripts["lint:oxlint"]\'', '  \'scripts["lint:oxlint:fix"]\''].join(
+      lineContinuation,
+    ),
   );
 });

@@ -9,8 +9,7 @@ export const CONFIG = {
     scripts: [
       {
         key: 'lint:spellcheck',
-        value:
-          'cspell lint --no-progress --no-must-find-files --dot --gitignore .',
+        value: 'cspell lint --no-progress --no-must-find-files --dot --gitignore .',
       },
     ],
   },

@@ -9,8 +9,5 @@ export const CONFIG = {
     scripts: [{ key: 'typecheck', value: 'tsc --noEmit' }],
   },
   setup: [{ type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }],
-  clean: [
-    { type: 'pkg.devDependencies.delete' },
-    { type: 'pkg.scripts.delete' },
-  ],
+  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'pkg.scripts.delete' }],
 } as const satisfies Config;

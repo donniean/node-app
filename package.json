@@ -5,21 +5,12 @@
   "bugs": {
     "url": "https://github.com/donniean/node-app/issues"
   },
+  "license": "MIT",
+  "author": "Donnie An",
   "repository": {
     "type": "git",
     "url": "https://github.com/donniean/node-app.git"
   },
-  "license": "MIT",
-  "author": "Donnie An",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "bin": {
     "configs-md": "./bin/cli.js"
   },
@@ -27,8 +18,16 @@
     "bin",
     "dist"
   ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "prebuild": "pnpm run clean",
     "build": "tsup",
     "build:watch": "pnpm run build --watch",
     "changeset:add": "changeset add",
@@ -37,7 +36,8 @@
     "clean": "rimraf dist/",
     "dev": "tsx src/cli",
     "docs": "tsx src/scripts",
-    "postdocs": "oxfmt configs.md",
+    "format:oxfmt": "oxfmt",
+    "format:oxfmt:check": "oxfmt --check",
     "link": "pnpm run build && pnpm link",
     "lint": "concurrently --group --timings \"pnpm:lint:*(!:fix|^lint:knip$)\" \"pnpm:format:*:check\" \"pnpm:typecheck\"",
     "lint:autocorrect": "autocorrect --lint",
@@ -52,15 +52,15 @@
     "lint:spellcheck": "cspell lint --no-progress --no-must-find-files --dot --gitignore .",
     "ncu": "ncu --deep --format cooldown",
     "ncu:upgrade": "pnpm run ncu --upgrade",
+    "postdocs": "oxfmt configs.md",
+    "prebuild": "pnpm run clean",
     "prepare": "husky",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --pass-with-no-tests",
     "test:unit:coverage": "vitest run --coverage",
     "test:unit:ui": "vitest --ui",
     "test:unit:watch": "vitest watch",
-    "typecheck": "tsc --noEmit",
-    "format:oxfmt": "oxfmt",
-    "format:oxfmt:check": "oxfmt --check"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "commander": "15.0.0",
@@ -98,8 +98,8 @@
     "typescript": "5.9.3",
     "vitest": "4.1.9"
   },
-  "packageManager": "pnpm@11.8.0",
   "engines": {
     "node": ">=24.0.0 <25.0.0"
-  }
+  },
+  "packageManager": "pnpm@11.8.0"
 }

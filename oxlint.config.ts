@@ -74,10 +74,7 @@ export default defineConfig({
         considerQueryString: true,
       },
     ],
-    'import/no-unassigned-import': [
-      'error',
-      { allow: ['**/*.css', '../dist/cli.js'] },
-    ],
+    'import/no-unassigned-import': ['error', { allow: ['**/*.css', '../dist/cli.js'] }],
     'typescript/consistent-type-exports': 'error',
     'typescript/consistent-type-imports': 'error',
     'typescript/no-empty-object-type': 'error',

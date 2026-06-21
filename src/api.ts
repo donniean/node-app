@@ -105,9 +105,7 @@ function writeMarkdown({ filePath, content }: WriteMarkdownOptions) {
   });
 }
 
-async function writeMarkdownWithDefaults(options?: {
-  filePath?: string | undefined;
-}) {
+async function writeMarkdownWithDefaults(options?: { filePath?: string | undefined }) {
   const filePath = options?.filePath ?? resolveCwd(DEFAULT_OUTPUT_FILE_NAME);
   const content = await getMarkdown(CONFIGS);
   writeMarkdown({ filePath, content });
