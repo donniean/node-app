@@ -39,8 +39,7 @@ pnpm run docs
 Use smaller checks by file type when possible:
 
 ```bash
-pnpm run format:package-json:check
-pnpm run format:prettier:check
+pnpm run format:oxfmt:check
 pnpm run lint:autocorrect
 pnpm run lint:oxlint
 pnpm run lint:markdown
@@ -50,8 +49,7 @@ pnpm run typecheck
 
 Matching `fix` commands include:
 
-- `pnpm run format:package-json`
-- `pnpm run format:prettier`
+- `pnpm run format:oxfmt`
 - `pnpm run lint:autocorrect:fix`
 - `pnpm run lint:oxlint:fix`
 - `pnpm run lint:markdown:fix`

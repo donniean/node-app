@@ -14,6 +14,7 @@
   - [Knip](#knip)
   - [markdownlint](#markdownlint)
   - [npm-check-updates](#npm-check-updates)
+  - [Oxfmt](#oxfmt)
   - [Oxlint](#oxlint)
   - [Prettier](#prettier)
   - [Sort Package.json](#sort-packagejson)
@@ -287,6 +288,32 @@ pnpm pkg delete \
 rm .ncurc.mjs
 ```
 
+### [Oxfmt](https://github.com/oxc-project/oxc)
+
+Setup
+
+```bash
+pnpm pkg set 'devDependencies["oxfmt"]'="$(pnpm view oxfmt version)"
+
+pnpm pkg set \
+  'scripts["format:oxfmt"]'='oxfmt' \
+  'scripts["format:oxfmt:check"]'='oxfmt --check'
+
+curl --create-dirs --output oxfmt.config.ts https://raw.githubusercontent.com/donniean/react-app/main/oxfmt.config.ts
+```
+
+Clean
+
+```bash
+pnpm pkg delete 'devDependencies["oxfmt"]'
+
+pnpm pkg delete \
+  'scripts["format:oxfmt"]' \
+  'scripts["format:oxfmt:check"]'
+
+rm oxfmt.config.ts
+```
+
 ### [Oxlint](https://github.com/oxc-project/oxc)
 
 Setup
@@ -321,16 +348,7 @@ rm oxlint.config.ts
 Setup
 
 ```bash
-pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
-pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
 
-pnpm pkg set \
-  'scripts["format:prettier"]'='prettier --write --ignore-unknown .' \
-  'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .'
-
-curl --create-dirs \
-  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-  --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
 ```
 
 Clean
@@ -354,11 +372,7 @@ rm \
 Setup
 
 ```bash
-pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
 
-pnpm pkg set \
-  'scripts["format:package-json"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"' \
-  'scripts["format:package-json:check"]'='pnpm run format:package-json --check'
 ```
 
 Clean
@@ -615,6 +629,16 @@ pnpm pkg set \
 
 curl --create-dirs --output .ncurc.mjs https://raw.githubusercontent.com/donniean/react-app/main/.ncurc.mjs
 
+# Oxfmt
+
+pnpm pkg set 'devDependencies["oxfmt"]'="$(pnpm view oxfmt version)"
+
+pnpm pkg set \
+  'scripts["format:oxfmt"]'='oxfmt' \
+  'scripts["format:oxfmt:check"]'='oxfmt --check'
+
+curl --create-dirs --output oxfmt.config.ts https://raw.githubusercontent.com/donniean/react-app/main/oxfmt.config.ts
+
 # Oxlint
 
 pnpm pkg set 'devDependencies["oxlint"]'="$(pnpm view oxlint version)"
@@ -628,24 +652,7 @@ curl --create-dirs --output oxlint.config.ts https://raw.githubusercontent.com/d
 
 # Prettier
 
-pnpm pkg set 'devDependencies["prettier"]'="$(pnpm view prettier version)"
-pnpm pkg set 'devDependencies["prettier-plugin-tailwindcss"]'="$(pnpm view prettier-plugin-tailwindcss version)"
-
-pnpm pkg set \
-  'scripts["format:prettier"]'='prettier --write --ignore-unknown .' \
-  'scripts["format:prettier:check"]'='prettier --check --ignore-unknown .'
-
-curl --create-dirs \
-  --output prettier.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/prettier.config.mjs \
-  --output .prettierignore https://raw.githubusercontent.com/donniean/react-app/main/.prettierignore
-
 # Sort Package.json
-
-pnpm pkg set 'devDependencies["sort-package-json"]'="$(pnpm view sort-package-json version)"
-
-pnpm pkg set \
-  'scripts["format:package-json"]'='sort-package-json "**/package.json" --ignore "**/node_modules/**/package.json" --ignore "**/dist/**/package.json"' \
-  'scripts["format:package-json:check"]'='pnpm run format:package-json --check'
 
 # Stylelint
 
@@ -820,6 +827,16 @@ pnpm pkg delete \
   'scripts["ncu:upgrade"]'
 
 rm .ncurc.mjs
+
+# Oxfmt
+
+pnpm pkg delete 'devDependencies["oxfmt"]'
+
+pnpm pkg delete \
+  'scripts["format:oxfmt"]' \
+  'scripts["format:oxfmt:check"]'
+
+rm oxfmt.config.ts
 
 # Oxlint
 

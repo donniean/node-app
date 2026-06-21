@@ -5,10 +5,7 @@ export const CONFIG = {
   name: 'Prettier',
   url: 'https://github.com/prettier/prettier',
   pkg: {
-    devDependencies: [
-      { packageName: 'prettier' },
-      { packageName: 'prettier-plugin-tailwindcss' },
-    ],
+    devDependencies: [{ packageName: 'prettier' }, { packageName: 'prettier-plugin-tailwindcss' }],
     scripts: [
       { key: 'format:prettier', value: 'prettier --write --ignore-unknown .' },
       {
@@ -19,9 +16,9 @@ export const CONFIG = {
   },
   filePaths: ['prettier.config.mjs', '.prettierignore'],
   setup: [
-    { type: 'pkg.devDependencies.set' },
-    { type: 'pkg.scripts.set' },
-    { type: 'files.download' },
+    // { type: 'pkg.devDependencies.set' },
+    // { type: 'pkg.scripts.set' },
+    // { type: 'files.download' },
   ],
   clean: [
     { type: 'pkg.devDependencies.delete' },

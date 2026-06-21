@@ -1,9 +1,5 @@
 import { CONFIG_BASE_URL } from '@/models/configs.constants';
-import type {
-  CleanCommandAction,
-  Config,
-  SetupCommandAction,
-} from '@/models/configs.types';
+import type { CleanCommandAction, Config, SetupCommandAction } from '@/models/configs.types';
 import { buildCommand } from '@/utils/commands';
 
 type GetCommandOptions = Pick<Config, 'name' | 'pkg' | 'filePaths'>;
@@ -38,9 +34,7 @@ function buildSetupCommand({
     case 'pkg.devDependencies.set': {
       const devDependencies = pkg?.devDependencies ?? [];
       if (!(Array.isArray(devDependencies) && devDependencies.length > 0)) {
-        throw new Error(
-          `${errorTitle}: please set devDependencies in config.pkg`,
-        );
+        throw new Error(`${errorTitle}: please set devDependencies in config.pkg`);
       }
       const commands = devDependencies.map(({ packageName, tag, version }) => {
         const packageTag = tag ? `@${tag}` : '';
@@ -78,9 +72,7 @@ function buildSetupCommand({
       return buildCommand({
         mainCommand: 'curl',
         subCommand: '--create-dirs',
-        args: filePaths.map(
-          (value) => `--output ${value} ${CONFIG_BASE_URL}${value}`,
-        ),
+        args: filePaths.map((value) => `--output ${value} ${CONFIG_BASE_URL}${value}`),
       });
     }
     case 'custom': {
@@ -111,18 +103,13 @@ function buildCleanCommand({
     case 'pkg.devDependencies.delete': {
       const devDependencies = pkg?.devDependencies;
       if (!(Array.isArray(devDependencies) && devDependencies.length > 0)) {
-        throw new Error(
-          `${errorTitle}: please set devDependencies in config.pkg`,
-        );
+        throw new Error(`${errorTitle}: please set devDependencies in config.pkg`);
       }
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
         args: devDependencies.map((dependency) =>
-          formatPackageJsonPropertyPath(
-            'devDependencies',
-            dependency.packageName,
-          ),
+          formatPackageJsonPropertyPath('devDependencies', dependency.packageName),
         ),
       });
     }
@@ -134,9 +121,7 @@ function buildCleanCommand({
       return buildCommand({
         mainCommand: 'pnpm',
         subCommand: 'pkg delete',
-        args: scripts.map(({ key }) =>
-          formatPackageJsonPropertyPath('scripts', key),
-        ),
+        args: scripts.map(({ key }) => formatPackageJsonPropertyPath('scripts', key)),
       });
     }
     case 'files.delete': {

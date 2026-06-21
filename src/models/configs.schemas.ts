@@ -1,9 +1,6 @@
 import * as z from 'zod';
 
-import {
-  CLEAN_COMMAND_TYPE,
-  SETUP_COMMAND_TYPES,
-} from '@/models/configs.constants';
+import { CLEAN_COMMAND_TYPE, SETUP_COMMAND_TYPES } from '@/models/configs.constants';
 
 const SetupCommandTypeSchema = z.enum(SETUP_COMMAND_TYPES);
 
@@ -53,9 +50,4 @@ const ConfigSchema = z
 
 const ConfigsSchema = z.array(ConfigSchema).readonly();
 
-export {
-  CleanCommandActionSchema,
-  ConfigSchema,
-  ConfigsSchema,
-  SetupCommandActionSchema,
-};
+export { CleanCommandActionSchema, ConfigSchema, ConfigsSchema, SetupCommandActionSchema };

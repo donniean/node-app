@@ -12,6 +12,7 @@ import { CONFIG as knip } from './knip';
 import { CONFIG as lintStaged } from './lint-staged';
 import { CONFIG as markdownlint } from './markdownlint';
 import { CONFIG as npmCheckUpdates } from './npm-check-updates';
+import { CONFIG as oxfmt } from './oxfmt';
 import { CONFIG as oxlint } from './oxlint';
 import { CONFIG as prettier } from './prettier';
 import { CONFIG as sortPackageJson } from './sort-package-json';
@@ -31,6 +32,7 @@ export const CONFIGS = [
   knip,
   markdownlint,
   npmCheckUpdates,
+  oxfmt,
   oxlint,
   prettier,
   sortPackageJson,

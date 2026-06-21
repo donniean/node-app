@@ -18,9 +18,8 @@ export const CONFIG = {
       },
     ],
   },
-  setup: [{ type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }],
-  clean: [
-    { type: 'pkg.devDependencies.delete' },
-    { type: 'pkg.scripts.delete' },
+  setup: [
+    // { type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }
   ],
+  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'pkg.scripts.delete' }],
 } as const satisfies Config;

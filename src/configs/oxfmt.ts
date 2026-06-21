@@ -1,19 +1,17 @@
 import type { Config } from '@/models/configs.types';
 
 export const CONFIG = {
-  key: 'cspell',
-  name: 'CSpell',
-  url: 'https://github.com/streetsidesoftware/cspell',
+  key: 'oxfmt',
+  name: 'Oxfmt',
+  url: 'https://github.com/oxc-project/oxc',
   pkg: {
-    devDependencies: [{ packageName: 'cspell' }],
+    devDependencies: [{ packageName: 'oxfmt' }],
     scripts: [
-      {
-        key: 'lint:spellcheck',
-        value: 'cspell lint --no-progress --no-must-find-files --dot --gitignore .',
-      },
+      { key: 'format:oxfmt', value: 'oxfmt' },
+      { key: 'format:oxfmt:check', value: 'oxfmt --check' },
     ],
   },
-  filePaths: ['cspell.config.mjs'],
+  filePaths: ['oxfmt.config.ts'],
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },

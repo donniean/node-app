@@ -62,11 +62,9 @@ test('with full command: subCommand, options, multiple args', () => {
     options: ['-d', '--name my-container'],
     args: ['ubuntu:latest', '-p 8080:80'],
   });
-  const expected = [
-    'docker run -d --name my-container',
-    '  ubuntu:latest',
-    '  -p 8080:80',
-  ].join(lineContinuation);
+  const expected = ['docker run -d --name my-container', '  ubuntu:latest', '  -p 8080:80'].join(
+    lineContinuation,
+  );
   expect(result).toBe(expected);
 });
 
