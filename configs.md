@@ -434,8 +434,6 @@ Setup
 pnpm pkg set 'devDependencies["typescript"]'="$(pnpm view typescript version)"
 
 pnpm pkg set 'scripts["typecheck"]'='tsc --noEmit'
-
-curl --create-dirs --output tsconfig.json https://raw.githubusercontent.com/donniean/react-app/main/tsconfig.json
 ```
 
 Clean
@@ -444,8 +442,6 @@ Clean
 pnpm pkg delete 'devDependencies["typescript"]'
 
 pnpm pkg delete 'scripts["typecheck"]'
-
-rm tsconfig.json
 ```
 
 ### [Vitest](https://github.com/vitest-dev/vitest)
@@ -685,8 +681,6 @@ pnpm pkg set 'devDependencies["typescript"]'="$(pnpm view typescript version)"
 
 pnpm pkg set 'scripts["typecheck"]'='tsc --noEmit'
 
-curl --create-dirs --output tsconfig.json https://raw.githubusercontent.com/donniean/react-app/main/tsconfig.json
-
 # Vitest
 
 pnpm pkg set 'devDependencies["@vitest/coverage-v8"]'="$(pnpm view @vitest/coverage-v8 version)"
@@ -907,8 +901,6 @@ rm \
 pnpm pkg delete 'devDependencies["typescript"]'
 
 pnpm pkg delete 'scripts["typecheck"]'
-
-rm tsconfig.json
 
 # Vitest
 
