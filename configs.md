@@ -36,7 +36,7 @@ Setup
 
 ```bash
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint"]'='concurrently --group --timings "pnpm:format:*:check" "pnpm:lint:*(!:fix)" "pnpm:typecheck"' \
   'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 ```
 
@@ -556,7 +556,7 @@ rm \
 # Aggregate Lint
 
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint"]'='concurrently --group --timings "pnpm:format:*:check" "pnpm:lint:*(!:fix)" "pnpm:typecheck"' \
   'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 
 # AutoCorrect

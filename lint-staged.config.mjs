@@ -7,7 +7,12 @@ export default {
     'autocorrect --fix',
     'cspell lint --no-progress --no-must-find-files --dot --gitignore',
   ],
-  '*.ts': [() => 'tsc --noEmit', 'vitest related --run', 'pnpm run docs', `git add configs.md`],
-  '*.{js,mjs,cjs,ts}': 'oxlint --fix',
+  '*.{ts,tsx,mts,cts}': [
+    () => 'tsc --noEmit',
+    'vitest related --run',
+    'pnpm run docs',
+    `git add configs.md`,
+  ],
+  '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'oxlint --fix',
   '*.md': 'markdownlint --dot --fix',
 };

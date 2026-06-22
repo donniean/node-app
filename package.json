@@ -39,7 +39,7 @@
     "format:oxfmt": "oxfmt",
     "format:oxfmt:check": "oxfmt --check",
     "link": "pnpm run build && pnpm link",
-    "lint": "concurrently --group --timings \"pnpm:lint:*(!:fix)\" \"pnpm:format:*:check\" \"pnpm:typecheck\"",
+    "lint": "concurrently --group --timings \"pnpm:format:*:check\" \"pnpm:lint:*(!:fix)\" \"pnpm:typecheck\"",
     "lint:autocorrect": "autocorrect --lint",
     "lint:autocorrect:fix": "autocorrect --fix",
     "lint:fix": "concurrently --max-processes=1 --group --timings \"pnpm:lint:*:fix\" \"pnpm:format:*(!:check)\"",
