@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 
-import type { DataObject } from 'json2md';
-import json2md from 'json2md';
+import json2md, { type DataObject } from 'json2md';
 import { remark } from 'remark';
 import remarkToc from 'remark-toc';
 

@@ -65,6 +65,12 @@ export default defineConfig({
     'eslint/no-var': 'error',
     'eslint/prefer-const': 'error',
     'eslint/prefer-template': 'error',
+    'eslint/sort-imports': [
+      'error',
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-cycle': 'error',
@@ -72,11 +78,24 @@ export default defineConfig({
       'error',
       {
         considerQueryString: true,
+        preferInline: true,
       },
     ],
     'import/no-unassigned-import': ['error', { allow: ['../dist/cli.js'] }],
-    'typescript/consistent-type-exports': 'error',
-    'typescript/consistent-type-imports': 'error',
+    'typescript/consistent-type-exports': [
+      'error',
+      {
+        fixMixedExportsWithInlineTypeSpecifier: true,
+      },
+    ],
+    'typescript/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        fixStyle: 'inline-type-imports',
+        disallowTypeAnnotations: true,
+      },
+    ],
     'typescript/no-empty-object-type': 'error',
     'typescript/no-explicit-any': 'error',
     'typescript/no-import-type-side-effects': 'error',
