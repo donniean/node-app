@@ -220,6 +220,8 @@ pnpm pkg set 'devDependencies["knip"]'="$(pnpm view knip version)"
 pnpm pkg set \
   'scripts["lint:knip"]'='knip' \
   'scripts["lint:knip:fix"]'='knip --fix'
+
+curl --create-dirs --output knip.config.ts https://raw.githubusercontent.com/donniean/react-app/main/knip.config.ts
 ```
 
 Clean
@@ -230,6 +232,8 @@ pnpm pkg delete 'devDependencies["knip"]'
 pnpm pkg delete \
   'scripts["lint:knip"]' \
   'scripts["lint:knip:fix"]'
+
+rm knip.config.ts
 ```
 
 ### [markdownlint](https://github.com/DavidAnson/markdownlint)
@@ -607,6 +611,8 @@ pnpm pkg set \
   'scripts["lint:knip"]'='knip' \
   'scripts["lint:knip:fix"]'='knip --fix'
 
+curl --create-dirs --output knip.config.ts https://raw.githubusercontent.com/donniean/react-app/main/knip.config.ts
+
 # markdownlint
 
 pnpm pkg set 'devDependencies["markdownlint-cli"]'="$(pnpm view markdownlint-cli version)"
@@ -805,6 +811,8 @@ pnpm pkg delete 'devDependencies["knip"]'
 pnpm pkg delete \
   'scripts["lint:knip"]' \
   'scripts["lint:knip:fix"]'
+
+rm knip.config.ts
 
 # markdownlint
 
