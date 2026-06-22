@@ -36,8 +36,8 @@ Setup
 
 ```bash
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix|^lint:knip$)" "pnpm:format:*:check" "pnpm:typecheck"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix(!^lint:knip:fix$)" "pnpm:format:*(!:check)"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 ```
 
 Clean
@@ -220,6 +220,8 @@ pnpm pkg set 'devDependencies["knip"]'="$(pnpm view knip version)"
 pnpm pkg set \
   'scripts["lint:knip"]'='knip' \
   'scripts["lint:knip:fix"]'='knip --fix'
+
+curl --create-dirs --output knip.config.ts https://raw.githubusercontent.com/donniean/react-app/main/knip.config.ts
 ```
 
 Clean
@@ -230,6 +232,8 @@ pnpm pkg delete 'devDependencies["knip"]'
 pnpm pkg delete \
   'scripts["lint:knip"]' \
   'scripts["lint:knip:fix"]'
+
+rm knip.config.ts
 ```
 
 ### [markdownlint](https://github.com/DavidAnson/markdownlint)
@@ -552,8 +556,8 @@ rm \
 # Aggregate Lint
 
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix|^lint:knip$)" "pnpm:format:*:check" "pnpm:typecheck"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix(!^lint:knip:fix$)" "pnpm:format:*(!:check)"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 
 # AutoCorrect
 
@@ -606,6 +610,8 @@ pnpm pkg set 'devDependencies["knip"]'="$(pnpm view knip version)"
 pnpm pkg set \
   'scripts["lint:knip"]'='knip' \
   'scripts["lint:knip:fix"]'='knip --fix'
+
+curl --create-dirs --output knip.config.ts https://raw.githubusercontent.com/donniean/react-app/main/knip.config.ts
 
 # markdownlint
 
@@ -805,6 +811,8 @@ pnpm pkg delete 'devDependencies["knip"]'
 pnpm pkg delete \
   'scripts["lint:knip"]' \
   'scripts["lint:knip:fix"]'
+
+rm knip.config.ts
 
 # markdownlint
 

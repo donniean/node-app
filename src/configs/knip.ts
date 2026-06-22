@@ -11,7 +11,15 @@ export const CONFIG = {
       { key: 'lint:knip:fix', value: 'knip --fix' },
     ],
   },
-  filePaths: [],
-  setup: [{ type: 'pkg.devDependencies.set' }, { type: 'pkg.scripts.set' }],
-  clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'pkg.scripts.delete' }],
+  filePaths: ['knip.config.ts'],
+  setup: [
+    { type: 'pkg.devDependencies.set' },
+    { type: 'pkg.scripts.set' },
+    { type: 'files.download' },
+  ],
+  clean: [
+    { type: 'pkg.devDependencies.delete' },
+    { type: 'pkg.scripts.delete' },
+    { type: 'files.delete' },
+  ],
 } as const satisfies Config;
