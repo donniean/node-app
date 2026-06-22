@@ -35,7 +35,7 @@ export default defineConfig({
     perf: 'warn',
     style: 'off',
     restriction: 'off',
-    nursery: 'off',
+    nursery: 'error',
   },
   // https://oxc.rs/docs/guide/usage/linter/rules.html
   rules: {
@@ -74,7 +74,7 @@ export default defineConfig({
         considerQueryString: true,
       },
     ],
-    'import/no-unassigned-import': ['error', { allow: ['**/*.css', '../dist/cli.js'] }],
+    'import/no-unassigned-import': ['error', { allow: ['../dist/cli.js'] }],
     'typescript/consistent-type-exports': 'error',
     'typescript/consistent-type-imports': 'error',
     'typescript/no-empty-object-type': 'error',
@@ -82,7 +82,6 @@ export default defineConfig({
     'typescript/no-import-type-side-effects': 'error',
     'typescript/no-misused-promises': 'error',
     'typescript/no-require-imports': 'error',
-    'typescript/no-unnecessary-condition': 'error',
     'typescript/no-unsafe-argument': 'error',
     'typescript/no-unsafe-assignment': 'error',
     'typescript/no-unsafe-call': 'error',
