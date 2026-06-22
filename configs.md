@@ -36,8 +36,8 @@ Setup
 
 ```bash
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix|^lint:knip$)" "pnpm:format:*:check" "pnpm:typecheck"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix(!^lint:knip:fix$)" "pnpm:format:*(!:check)"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 ```
 
 Clean
@@ -552,8 +552,8 @@ rm \
 # Aggregate Lint
 
 pnpm pkg set \
-  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix|^lint:knip$)" "pnpm:format:*:check" "pnpm:typecheck"' \
-  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix(!^lint:knip:fix$)" "pnpm:format:*(!:check)"'
+  'scripts["lint"]'='concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"' \
+  'scripts["lint:fix"]'='concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"'
 
 # AutoCorrect
 

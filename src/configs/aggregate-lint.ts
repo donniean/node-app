@@ -9,12 +9,12 @@ export const CONFIG = {
       {
         key: 'lint',
         value:
-          'concurrently --group --timings "pnpm:lint:*(!:fix|^lint:knip$)" "pnpm:format:*:check" "pnpm:typecheck"',
+          'concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"',
       },
       {
         key: 'lint:fix',
         value:
-          'concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix(!^lint:knip:fix$)" "pnpm:format:*(!:check)"',
+          'concurrently --max-processes=1 --group --timings "pnpm:lint:*:fix" "pnpm:format:*(!:check)"',
       },
     ],
   },
