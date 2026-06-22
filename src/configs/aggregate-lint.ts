@@ -9,7 +9,7 @@ export const CONFIG = {
       {
         key: 'lint',
         value:
-          'concurrently --group --timings "pnpm:lint:*(!:fix)" "pnpm:format:*:check" "pnpm:typecheck"',
+          'concurrently --group --timings "pnpm:format:*:check" "pnpm:lint:*(!:fix)" "pnpm:typecheck"',
       },
       {
         key: 'lint:fix',
