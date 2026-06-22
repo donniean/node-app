@@ -10,8 +10,8 @@ export default {
   '*.{ts,tsx,mts,cts}': [
     () => 'pnpm run typecheck',
     'vitest related --run',
-    'pnpm run docs',
-    `git add configs.md`,
+    () => 'pnpm run docs',
+    () => 'git add configs.md',
   ],
   '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'pnpm run lint:oxlint:fix --',
   '*.md': () => 'pnpm run lint:markdown:fix',
