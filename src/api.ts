@@ -11,6 +11,7 @@ import type { Configs } from '@/models/configs.types';
 import { resolveCwd } from '@/utils/paths';
 
 const CODE_LANGUAGE = 'bash';
+const GENERATED_MARKDOWN_CSPELL_DIRECTIVE = '<!-- cspell:ignore stylelintignore -->';
 
 async function getMarkdown(configs: Configs) {
   const tools: DataObject[] = [];
@@ -87,7 +88,7 @@ async function getMarkdown(configs: Configs) {
   const markdown = json2md(data);
   const processed = await remark().use(remarkToc).process(markdown);
 
-  return String(processed);
+  return `${GENERATED_MARKDOWN_CSPELL_DIRECTIVE}\n\n${String(processed)}`;
 }
 
 interface WriteMarkdownOptions {

@@ -4,7 +4,6 @@ export default defineConfig({
   version: '0.2',
   language: 'en',
   enableGlobDot: true,
-  ignoreRegExpList: [/\.[a-z][a-z0-9-]*ignore\b/g],
   words: [
     // apps
     'webstorm',
