@@ -9,11 +9,11 @@ export const CONFIG = {
     scripts: [
       {
         key: 'lint:spellcheck',
-        value: 'cspell lint --no-progress --no-must-find-files --dot --gitignore .',
+        value: 'cspell --no-progress --dot --gitignore .',
       },
     ],
   },
-  filePaths: ['cspell.config.mjs'],
+  filePaths: ['cspell.config.ts'],
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },

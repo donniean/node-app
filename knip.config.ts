@@ -1,10 +1,8 @@
 import type { KnipConfig } from 'knip';
 
-const config = {
+export default {
   entry: ['.ncurc.mjs'],
   vitest: {
     entry: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
   },
-} as const satisfies KnipConfig;
-
-export default config;
+} satisfies KnipConfig;

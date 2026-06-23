@@ -27,6 +27,7 @@ export const CONFIG = {
       { packageName: 'eslint-plugin-unicorn' },
       { packageName: 'eslint-plugin-unused-imports' },
       { packageName: 'globals' },
+      { packageName: 'jiti' },
       { packageName: 'typescript-eslint' },
     ],
     scripts: [
@@ -34,7 +35,7 @@ export const CONFIG = {
       { key: 'lint:eslint:fix', value: 'eslint --fix' },
     ],
   },
-  filePaths: ['eslint.config.mjs'],
+  filePaths: ['eslint.config.ts'],
   setup: [
     // { type: 'pkg.devDependencies.set' },
     // { type: 'pkg.scripts.set' },
