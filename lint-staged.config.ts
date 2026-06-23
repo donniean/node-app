@@ -1,11 +1,10 @@
-/**
- * @type {import('lint-staged').Configuration}
- */
+import type { Configuration } from 'lint-staged';
+
 export default {
   '*': [
     'oxfmt --no-error-on-unmatched-pattern',
     'autocorrect --fix',
-    'cspell lint --no-progress --no-must-find-files --dot --gitignore',
+    'cspell --no-progress --dot --gitignore --no-must-find-files',
   ],
   '*.{ts,tsx,mts,cts}': [
     () => 'tsc --noEmit',
@@ -15,4 +14,4 @@ export default {
   ],
   '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'oxlint --fix',
   '*.md': 'markdownlint --dot --fix',
-};
+} satisfies Configuration;

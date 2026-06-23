@@ -9,11 +9,11 @@ export const CONFIG = {
     scripts: [
       {
         key: 'lint:html',
-        value: 'html-validate "**/*.html"',
+        value: 'html-validate .',
       },
     ],
   },
-  filePaths: ['.htmlvalidate.mjs', '.htmlvalidateignore'],
+  filePaths: ['html-validate.config.ts'],
 
   setup: [
     { type: 'pkg.devDependencies.set' },

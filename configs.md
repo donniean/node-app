@@ -85,9 +85,9 @@ Setup
 ```bash
 pnpm pkg set 'devDependencies["cspell"]'="$(pnpm view cspell version)"
 
-pnpm pkg set 'scripts["lint:spellcheck"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
+pnpm pkg set 'scripts["lint:spellcheck"]'='cspell --no-progress --dot --gitignore .'
 
-curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
+curl --create-dirs --output cspell.config.ts https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.ts
 ```
 
 Clean
@@ -97,7 +97,7 @@ pnpm pkg delete 'devDependencies["cspell"]'
 
 pnpm pkg delete 'scripts["lint:spellcheck"]'
 
-rm cspell.config.mjs
+rm cspell.config.ts
 ```
 
 ### [EditorConfig](https://editorconfig.org/)
@@ -191,11 +191,9 @@ Setup
 ```bash
 pnpm pkg set 'devDependencies["html-validate"]'="$(pnpm view html-validate version)"
 
-pnpm pkg set 'scripts["lint:html"]'='html-validate "**/*.html"'
+pnpm pkg set 'scripts["lint:html"]'='html-validate .'
 
-curl --create-dirs \
-  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
-  --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
+curl --create-dirs --output html-validate.config.ts https://raw.githubusercontent.com/donniean/react-app/main/html-validate.config.ts
 ```
 
 Clean
@@ -205,9 +203,7 @@ pnpm pkg delete 'devDependencies["html-validate"]'
 
 pnpm pkg delete 'scripts["lint:html"]'
 
-rm \
-  .htmlvalidate.mjs \
-  .htmlvalidateignore
+rm html-validate.config.ts
 ```
 
 ### [Knip](https://github.com/webpro-nl/knip)
@@ -244,7 +240,7 @@ Setup
 pnpm pkg set 'devDependencies["markdownlint-cli"]'="$(pnpm view markdownlint-cli version)"
 
 pnpm pkg set \
-  'scripts["lint:markdown"]'='markdownlint --dot "**/*.md"' \
+  'scripts["lint:markdown"]'='markdownlint --dot .' \
   'scripts["lint:markdown:fix"]'='pnpm run lint:markdown --fix'
 
 curl --create-dirs \
@@ -404,7 +400,7 @@ pnpm pkg set \
   'scripts["lint:styles:fix"]'='pnpm run lint:styles --fix'
 
 curl --create-dirs \
-  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
+  --output stylelint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.ts \
   --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 ```
 
@@ -422,7 +418,7 @@ pnpm pkg delete \
   'scripts["lint:styles:fix"]'
 
 rm \
-  stylelint.config.mjs \
+  stylelint.config.ts \
   .stylelintignore
 ```
 
@@ -535,7 +531,7 @@ pnpm pkg set 'devDependencies["lint-staged"]'="$(pnpm view lint-staged version)"
 
 curl --create-dirs \
   --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
-  --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
+  --output lint-staged.config.ts https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.ts
 ```
 
 Clean
@@ -545,7 +541,7 @@ pnpm pkg delete 'devDependencies["lint-staged"]'
 
 rm \
   .husky/pre-commit \
-  lint-staged.config.mjs
+  lint-staged.config.ts
 ```
 
 ## All
@@ -575,9 +571,9 @@ curl --create-dirs \
 
 pnpm pkg set 'devDependencies["cspell"]'="$(pnpm view cspell version)"
 
-pnpm pkg set 'scripts["lint:spellcheck"]'='cspell lint --no-progress --no-must-find-files --dot --gitignore .'
+pnpm pkg set 'scripts["lint:spellcheck"]'='cspell --no-progress --dot --gitignore .'
 
-curl --create-dirs --output cspell.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.mjs
+curl --create-dirs --output cspell.config.ts https://raw.githubusercontent.com/donniean/react-app/main/cspell.config.ts
 
 # EditorConfig
 
@@ -597,11 +593,9 @@ curl --create-dirs --output .gitignore https://raw.githubusercontent.com/donniea
 
 pnpm pkg set 'devDependencies["html-validate"]'="$(pnpm view html-validate version)"
 
-pnpm pkg set 'scripts["lint:html"]'='html-validate "**/*.html"'
+pnpm pkg set 'scripts["lint:html"]'='html-validate .'
 
-curl --create-dirs \
-  --output .htmlvalidate.mjs https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidate.mjs \
-  --output .htmlvalidateignore https://raw.githubusercontent.com/donniean/react-app/main/.htmlvalidateignore
+curl --create-dirs --output html-validate.config.ts https://raw.githubusercontent.com/donniean/react-app/main/html-validate.config.ts
 
 # Knip
 
@@ -618,7 +612,7 @@ curl --create-dirs --output knip.config.ts https://raw.githubusercontent.com/don
 pnpm pkg set 'devDependencies["markdownlint-cli"]'="$(pnpm view markdownlint-cli version)"
 
 pnpm pkg set \
-  'scripts["lint:markdown"]'='markdownlint --dot "**/*.md"' \
+  'scripts["lint:markdown"]'='markdownlint --dot .' \
   'scripts["lint:markdown:fix"]'='pnpm run lint:markdown --fix'
 
 curl --create-dirs \
@@ -672,7 +666,7 @@ pnpm pkg set \
   'scripts["lint:styles:fix"]'='pnpm run lint:styles --fix'
 
 curl --create-dirs \
-  --output stylelint.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.mjs \
+  --output stylelint.config.ts https://raw.githubusercontent.com/donniean/react-app/main/stylelint.config.ts \
   --output .stylelintignore https://raw.githubusercontent.com/donniean/react-app/main/.stylelintignore
 
 # tsc
@@ -718,7 +712,7 @@ pnpm pkg set 'devDependencies["lint-staged"]'="$(pnpm view lint-staged version)"
 
 curl --create-dirs \
   --output .husky/pre-commit https://raw.githubusercontent.com/donniean/react-app/main/.husky/pre-commit \
-  --output lint-staged.config.mjs https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.mjs
+  --output lint-staged.config.ts https://raw.githubusercontent.com/donniean/react-app/main/lint-staged.config.ts
 ```
 
 ### Clean
@@ -748,7 +742,7 @@ pnpm pkg delete 'devDependencies["cspell"]'
 
 pnpm pkg delete 'scripts["lint:spellcheck"]'
 
-rm cspell.config.mjs
+rm cspell.config.ts
 
 # EditorConfig
 
@@ -800,9 +794,7 @@ pnpm pkg delete 'devDependencies["html-validate"]'
 
 pnpm pkg delete 'scripts["lint:html"]'
 
-rm \
-  .htmlvalidate.mjs \
-  .htmlvalidateignore
+rm html-validate.config.ts
 
 # Knip
 
@@ -893,7 +885,7 @@ pnpm pkg delete \
   'scripts["lint:styles:fix"]'
 
 rm \
-  stylelint.config.mjs \
+  stylelint.config.ts \
   .stylelintignore
 
 # tsc
@@ -941,5 +933,5 @@ pnpm pkg delete 'devDependencies["lint-staged"]'
 
 rm \
   .husky/pre-commit \
-  lint-staged.config.mjs
+  lint-staged.config.ts
 ```

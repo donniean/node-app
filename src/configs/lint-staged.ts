@@ -7,7 +7,7 @@ export const CONFIG = {
   pkg: {
     devDependencies: [{ packageName: 'lint-staged' }],
   },
-  filePaths: ['.husky/pre-commit', 'lint-staged.config.mjs'],
+  filePaths: ['.husky/pre-commit', 'lint-staged.config.ts'],
   setup: [{ type: 'pkg.devDependencies.set' }, { type: 'files.download' }],
   clean: [{ type: 'pkg.devDependencies.delete' }, { type: 'files.delete' }],
 } as const satisfies Config;

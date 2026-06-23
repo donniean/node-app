@@ -16,7 +16,7 @@ export const CONFIG = {
       { key: 'lint:styles:fix', value: 'pnpm run lint:styles --fix' },
     ],
   },
-  filePaths: ['stylelint.config.mjs', '.stylelintignore'],
+  filePaths: ['stylelint.config.ts', '.stylelintignore'],
   setup: [
     { type: 'pkg.devDependencies.set' },
     { type: 'pkg.scripts.set' },
