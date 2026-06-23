@@ -14,7 +14,7 @@ export const CONFIG = {
       },
     ],
   },
-  filePaths: ['prettier.config.mjs', '.prettierignore'],
+  filePaths: ['prettier.config.ts', '.prettierignore'],
   setup: [
     // { type: 'pkg.devDependencies.set' },
     // { type: 'pkg.scripts.set' },

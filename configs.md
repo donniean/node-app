@@ -147,13 +147,14 @@ pnpm pkg delete \
   'devDependencies["eslint-plugin-unicorn"]' \
   'devDependencies["eslint-plugin-unused-imports"]' \
   'devDependencies["globals"]' \
+  'devDependencies["jiti"]' \
   'devDependencies["typescript-eslint"]'
 
 pnpm pkg delete \
   'scripts["lint:eslint"]' \
   'scripts["lint:eslint:fix"]'
 
-rm eslint.config.mjs
+rm eslint.config.ts
 ```
 
 ### [gitattributes](https://git-scm.com/docs/gitattributes)
@@ -363,7 +364,7 @@ pnpm pkg delete \
   'scripts["format:prettier:check"]'
 
 rm \
-  prettier.config.mjs \
+  prettier.config.ts \
   .prettierignore
 ```
 
@@ -772,13 +773,14 @@ pnpm pkg delete \
   'devDependencies["eslint-plugin-unicorn"]' \
   'devDependencies["eslint-plugin-unused-imports"]' \
   'devDependencies["globals"]' \
+  'devDependencies["jiti"]' \
   'devDependencies["typescript-eslint"]'
 
 pnpm pkg delete \
   'scripts["lint:eslint"]' \
   'scripts["lint:eslint:fix"]'
 
-rm eslint.config.mjs
+rm eslint.config.ts
 
 # gitattributes
 
@@ -861,7 +863,7 @@ pnpm pkg delete \
   'scripts["format:prettier:check"]'
 
 rm \
-  prettier.config.mjs \
+  prettier.config.ts \
   .prettierignore
 
 # Sort Package.json
