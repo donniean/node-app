@@ -9,8 +9,8 @@ export default {
   '*.{ts,tsx,mts,cts}': [
     () => 'tsc --noEmit',
     'vitest related --run',
-    'pnpm run docs',
-    `git add configs.md`,
+    () => 'pnpm run docs',
+    () => 'git add configs.md',
   ],
   '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'oxlint --fix',
   '*.md': 'markdownlint --dot --fix',
