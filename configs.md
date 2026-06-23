@@ -1,5 +1,3 @@
-<!-- cspell:ignore stylelintignore -->
-
 # Configs
 
 ## Table of Contents

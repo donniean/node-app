@@ -16,7 +16,6 @@ export const CONFIG = {
       { key: 'lint:styles:fix', value: 'pnpm run lint:styles --fix' },
     ],
   },
-  // cspell:ignore stylelintignore
   filePaths: ['stylelint.config.ts', '.stylelintignore'],
   setup: [
     { type: 'pkg.devDependencies.set' },
