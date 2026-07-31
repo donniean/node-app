@@ -12,6 +12,6 @@ export default {
     () => 'pnpm run docs',
     () => 'git add configs.md',
   ],
-  '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'oxlint --fix',
+  '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}': 'oxlint --fix --no-error-on-unmatched-pattern',
   '*.md': 'markdownlint --dot --fix',
 } satisfies Configuration;
