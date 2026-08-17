@@ -82,7 +82,7 @@
     "@vitest/coverage-v8": "4.1.10",
     "@vitest/ui": "4.1.10",
     "autocorrect-node": "2.14.0",
-    "concurrently": "10.0.4",
+    "concurrently": "10.0.5",
     "cspell": "10.0.1",
     "husky": "9.1.7",
     "knip": "6.32.2",
@@ -101,5 +101,5 @@
   "engines": {
     "node": ">=24.0.0 <25.0.0"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.22.0"
 }
