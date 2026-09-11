@@ -3,7 +3,7 @@
 ## Scope
 
 - Repository purpose, current directories, and common commands are documented in [README.md](README.md) as the single source of truth; this file contains only repository constraints for coding agents.
-- When modifying this repository, check both the current `@donniean/node-app` package / `configs-md` CLI behavior and the template reuse scenario.
+- For changes affecting package or CLI behavior, check both current `@donniean/node-app` / `configs-md` consumers and template reuse.
 - Projects created from this template are not limited to personal use; do not treat this repository's personal-use context as a fixed downstream project constraint.
 - When this template is used to create an actual project, the sample CLI, API, configuration generation logic, and placeholder structure may be replaced, trimmed, or deleted according to the project goal. Do not treat the current example as a convention that every downstream project must keep.
 
@@ -20,45 +20,14 @@
 
 ## Verification
 
-Run checks relevant to the change scope:
-
-```bash
-pnpm run lint
-pnpm run test
-pnpm run build
-```
-
-If check results can be fixed automatically, prefer the smallest relevant `fix` command instead of running a full-repository fix indiscriminately.
-
-When changing `src/configs/`, `src/api.ts`, `src/scripts.ts`, `src/helpers/`, `src/models/`, or generated output, also run the docs command and inspect the generated diff:
-
-```bash
-pnpm run docs
-```
-
-Use smaller checks by file type when possible:
-
-```bash
-pnpm run format:oxfmt:check
-pnpm run lint:autocorrect
-pnpm run lint:oxlint
-pnpm run lint:markdown
-pnpm run lint:spellcheck
-pnpm run typecheck
-```
-
-Matching `fix` commands include:
-
-- `pnpm run format:oxfmt`
-- `pnpm run lint:autocorrect:fix`
-- `pnpm run lint:oxlint:fix`
-- `pnpm run lint:markdown:fix`
-
-CI currently runs lint, test, and build on pull requests to `main`.
+- For Markdown-only edits, run Oxfmt, Markdownlint, AutoCorrect, and CSpell on changed files. Use `pnpm exec` with file paths when scripts hardcode the repository scope; retain tool configuration and scope fixes likewise.
+- Validate behavior changes with relevant lint, type checks, and tests. Build when package output, entry points, dependencies, or build configuration are affected. Full lint, test, and build match PR CI; use them for cross-cutting changes or requested CI validation.
+- Run `pnpm run docs` and inspect [`configs.md`](configs.md) when generated Markdown, command construction, configuration definitions, or output defaults are affected.
+- After checks pass, continue to delivery; repeat or expand only for relevant edits, failures, or unresolved concerns.
 
 ## Release
 
-Without explicit user confirmation, do not run release or publish commands, and do not change the npm publishing target, Changesets release behavior, or release workflow secrets assumptions.
+Publishing, applying release versions, or changing the npm target, Changesets release behavior, or workflow secret assumptions requires explicit user authorization. Reuse existing authorization; prepare and inspect authorized local changes before requesting any missing publishing authorization.
 
 When release work is involved, use the existing Changesets scripts:
 

@@ -67,7 +67,7 @@ When changing [`src/configs/`](src/configs/), [`src/helpers/`](src/helpers/), [`
 - [`dependencies.bump.yaml`](.github/workflows/dependencies.bump.yaml), [`pull-requests.auto-merge.yaml`](.github/workflows/pull-requests.auto-merge.yaml), and [`pull-requests.auto-update.yaml`](.github/workflows/pull-requests.auto-update.yaml) reuse workflows from [`donniean/hub`](https://github.com/donniean/hub).
 - [`.github/dependabot.yaml`](.github/dependabot.yaml) enables daily updates for npm and GitHub Actions dependencies.
 
-This repository uses Changesets for versioning and releases. Use the existing scripts when maintaining releases manually. Before running release-related commands, confirm the npm package, credentials, target version, and release intent:
+This repository uses Changesets for versioning and releases. Use the existing scripts when maintaining releases manually. `changeset:add` prepares a local changeset; `changeset:version` applies release versions; `changeset:publish` publishes to npm. Verify the package, target version, and authorization for the operation, plus credentials before publishing. Authorization already given for that operation remains valid:
 
 ```bash
 pnpm run changeset:add
