@@ -9,7 +9,7 @@
 
 ## Conventions
 
-- Before changing TypeScript or JavaScript imports, identify the relevant `tsconfig.json` / `jsconfig.json` for the edited file and resolve its effective `compilerOptions`, including any configured `paths`, by following the `extends` chain when present; in solution-style TypeScript setups, use `references` only to find the leaf project config. Use relative imports within the same feature/module/package, and prefer existing configured path aliases for established cross-boundary imports, but only when all relevant tooling for that code path supports the same alias resolution.
+- When adding or changing import paths, resolve the edited file's effective `tsconfig.json` / `jsconfig.json`, following `extends` and using solution `references` to locate the leaf config. Reuse that result while the configuration is unchanged. Use relative paths within a feature/module/package and existing aliases across established boundaries only when the relevant tooling supports them.
 
 ## Generated Documentation
 
