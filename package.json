@@ -78,7 +78,7 @@
     "@commitlint/types": "21.2.3",
     "@types/fs-extra": "11.0.4",
     "@types/json2md": "1.5.4",
-    "@types/node": "24.19.0",
+    "@types/node": "24.19.1",
     "@vitest/coverage-v8": "5.0.3",
     "@vitest/ui": "5.0.3",
     "autocorrect-node": "2.14.0",
