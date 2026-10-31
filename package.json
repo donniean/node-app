@@ -85,7 +85,7 @@
     "concurrently": "10.0.6",
     "cspell": "10.4.0",
     "husky": "9.1.7",
-    "knip": "6.43.0",
+    "knip": "6.44.0",
     "lint-staged": "17.6.0",
     "markdownlint-cli": "0.50.0",
     "npm-check-updates": "23.1.1",
