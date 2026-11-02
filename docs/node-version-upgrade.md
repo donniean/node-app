@@ -25,7 +25,6 @@ Update these files together when changing the Node.js major version:
 - [`package.json`](../package.json)
   - `engines.node`
   - `devDependencies.@types/node`
-- [`pnpm-workspace.yaml`](../pnpm-workspace.yaml): Transitive `@types/node` overrides, when present
 
 These files should usually keep their existing behavior:
 
@@ -42,7 +41,6 @@ These files should usually keep their existing behavior:
    - [`package.json`](../package.json)
      - `engines.node`: Set to `>=<node-major>.0.0 <next-node-major>.0.0`.
      - `devDependencies.@types/node`: Update with `pnpm add --save-dev --save-exact @types/node@<node-major>`.
-   - [`pnpm-workspace.yaml`](../pnpm-workspace.yaml): Keep transitive `@types/node` overrides on the same major, if any are present.
 3. Reinstall dependencies with the target Node.js major:
 
    ```bash
