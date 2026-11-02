@@ -162,10 +162,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@types/fs-extra>@types/node': 26.6.6
-  '@types/jsonfile>@types/node': 26.6.6
-
 importers:
 
   .:

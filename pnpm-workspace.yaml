@@ -2,7 +2,4 @@ allowBuilds:
   esbuild: true
 engineStrict: true
 minimumReleaseAge: 1440
-overrides:
-  '@types/fs-extra>@types/node': 26.6.6
-  '@types/jsonfile>@types/node': 26.6.6
 saveExact: true
