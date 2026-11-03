@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsdown';
 
 export default defineConfig(({ watch }) => ({
   entry: {
@@ -6,10 +6,7 @@ export default defineConfig(({ watch }) => ({
     cli: 'src/cli.ts',
   },
   minify: !watch,
-  format: ['esm'],
-  dts: true,
+  fixedExtension: false,
   sourcemap: true,
-  replaceNodeEnv: true,
-  clean: true,
-  shims: true,
+  env: { NODE_ENV: 'production' },
 }));
