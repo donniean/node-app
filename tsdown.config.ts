@@ -9,5 +9,4 @@ export default defineConfig(({ watch }) => ({
   fixedExtension: false,
   sourcemap: true,
   env: { NODE_ENV: 'production' },
-  shims: true,
 }));
