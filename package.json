@@ -79,13 +79,13 @@
     "@types/fs-extra": "11.0.4",
     "@types/json2md": "1.5.4",
     "@types/node": "26.6.6",
-    "@vitest/coverage-v8": "5.1.0",
-    "@vitest/ui": "5.1.0",
+    "@vitest/coverage-v8": "5.1.1",
+    "@vitest/ui": "5.1.1",
     "autocorrect-node": "2.14.0",
     "concurrently": "10.0.7",
-    "cspell": "10.5.1",
+    "cspell": "10.5.2",
     "husky": "9.1.7",
-    "knip": "6.45.1",
+    "knip": "6.46.1",
     "lint-staged": "17.6.1",
     "markdownlint-cli": "0.50.0",
     "npm-check-updates": "23.1.1",
@@ -96,7 +96,7 @@
     "tsdown": "0.23.7",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
-    "vitest": "5.1.0"
+    "vitest": "5.1.1"
   },
   "engines": {
     "node": ">=26.0.0 <27.0.0"
