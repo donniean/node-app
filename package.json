@@ -85,8 +85,8 @@
     "concurrently": "10.0.7",
     "cspell": "10.5.2",
     "husky": "9.1.7",
-    "knip": "6.47.0",
-    "lint-staged": "17.6.1",
+    "knip": "6.48.0",
+    "lint-staged": "17.6.2",
     "markdownlint-cli": "0.50.1",
     "npm-check-updates": "23.1.1",
     "oxfmt": "0.79.0",
@@ -101,5 +101,5 @@
   "engines": {
     "node": ">=26.0.0 <27.0.0"
   },
-  "packageManager": "pnpm@12.21.0"
+  "packageManager": "pnpm@12.23.0"
 }
